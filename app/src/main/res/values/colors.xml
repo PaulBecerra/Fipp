@@ -7,4 +7,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Principal-->
+    <color name="verde">#07dd53</color>
+    <color name="morado">#5543ff</color>
+    <color name="gris_oscuro">#2b2b2b</color>
+    <color name="gris">#e2e2e2</color>
+    <color name="gris_claro">#f4f4f4</color>
 </resources>

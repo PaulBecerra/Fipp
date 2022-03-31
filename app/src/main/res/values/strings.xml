@@ -9,4 +9,7 @@
     <string name="login_btn_email">Iniciar sesión con Email</string>
     <string name="login_btn_google">Iniciar sesión con Google</string>
     <string name="login_forget_password">¿Olvidaste tu contraseña?</string>
+    <string name="login_no_account">¿Aún no tienes cuenta?</string>
+    <string name="login_create_account">Crea Una</string>
+    <string name="login_password_hint">Contraseña</string>
 </resources>
