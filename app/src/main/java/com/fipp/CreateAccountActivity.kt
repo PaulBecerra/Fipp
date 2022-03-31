@@ -5,15 +5,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 
-class LoginActivity : AppCompatActivity() {
+class CreateAccountActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.activity_create_account)
 
-        val tvCreateAccount: TextView = findViewById(R.id.textViewCreateAccount)
+        val tvLogin: TextView = findViewById(R.id.textViewLogin)
 
-        tvCreateAccount.setOnClickListener {
-            val intent = Intent(this, CreateAccountActivity::class.java)
+        tvLogin.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
     }

@@ -12,4 +12,12 @@
     <string name="login_no_account">¿Aún no tienes cuenta?</string>
     <string name="login_create_account">Crea Una</string>
     <string name="login_password_hint">Contraseña</string>
+    <string name="create_account_title">REGISTRATE</string>
+    <string name="create_account_main_header">CREAR UNA CUENTA</string>
+    <string name="name">Nombre</string>
+    <string name="confirm_password">Confirmar contraseña</string>
+    <string name="btn_email">Registrarse con Email</string>
+    <string name="btn_google">Registrarse con Google</string>
+    <string name="already_account">¿Ya tienes una cuenta?</string>
+    <string name="login">Inicia sesión</string>
 </resources>
