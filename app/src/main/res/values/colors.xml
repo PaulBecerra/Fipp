@@ -14,4 +14,12 @@
     <color name="gris_oscuro">#2b2b2b</color>
     <color name="gris">#e2e2e2</color>
     <color name="gris_claro">#f4f4f4</color>
+
+    <!-- Start income colors -->
+    <color name="verde_barra">#54FC79</color>
+    <!-- End income colors -->
+
+    <!-- Start expenses colors -->
+    <color name="rojo">#FC5454</color>
+    <!-- End expenses colors -->
 </resources>

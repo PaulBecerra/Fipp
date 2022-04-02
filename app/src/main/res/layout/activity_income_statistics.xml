@@ -7,4 +7,22 @@
     android:orientation="vertical"
     tools:context=".IncomeStatistcsActivity">
 
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textSize="15sp"
+        android:text="@string/income_statistics_title"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textSize="30sp"
+        android:text="@string/statistics_subtitle"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+
 </LinearLayout>
