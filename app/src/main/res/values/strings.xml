@@ -21,6 +21,8 @@
     <string name="already_account">¿Ya tienes una cuenta?</string>
     <string name="login">Inicia sesión</string>
     <string name="title_activity_estadistica_ingresos">EstadisticaIngresosActivity</string>
+    <string name="section_month">Mes</string>
+    <string name="section_week">semana</string>
 
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -42,5 +44,8 @@
     <string name="statistics_amount">IMPORTE</string>
     <string name="statistics_category">CATEGORÍA</string>
     <string name="title_activity_main2">MainActivity2</string>
+    <string name="title_activity_top_bar">TopBarActivity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
     <!-- End statistics string values -->
 </resources>

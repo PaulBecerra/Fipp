@@ -18,12 +18,17 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // Redirect to main activity
         val btnLogin: Button = findViewById(R.id.button)
 
+        // Redirect to Chart
         btnLogin.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, ChartActivity::class.java)
             startActivity(intent)
         }
+        // Redirect to main activity
+//        btnLogin.setOnClickListener {
+//            val intent = Intent(this, MainActivity::class.java)
+//            startActivity(intent)
+//        }
     }
 }
