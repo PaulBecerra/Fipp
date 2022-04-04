@@ -21,19 +21,19 @@ class LoginActivity : AppCompatActivity() {
         val btnLogin: Button = findViewById(R.id.button)
 
         // Redirect to IncomeStatisticsActivity
-        btnLogin.setOnClickListener {
-            val intent = Intent(this, IncomeStatisticsActivity::class.java)
-            startActivity(intent)
-        }
+//        btnLogin.setOnClickListener {
+//            val intent = Intent(this, IncomeStatisticsActivity::class.java)
+//            startActivity(intent)
+//        }
         // Redirect to Chart
 //        btnLogin.setOnClickListener {
 //            val intent = Intent(this, ChartActivity::class.java)
 //            startActivity(intent)
 //        }
-        // Redirect to main activity
-//        btnLogin.setOnClickListener {
-//            val intent = Intent(this, MainActivity::class.java)
-//            startActivity(intent)
-//        }
+        //Redirect to main activity
+        btnLogin.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
