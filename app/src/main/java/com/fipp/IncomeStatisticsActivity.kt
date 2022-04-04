@@ -1,27 +1,32 @@
 package com.fipp
 
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.view.View
+import android.widget.ProgressBar
 import androidx.core.content.ContextCompat
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.XAxis
-import com.github.mikephil.charting.components.XAxis.XAxisPosition
-import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 
-
-class ChartActivity : AppCompatActivity() {
-
-
+class IncomeStatisticsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_chart)
-
+        setContentView(R.layout.activity_income_statistics)
         setLineChart()
+    }
 
+    private fun loadProgressBar() {
+        val progressBar = findViewById<ProgressBar>(R.id.progressBar)
+        progressBar.visibility = View.VISIBLE
+        // Change color to green
+        progressBar.indeterminateDrawable.setColorFilter(
+            ContextCompat.getColor(this, R.color.verde_barra),
+            android.graphics.PorterDuff.Mode.SRC_IN
+        )
     }
 
     private fun setLineChart(){
@@ -33,7 +38,7 @@ class ChartActivity : AppCompatActivity() {
         //Axe X
         val x: XAxis = lineChart.xAxis
 
-        x.position = XAxisPosition.BOTTOM
+        x.position = XAxis.XAxisPosition.BOTTOM
         lineChart.legend.isEnabled = false
         // Remove interceptions values
         lineChart.setDrawBorders(false)
@@ -99,11 +104,6 @@ class ChartActivity : AppCompatActivity() {
         lineChart.data = data
 
         lineChart.axisRight.isEnabled = false
-//        lineChart.xAxis.axisMaximum = j+0.1f
-
-//        lineChart.setTouchEnabled(true)
-//        lineChart.setPinchZoom(true)
-//
         lineChart.description.text = ""
         lineChart.setNoDataText("No forex yet!")
 

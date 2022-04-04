@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".IncomeStatistcsActivity">
+    tools:context=".IncomeStatisticsActivity">
 
     <TextView
         android:id="@+id/textView1"
@@ -23,6 +23,17 @@
         android:textSize="30sp"
         android:text="@string/statistics_subtitle"
         android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <include layout="@layout/activity_chart" />
+
+    <!--   Progress bar     -->
+    <ProgressBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:id="@+id/progressBar"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:progress="50" />
 
 
 </LinearLayout>

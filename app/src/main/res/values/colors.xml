@@ -17,6 +17,7 @@
 
     <!-- Start income colors -->
     <color name="verde_barra">#54FC79</color>
+    <color name="verde_barra_oscuro">#3BFF5E</color>
     <!-- End income colors -->
 
     <!-- Start expenses colors -->

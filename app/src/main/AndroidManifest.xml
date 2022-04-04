@@ -20,7 +20,7 @@
             android:name=".ExpensesStatisticsActivity"
             android:exported="false" />
         <activity
-            android:name=".IncomeStatistcsActivity"
+            android:name=".IncomeStatisticsActivity"
             android:exported="false" />
         <activity
             android:name=".CreateAccountActivity"
