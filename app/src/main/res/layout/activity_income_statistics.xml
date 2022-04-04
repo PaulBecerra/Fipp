@@ -26,12 +26,58 @@
 
     <include layout="@layout/activity_chart" />
 
+    <!--  Color for ACTUAL, DESFASE AND PRESUPUESTO  -->
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="center">
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textSize="15sp"
+            android:gravity="center"
+
+            android:text="@string/statistics_actual"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+
+            android:drawablePadding="5dp"
+            android:maxLines="1"
+            app:drawableLeftCompat="@drawable/circle_green" />
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textSize="15sp"
+            android:text="@string/statistics_gap"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:drawablePadding="5dp"
+            android:maxLines="1"
+            app:drawableLeftCompat="@drawable/circle_green_dark" />
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textSize="15sp"
+            android:text="@string/statistics_budget"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:drawablePadding="5dp"
+            android:maxLines="1"
+            app:drawableLeftCompat="@drawable/circle_gray"/>
+    </LinearLayout>
+
+
     <!--   Progress bar     -->
     <ProgressBar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:id="@+id/progressBar"
+        android:indeterminateTintMode="src_atop"
+        android:indeterminateTint="@color/gris"
         style="@android:style/Widget.ProgressBar.Horizontal"
         android:progress="50" />
 

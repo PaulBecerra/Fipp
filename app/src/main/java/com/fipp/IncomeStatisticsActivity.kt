@@ -1,5 +1,7 @@
 package com.fipp
 
+import android.content.res.ColorStateList
+import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -16,6 +18,7 @@ class IncomeStatisticsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_income_statistics)
+        loadProgressBar()
         setLineChart()
     }
 
@@ -23,10 +26,8 @@ class IncomeStatisticsActivity : AppCompatActivity() {
         val progressBar = findViewById<ProgressBar>(R.id.progressBar)
         progressBar.visibility = View.VISIBLE
         // Change color to green
-        progressBar.indeterminateDrawable.setColorFilter(
-            ContextCompat.getColor(this, R.color.verde_barra),
-            android.graphics.PorterDuff.Mode.SRC_IN
-        )
+
+        progressBar.progressTintList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.verde_barra))
     }
 
     private fun setLineChart(){
@@ -69,6 +70,7 @@ class IncomeStatisticsActivity : AppCompatActivity() {
 
 
         val green = ContextCompat.getColor(this, R.color.verde_barra)
+        val darkGreen = ContextCompat.getColor(this, R.color.verde_barra_oscuro)
         val gris = ContextCompat.getColor(this, R.color.gris)
         // First line
         val lineDataSet = LineDataSet(entries, "ACTUAL")
@@ -79,8 +81,8 @@ class IncomeStatisticsActivity : AppCompatActivity() {
 
 
         val lineDataSet2 = LineDataSet(entries2, "DEFASE")
-        lineDataSet2.color = green
-        lineDataSet2.setLineWidth(5f)
+        lineDataSet2.color = darkGreen
+        lineDataSet2.lineWidth = 5f
         lineDataSet2.setDrawCircles(false);
         lineDataSet2.setDrawValues(false);
 
