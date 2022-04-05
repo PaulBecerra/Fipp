@@ -1,22 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.notifications.NotificationsFragment">
+    tools:context=".ui.notifications.NotificationsFragment"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/text_notifications"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/fipp_app_marcas_01"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="64sp"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:strokeWidth="2dp"
+            app:strokeColor="@color/verde"
+            app:cardCornerRadius="20dp">
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabLayoutGastosPeriodo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tabTextAppearance="@style/tab_periodo"
+                app:tabIndicatorColor="@color/verde"
+                app:tabSelectedTextColor="@color/white"
+                app:tabTextColor="@color/black"
+                app:tabIndicatorGravity="stretch"
+                app:tabMode="scrollable">
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MES" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SEMANA" />
+
+
+            </com.google.android.material.tabs.TabLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/ViewPagerGastosPeriodo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </androidx.viewpager2.widget.ViewPager2>
+
+    <!--<com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:strokeWidth="2dp"
+        app:strokeColor="@color/rojo"
+        app:cardCornerRadius="20dp">
+
+        <com.google.android.material.tabs.TabLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabTextAppearance="@style/tab_text"
+            app:tabIndicatorColor="@color/rojo"
+            app:tabSelectedTextColor="@color/white"
+            app:tabTextColor="@color/black"
+            app:tabIndicatorGravity="stretch"
+            app:tabMode="scrollable">
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BALANCE" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CLASIFICACIÓN" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FIJOS" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tabItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CATEGORÍAS" />
+
+        </com.google.android.material.tabs.TabLayout>
+    </com.google.android.material.card.MaterialCardView>-->
+
+</LinearLayout>
