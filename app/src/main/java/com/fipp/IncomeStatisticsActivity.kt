@@ -1,7 +1,6 @@
 package com.fipp
 
 import android.content.res.ColorStateList
-import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -27,7 +26,7 @@ class IncomeStatisticsActivity : AppCompatActivity() {
         progressBar.visibility = View.VISIBLE
         // Change color to green
 
-        progressBar.progressTintList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.verde_barra))
+        progressBar.progressTintList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.verde_principal))
     }
 
     private fun setLineChart(){
@@ -69,8 +68,8 @@ class IncomeStatisticsActivity : AppCompatActivity() {
         entries3.add(Entry(4f, 14000f))
 
 
-        val green = ContextCompat.getColor(this, R.color.verde_barra)
-        val darkGreen = ContextCompat.getColor(this, R.color.verde_barra_oscuro)
+        val green = ContextCompat.getColor(this, R.color.verde_principal)
+        val darkGreen = ContextCompat.getColor(this, R.color.verde_obscuro)
         val gris = ContextCompat.getColor(this, R.color.gris)
         // First line
         val lineDataSet = LineDataSet(entries, "ACTUAL")

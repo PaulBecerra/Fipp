@@ -36,7 +36,7 @@
     <!-- Start statistics string values -->
     <string name="income_statistics_title">INGRESOS</string>
     <string name="expenses_statistics_title">EGRESOS</string>
-    <string name="statistics_subtitle">BALANCE</string>
+    <string name="statistics_subtitle"><b>BALANCE</b></string>
     <string name="statistics_actual">ACTUAL</string>
     <string name="statistics_gap">DESFASE</string>
     <string name="statistics_budget">PRESUPUESTO</string>

@@ -3,7 +3,7 @@
 
     <item
         android:id="@+id/navigation_income"
-        android:icon="@drawable/ic_baseline_attach_money_24"
+        android:icon="@drawable/fipp_app_iconos_57"
         android:title="@string/title_income" />
 
     <item

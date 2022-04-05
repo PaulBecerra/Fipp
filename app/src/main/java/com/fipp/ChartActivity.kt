@@ -6,7 +6,6 @@ import androidx.core.content.ContextCompat
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.XAxis.XAxisPosition
-import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
@@ -63,7 +62,7 @@ class ChartActivity : AppCompatActivity() {
         entries3.add(Entry(4f, 14000f))
 
 
-        val green = ContextCompat.getColor(this, R.color.verde_barra)
+        val green = ContextCompat.getColor(this, R.color.verde_principal)
         val gris = ContextCompat.getColor(this, R.color.gris)
         // First line
         val lineDataSet = LineDataSet(entries, "ACTUAL")

@@ -55,7 +55,7 @@ class IncomeFragment : Fragment() {
         progressBar.visibility = View.VISIBLE
         // Change color to green
 
-        progressBar.progressTintList = ColorStateList.valueOf(ContextCompat.getColor(requireActivity(), R.color.verde_barra))
+        progressBar.progressTintList = ColorStateList.valueOf(ContextCompat.getColor(requireActivity(), R.color.verde_principal))
     }
 
     /**
@@ -101,8 +101,8 @@ class IncomeFragment : Fragment() {
         entries3.add(Entry(4f, 14000f))
 
 
-        val green = ContextCompat.getColor(requireActivity(), R.color.verde_barra)
-        val darkGreen = ContextCompat.getColor(requireActivity(), R.color.verde_barra_oscuro)
+        val green = ContextCompat.getColor(requireActivity(), R.color.verde_principal)
+        val darkGreen = ContextCompat.getColor(requireActivity(), R.color.verde_obscuro)
         val gris = ContextCompat.getColor(requireActivity(), R.color.gris)
         // First line
         val lineDataSet = LineDataSet(entries, "ACTUAL")
