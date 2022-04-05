@@ -21,7 +21,13 @@
         <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/activity_income_statistics.xml" value="0.184375" />
         <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/activity_login.xml" value="0.4" />
         <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/expenses_fragment.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/fragment_dashboard.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/fragment_expenses.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/fragment_expenses_balance.xml" value="0.264" />
+        <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/fragment_expenses_categories.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/fragment_expenses_clasification.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/fragment_expenses_set.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/fragment_gastos_balance.xml" value="0.125" />
         <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/fragment_gastos_categorias.xml" value="0.125" />
         <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/fragment_gastos_clasificacion.xml" value="0.125" />
@@ -34,10 +40,14 @@
         <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/fragment_home.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/fragment_income.xml" value="0.125" />
         <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/fragment_income_balance.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/fragment_income_categories.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/fragment_income_clasification.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/fragment_income_set.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/fragment_ingresos.xml" value="0.1796875" />
         <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/fragment_notifications.xml" value="0.264" />
         <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/fragment_test.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/ingresos_fragment.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/top_bar_period.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.258" />
         <entry key="app/src/main/res/layout/activity_create_account.xml" value="0.3578125" />

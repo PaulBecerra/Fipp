@@ -30,26 +30,6 @@ class NotificationsFragment : Fragment() {
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val viewPager = binding.viewPagerGastos
-        val tabLayout = binding.tabLayoutGastos
-
-        viewPager.adapter = ViewPagerGastosAdapter(childFragmentManager, lifecycle)
-
-        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            override fun onTabReselected(p0: TabLayout.Tab?) {
-            }
-
-            override fun onTabUnselected(p0: TabLayout.Tab?) {
-
-            }
-
-            override fun onTabSelected(p0: TabLayout.Tab?) {
-                viewPager.currentItem = tabLayout.selectedTabPosition
-            }
-
-
-        })
-
         return root
     }
 
