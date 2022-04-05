@@ -7,6 +7,11 @@
         android:title="@string/title_income" />
 
     <item
+        android:id="@+id/navigation_expenses"
+        android:icon="@drawable/fipp_app_iconos_77"
+        android:title="@string/title_expenses" />
+
+    <item
         android:id="@+id/navigation_dashboard"
         android:icon="@drawable/ic_dashboard_black_24dp"
         android:title="@string/title_dashboard" />

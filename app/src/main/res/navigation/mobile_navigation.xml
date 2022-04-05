@@ -12,6 +12,12 @@
         tools:layout="@layout/fragment_income" />
 
     <fragment
+        android:id="@+id/navigation_expenses"
+        android:name="com.fipp.ui.expenses.ExpensesFragment"
+        android:label="@string/title_expenses"
+        tools:layout="@layout/fragment_income" />
+
+    <fragment
         android:id="@+id/navigation_dashboard"
         android:name="com.fipp.ui.dashboard.DashboardFragment"
         android:label="@string/title_dashboard"
