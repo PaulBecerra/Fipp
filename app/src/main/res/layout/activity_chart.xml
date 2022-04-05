@@ -10,7 +10,7 @@
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/lineChart"
         android:layout_width="match_parent"
-        android:layout_height="246dp"
+        android:layout_height="200dp"
         android:layout_margin="32dp"
         tools:layout_editor_absoluteX="10dp"
         tools:layout_editor_absoluteY="92dp" />
