@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Fipp</string>
     <string name="title_income">Ingresos</string>
+    <string name="title_expenses">Egresos</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_login">INICIA SESIÓN</string>

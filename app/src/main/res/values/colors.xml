@@ -22,5 +22,6 @@
 
     <!-- Start expenses colors -->
     <color name="rojo">#FC5454</color>
+    <color name="rojo_obscuro">#C32A2A</color>
     <!-- End expenses colors -->
 </resources>
