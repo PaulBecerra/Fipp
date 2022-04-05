@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Fipp</string>
-    <string name="title_home">Home</string>
+    <string name="title_income">Ingresos</string>
+    <string name="title_expenses">Egresos</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_login">INICIA SESIÓN</string>
@@ -36,7 +37,7 @@
     <!-- Start statistics string values -->
     <string name="income_statistics_title">INGRESOS</string>
     <string name="expenses_statistics_title">EGRESOS</string>
-    <string name="statistics_subtitle">BALANCE</string>
+    <string name="statistics_subtitle"><b>BALANCE</b></string>
     <string name="statistics_actual">ACTUAL</string>
     <string name="statistics_gap">DESFASE</string>
     <string name="statistics_budget">PRESUPUESTO</string>
@@ -48,4 +49,11 @@
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
     <!-- End statistics string values -->
+
+    <!-- Start income categories string values -->
+    <string name="inconme_categories_title_1">INGRESOS</string>
+    <string name="inconme_categories_title_2">CATEGORÍAS</string>
+    <string name="inconme_categories_title_3">MIS CATEGORÍAS</string>
+    <string name="inconme_categories_btn_text">REGISTRAR NUEVA CATEGORÍA</string>
+    <!-- End income categories string values -->
 </resources>

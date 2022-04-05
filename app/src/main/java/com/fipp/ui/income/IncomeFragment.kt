@@ -1,30 +1,69 @@
-package com.fipp
+package com.fipp.ui.income
 
+import android.content.res.ColorStateList
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import com.fipp.R
+import com.fipp.databinding.ActivityChartBinding
+import com.fipp.databinding.FragmentIncomeBinding
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.XAxis
-import com.github.mikephil.charting.components.XAxis.XAxisPosition
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 
+class IncomeFragment : Fragment() {
 
-class ChartActivity : AppCompatActivity() {
+    private var _binding: FragmentIncomeBinding? = null
 
+    // This property is only valid between onCreateView and
+    // onDestroyView.
+    private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_chart)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        val homeViewModel =
+            ViewModelProvider(this).get(HomeViewModel::class.java)
+
+        _binding = FragmentIncomeBinding.inflate(inflater, container, false)
+        val root: View = binding.root
+
+        loadProgressBar()
 
         setLineChart()
 
+
+//        val textView: TextView = binding.textHome
+//        homeViewModel.text.observe(viewLifecycleOwner) {
+//            textView.text = it
+//        }
+        return root
     }
 
+
+    private fun loadProgressBar() {
+        val progressBar = binding.progressBar
+        progressBar.visibility = View.VISIBLE
+        // Change color to green
+
+        progressBar.progressTintList = ColorStateList.valueOf(ContextCompat.getColor(requireActivity(), R.color.verde_principal))
+    }
+
+    /**
+     *
+     */
     private fun setLineChart(){
-        val lineChart: LineChart = findViewById(R.id.lineChart)
+        val lineChartBinding: ActivityChartBinding = binding.lineChart
+        var lineChart: LineChart = lineChartBinding.lineChart
 
         //Axe y
         // Get y axis
@@ -32,7 +71,7 @@ class ChartActivity : AppCompatActivity() {
         //Axe X
         val x: XAxis = lineChart.xAxis
 
-        x.position = XAxisPosition.BOTTOM
+        x.position = XAxis.XAxisPosition.BOTTOM
         lineChart.legend.isEnabled = false
         // Remove interceptions values
         lineChart.setDrawBorders(false)
@@ -62,8 +101,9 @@ class ChartActivity : AppCompatActivity() {
         entries3.add(Entry(4f, 14000f))
 
 
-        val green = ContextCompat.getColor(this, R.color.verde_principal)
-        val gris = ContextCompat.getColor(this, R.color.gris)
+        val green = ContextCompat.getColor(requireActivity(), R.color.verde_principal)
+        val darkGreen = ContextCompat.getColor(requireActivity(), R.color.verde_obscuro)
+        val gris = ContextCompat.getColor(requireActivity(), R.color.gris)
         // First line
         val lineDataSet = LineDataSet(entries, "ACTUAL")
         lineDataSet.color = green
@@ -73,8 +113,8 @@ class ChartActivity : AppCompatActivity() {
 
 
         val lineDataSet2 = LineDataSet(entries2, "DEFASE")
-        lineDataSet2.color = green
-        lineDataSet2.setLineWidth(5f)
+        lineDataSet2.color = darkGreen
+        lineDataSet2.lineWidth = 5f
         lineDataSet2.setDrawCircles(false);
         lineDataSet2.setDrawValues(false);
 
@@ -98,13 +138,14 @@ class ChartActivity : AppCompatActivity() {
         lineChart.data = data
 
         lineChart.axisRight.isEnabled = false
-//        lineChart.xAxis.axisMaximum = j+0.1f
-
-//        lineChart.setTouchEnabled(true)
-//        lineChart.setPinchZoom(true)
-//
         lineChart.description.text = ""
         lineChart.setNoDataText("No forex yet!")
 
+    }
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

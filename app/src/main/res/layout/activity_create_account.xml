@@ -10,138 +10,142 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="12dp"
         app:cardCornerRadius="10dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
             android:layout_marginHorizontal="24dp"
-            android:background="@color/white">
+            android:background="@color/white"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="4"
                 android:fontFamily="@font/roboto_regular"
+                android:gravity="bottom"
                 android:text="@string/create_account_title"
                 android:textColor="@color/gris_oscuro"
-                android:textSize="12sp"
-                android:layout_weight="4"
-                android:gravity="bottom"/>
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="6"
                 android:fontFamily="@font/roboto_black"
                 android:text="@string/create_account_main_header"
                 android:textColor="@color/gris_oscuro"
-                android:textSize="26sp"
-                android:layout_weight="6"/>
+                android:textSize="26sp" />
 
             <EditText
                 android:id="@+id/editTextPersonName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textPersonName"
                 android:hint="@string/name"
-                android:textSize="12sp"
-                android:layout_weight="1"/>
+                android:inputType="textPersonName"
+                android:textSize="12sp" />
 
             <EditText
                 android:id="@+id/editTextEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textPersonName"
                 android:hint="@string/login_email"
-                android:textSize="12sp"
-                android:layout_weight="1"/>
+                android:inputType="textPersonName"
+                android:textSize="12sp" />
 
             <EditText
                 android:id="@+id/editTextPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textPassword"
-                android:textSize="12sp"
                 android:hint="@string/login_password_hint"
-                android:layout_weight="1"/>
+                android:inputType="textPassword"
+                android:textSize="12sp" />
 
             <EditText
                 android:id="@+id/editTextConfirmPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textPassword"
-                android:textSize="12sp"
                 android:hint="@string/confirm_password"
-                android:layout_weight="1"/>
+                android:inputType="textPassword"
+                android:textSize="12sp" />
 
             <Button
                 android:id="@+id/button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
+                android:layout_weight="1"
                 android:backgroundTint="@color/morado"
                 android:fontFamily="@font/roboto_bold"
                 android:text="@string/btn_email"
-                android:textAllCaps="false"
-                android:layout_weight="1"/>
+                android:textAllCaps="false" />
 
             <Button
                 android:id="@+id/button2"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:layout_weight="1"
                 android:backgroundTint="@color/white"
                 android:fontFamily="@font/roboto_bold"
                 android:text="@string/btn_google"
                 android:textAllCaps="false"
                 android:textColor="@color/morado"
                 app:strokeColor="@color/morado"
-                app:strokeWidth="2dp"
-                android:layout_marginBottom="12dp"
-                android:layout_weight="1"/>
+                app:strokeWidth="2dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="20">
+                android:layout_weight="20"
+                android:orientation="horizontal">
 
                 <View
                     android:layout_width="0dp"
                     android:layout_height="1dp"
-                    android:layout_weight="1"
+                    android:layout_gravity="bottom"
                     android:layout_marginHorizontal="24dp"
-                    android:background="@color/black"
-                    android:layout_gravity="bottom"/>
+                    android:layout_weight="1"
+                    android:background="@color/black" />
             </LinearLayout>
 
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginVertical="12dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/roboto_bold"
                 android:text="@string/already_account"
                 android:textAlignment="center"
                 android:textColor="@color/gris_oscuro"
-                android:fontFamily="@font/roboto_bold"
-                android:textSize="12sp"
-                android:layout_marginVertical="12dp"
-                android:layout_weight="1"/>
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/textViewLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/login"
-                android:textColor="@color/morado"
-                android:textAlignment="center"
                 android:layout_marginBottom="32dp"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:text="@string/login"
+                android:textAlignment="center"
+                android:textColor="@color/morado" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

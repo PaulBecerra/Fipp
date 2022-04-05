@@ -3,13 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_income">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.fipp.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/navigation_income"
+        android:name="com.fipp.ui.income.IncomeFragment"
+        android:label="@string/title_income"
+        tools:layout="@layout/fragment_income" />
+
+    <fragment
+        android:id="@+id/navigation_expenses"
+        android:name="com.fipp.ui.expenses.ExpensesFragment"
+        android:label="@string/title_expenses"
+        tools:layout="@layout/fragment_income" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
