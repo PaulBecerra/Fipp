@@ -1,12 +1,18 @@
 package com.fipp.ui.income
 
 import android.content.res.ColorStateList
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.Paint
+import android.graphics.drawable.AnimationDrawable
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import com.fipp.R
 import com.fipp.databinding.ActivityChartBinding
 import com.fipp.databinding.FragmentIncomeBalanceBinding
@@ -16,6 +22,7 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
+
 
 class IncomeBalanceFragment : Fragment() {
 
@@ -51,11 +58,17 @@ class IncomeBalanceFragment : Fragment() {
 
     private fun loadProgressBar() {
         val progressBar = binding.progressBar
+
         progressBar.visibility = View.VISIBLE
         // Change color to green
 
         progressBar.progressTintList = ColorStateList.valueOf(ContextCompat.getColor(requireActivity(), R.color.verde_principal))
+//        val progressIndicatorBinding: ActivityProgressIndicatorBinding = binding.progressIndicator
+//        val progressIndicator = progressIndicatorBinding.progressIndicator
+
     }
+
+
 
     /**
      *

@@ -17,7 +17,6 @@
             android:layout_height="48dp"
             android:src="@drawable/fipp_app_marcas_01"
             android:layout_marginLeft="12dp"
-            android:layout_marginTop="8dp"
             android:layout_marginRight="64sp"/>
 
         <Button

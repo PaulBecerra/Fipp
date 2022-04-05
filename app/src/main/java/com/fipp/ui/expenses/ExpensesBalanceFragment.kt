@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import com.fipp.R
 import com.fipp.databinding.ActivityChartBinding
+import com.fipp.databinding.ActivityProgressIndicatorBinding
 import com.fipp.databinding.FragmentIncomeBalanceBinding
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.XAxis
@@ -54,6 +55,8 @@ class ExpensesBalanceFragment : Fragment() {
         // Change color to green
 
         progressBar.progressTintList = ColorStateList.valueOf(ContextCompat.getColor(requireActivity(), R.color.rojo))
+//        val progressIndicatorBinding: ActivityProgressIndicatorBinding = binding.progressIndicator
+//        val progressIndicator = progressIndicatorBinding.progressIndicator
     }
 
     /**

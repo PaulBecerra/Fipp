@@ -73,17 +73,21 @@
             app:drawableLeftCompat="@drawable/circle_gray"/>
     </LinearLayout>
 
-
-    <!--   Progress bar     -->
     <ProgressBar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:progressDrawable="@drawable/custom_progress_bar"
         android:layout_margin="10dp"
         android:id="@+id/progressBar"
-        android:indeterminateTintMode="src_atop"
+        android:indeterminateTintMode="@color/gris"
         android:indeterminateTint="@color/gris"
         style="@android:style/Widget.ProgressBar.Horizontal"
         android:progress="50" />
+
+
+<!--    <include-->
+<!--        android:id="@+id/progressIndicator"-->
+<!--        layout="@layout/activity_progress_indicator" />-->
 
     <ScrollView
         android:layout_width="fill_parent"
