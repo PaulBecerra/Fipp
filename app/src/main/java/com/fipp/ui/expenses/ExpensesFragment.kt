@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.fipp.R
 import com.fipp.databinding.ActivityChartBinding
-import com.fipp.databinding.FragmentIncomeBinding
+import com.fipp.databinding.ExpensesFragmentBinding
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
@@ -20,7 +20,7 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 
 class ExpensesFragment : Fragment() {
 
-    private var _binding: FragmentIncomeBinding? = null
+    private var _binding: ExpensesFragmentBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -31,10 +31,10 @@ class ExpensesFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
-            ViewModelProvider(this).get(ExpensesViewModel::class.java)
+//        val expensesViewModel =
+//            ViewModelProvider(this).get(ExpensesViewModel::class.java)
 
-        _binding = FragmentIncomeBinding.inflate(inflater, container, false)
+        _binding = ExpensesFragmentBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         loadProgressBar()
@@ -55,7 +55,7 @@ class ExpensesFragment : Fragment() {
         progressBar.visibility = View.VISIBLE
         // Change color to green
 
-        progressBar.progressTintList = ColorStateList.valueOf(ContextCompat.getColor(requireActivity(), R.color.verde_principal))
+        progressBar.progressTintList = ColorStateList.valueOf(ContextCompat.getColor(requireActivity(), R.color.rojo))
     }
 
     /**

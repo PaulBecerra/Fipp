@@ -20,14 +20,18 @@
         <entry key="app/src/main/res/drawable/circle_gray.xml" value="0.317" />
         <entry key="app/src/main/res/drawable/circle_green.xml" value="0.317" />
         <entry key="app/src/main/res/drawable/circle_green_dark.xml" value="0.317" />
+        <entry key="app/src/main/res/drawable/circle_red.xml" value="0.317" />
+        <entry key="app/src/main/res/drawable/circle_red_dark.xml" value="0.317" />
         <entry key="app/src/main/res/drawable/oval_marker.xml" value="0.17" />
         <entry key="app/src/main/res/layout/activity_chart.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_chart_expenses.xml" value="0.32037037037037036" />
         <entry key="app/src/main/res/layout/activity_create_account.xml" value="0.3578125" />
         <entry key="app/src/main/res/layout/activity_expenses_statistics.xml" value="0.3578125" />
         <entry key="app/src/main/res/layout/activity_income_statistics.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.3578125" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main2.xml" value="0.14444444444444443" />
+        <entry key="app/src/main/res/layout/expenses_fragment.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.3578125" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_income.xml" value="0.25" />
