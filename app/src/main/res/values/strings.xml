@@ -55,5 +55,7 @@
     <string name="inconme_categories_title_2">CATEGORÍAS</string>
     <string name="inconme_categories_title_3">MIS CATEGORÍAS</string>
     <string name="inconme_categories_btn_text">REGISTRAR NUEVA CATEGORÍA</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <!-- End income categories string values -->
 </resources>
