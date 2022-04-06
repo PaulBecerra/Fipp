@@ -17,4 +17,13 @@
             </shape>
         </clip>
     </item>
+
+    <item android:id="@+id/progress2">
+        <clip>
+            <shape>
+                <corners android:radius="8dp"/>
+                <solid android:color="@color/rojo" />
+            </shape>
+        </clip>
+    </item>
 </layer-list>
