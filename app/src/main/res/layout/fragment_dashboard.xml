@@ -186,13 +186,13 @@
                                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
                             <ProgressBar
-                                android:id="@+id/progressBar2"
                                 android:layout_width="match_parent"
                                 android:layout_height="15dp"
+                                android:id="@+id/progressBar2"
+                                android:indeterminateTintMode="src_atop"
                                 android:progressDrawable="@drawable/custom_progress_bar"
-                                android:indeterminateTint="@color/gris"
                                 style="@android:style/Widget.ProgressBar.Horizontal"
-                                android:progress="75" />
+                                android:progress="50" />
                         </LinearLayout>
 
                         <LinearLayout
