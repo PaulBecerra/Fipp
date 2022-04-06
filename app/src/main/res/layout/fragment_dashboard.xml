@@ -33,25 +33,209 @@
                 android:rowCount="4"
                 android:useDefaultMargins="true">
 
-                <include
-                    layout="@layout/activity_home_view"
+                <!--  Primer Botton -->
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:orientation="vertical"
+                    android:background="@drawable/background_home"
+                    android:layout_height="wrap_content">
 
-                <include
-                    layout="@layout/activity_home_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginRight="7dp">
 
-                <include
-                    layout="@layout/activity_home_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:textSize="12sp"
+                            android:layout_weight="2"
+                            android:textColor="@color/gris_oscuro"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="@string/income_categories_title_1"
+                            android:gravity="bottom"/>
 
-                <include
-                    layout="@layout/activity_home_view"
+                        <Button
+                            android:id="@+id/button2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="+"
+                            android:textSize="20dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginHorizontal="25dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:orientation="vertical"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:id="@+id/textView2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="35sp"
+                                android:fontFamily="@font/roboto_black"
+                                android:text="10,000"
+                                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                            <ProgressBar
+                                android:layout_width="match_parent"
+                                android:layout_height="15dp"
+                                android:progressDrawable="@drawable/custom_progress_bar"
+                                android:id="@+id/progressBar1"
+                                android:indeterminateTint="@color/gris"
+                                style="@android:style/Widget.ProgressBar.Horizontal"
+                                android:progress="75" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="10dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="12sp"
+                                android:layout_gravity="left"
+                                android:layout_weight="50"
+                                android:textColor="@color/gris_oscuro"
+                                android:fontFamily="@font/roboto_regular"
+                                android:text="10,000" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="12sp"
+                                android:gravity="center"
+                                android:layout_weight="50"
+                                android:textColor="@color/gris_oscuro"
+                                android:fontFamily="@font/roboto_regular"
+                                android:text="15,000" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="12sp"
+                                android:gravity="right"
+                                android:layout_weight="50"
+                                android:textColor="@color/gris_oscuro"
+                                android:fontFamily="@font/roboto_regular"
+                                android:text="20,000" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!--  Segundo botton -->
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:orientation="vertical"
+                    android:background="@drawable/background_home"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginRight="7dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:textSize="12sp"
+                            android:layout_weight="2"
+                            android:textColor="@color/gris_oscuro"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="GASTOS"
+                            android:gravity="bottom"/>
+
+                        <Button
+                            android:id="@+id/button3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:backgroundTint="@color/rojo"
+                            android:text="+"
+                            android:textSize="20dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginHorizontal="25dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:orientation="vertical"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:id="@+id/textView1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="35sp"
+                                android:fontFamily="@font/roboto_black"
+                                android:text="9,000"
+                                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                            <ProgressBar
+                                android:id="@+id/progressBar2"
+                                android:layout_width="match_parent"
+                                android:layout_height="15dp"
+                                android:progressDrawable="@drawable/custom_progress_bar"
+                                android:indeterminateTint="@color/gris"
+                                style="@android:style/Widget.ProgressBar.Horizontal"
+                                android:progress="75" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="10dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="12sp"
+                                android:layout_gravity="left"
+                                android:layout_weight="50"
+                                android:textColor="@color/gris_oscuro"
+                                android:fontFamily="@font/roboto_regular"
+                                android:text="10,000" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="12sp"
+                                android:gravity="center"
+                                android:layout_weight="50"
+                                android:textColor="@color/gris_oscuro"
+                                android:fontFamily="@font/roboto_regular"
+                                android:text="15,000" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="12sp"
+                                android:gravity="right"
+                                android:layout_weight="50"
+                                android:textColor="@color/gris_oscuro"
+                                android:fontFamily="@font/roboto_regular"
+                                android:text="20,000" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+
+
+
+
+
             </GridLayout>
         </androidx.cardview.widget.CardView>
     </ScrollView>
