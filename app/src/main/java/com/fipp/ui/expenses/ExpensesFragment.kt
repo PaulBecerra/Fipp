@@ -50,6 +50,12 @@ class ExpensesFragment : Fragment() {
 
         })
 
+        viewPager.registerOnPageChangeCallback( object: ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                tabLayout.selectTab(tabLayout.getTabAt(position));
+            }
+        })
+
 //        val textView: TextView = binding.textHome
 //        homeViewModel.text.observe(viewLifecycleOwner) {
 //            textView.text = it

@@ -39,7 +39,6 @@ class IncomeFragment : Fragment() {
             }
 
             override fun onTabUnselected(p0: TabLayout.Tab?) {
-
             }
 
             override fun onTabSelected(p0: TabLayout.Tab?) {
@@ -47,6 +46,12 @@ class IncomeFragment : Fragment() {
             }
 
 
+        })
+
+        viewPager.registerOnPageChangeCallback( object: ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                tabLayout.selectTab(tabLayout.getTabAt(position));
+            }
         })
 
         return root

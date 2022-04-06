@@ -17,8 +17,9 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:menu="@menu/bottom_nav_menu"
-        app:itemRippleColor="@color/black"
-        app:itemTextColor="@color/verde_principal"/>
+        app:itemRippleColor="@color/verde"
+        app:itemTextColor="@color/black"
+        app:labelVisibilityMode="labeled" />
 
     <fragment
         android:id="@+id/nav_host_fragment_activity_main"
