@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.viewpager2.widget.ViewPager2
+import com.fipp.R
 import com.fipp.databinding.FragmentIncomeBinding
 import com.google.android.material.tabs.TabLayout
 
@@ -27,8 +29,8 @@ class IncomeFragment : Fragment() {
         _binding = FragmentIncomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val viewPager = binding.viewPagerIncome
-        val tabLayout = binding.tabLayoutIncome
+        val viewPager: ViewPager2 = root.findViewById(R.id.viewPager)
+        val tabLayout: TabLayout = root.findViewById(R.id.tabLayout)
 
         viewPager.adapter = ViewPagerIncomeAdapter(childFragmentManager, lifecycle)
 
