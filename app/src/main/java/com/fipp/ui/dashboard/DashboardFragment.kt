@@ -43,8 +43,13 @@ class DashboardFragment : Fragment() {
     }
 
     private fun loadProgressBar() {
-        val progressBar = binding.progressBar2
+        val progressBar = binding.progressBar1
         progressBar.visibility = View.VISIBLE
-        progressBar.progressTintList = ColorStateList.valueOf(ContextCompat.getColor(requireActivity(), R.color.rojo))
+        progressBar.progressTintList =
+            ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.verde_principal))
+
+        val progressBar2 = binding.progressBar2
+        progressBar2.visibility = View.VISIBLE
+        progressBar2.progressTintList = ColorStateList.valueOf(ContextCompat.getColor(requireActivity(), R.color.rojo))
     }
 }
