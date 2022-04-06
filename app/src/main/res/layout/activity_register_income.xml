@@ -15,7 +15,7 @@
         android:layout_height="wrap_content">
 
         <ImageButton
-            android:id="@+id/imageButton3"
+            android:id="@+id/btn_new_income_close"
             android:layout_width="51dp"
             android:layout_height="38dp"
             android:background="#5543FF"

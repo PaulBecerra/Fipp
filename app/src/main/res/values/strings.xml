@@ -67,7 +67,7 @@
 
     <!-- Start expense categories string values -->
     <string name="outcome_categories_title_1">GASTOS</string>
-    <string name="outcome_categories_title_2">CATEGORIÍAS</string>
+    <string name="outcome_categories_title_2">CATEGORÍAS</string>
     <string name="outcome_categories_title_3">MIS CATEGORÍAS</string>
     <string name="outcome_categories_btn_text">REGISTRAR NUEVA CATEGORÍA</string>
     <!-- End expense categories string values -->
