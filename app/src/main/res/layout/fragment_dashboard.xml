@@ -15,20 +15,26 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="230dp"
+        app:cardBackgroundColor="@color/blanco"
+        app:cardCornerRadius="20dp">
 
         <GridLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="230dp"
-            app:cardBackgroundColor="@color/blanco"
-            app:cardCornerRadius="20dp">
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="10dp"
+            android:columnCount="1"
+            android:rowCount="4"
+            android:useDefaultMargins="true">
 
-            <GridLayout
+            <!--  Primer Botton -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/background_home"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
