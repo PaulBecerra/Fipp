@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginVertical="8dp">
+
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/fipp_app_marcas_01"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="64sp"/>
+
+        <Button
+            android:id="@+id/btn_month"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mes"
+            android:fontFamily="@font/roboto_bold"
+            android:textSize="10dp"
+            app:cornerRadius="20dp"
+            android:layout_gravity="center"
+            />
+
+        <Button
+            android:id="@+id/btn_week"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Semana"
+            android:fontFamily="@font/roboto_bold"
+            android:textSize="10dp"
+            app:cornerRadius="20dp"
+            android:textColor="@color/black"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/white"
+            app:strokeWidth="0dp" />
+    </LinearLayout>
+</LinearLayout>

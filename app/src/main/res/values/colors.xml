@@ -24,4 +24,8 @@
     <color name="rojo">#FC5454</color>
     <color name="rojo_obscuro">#C32A2A</color>
     <!-- End expenses colors -->
+
+    <!-- -->
+    <color name="blanco">#FFFFFF</color>
+    <!-- -->
 </resources>
