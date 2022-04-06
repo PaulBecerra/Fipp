@@ -80,6 +80,7 @@
         android:layout_margin="10dp"
         android:id="@+id/progressBar"
         android:indeterminateTintMode="src_atop"
+        android:progressDrawable="@drawable/custom_progress_bar"
         android:indeterminateTint="@color/gris"
         style="@android:style/Widget.ProgressBar.Horizontal"
         android:progress="50" />

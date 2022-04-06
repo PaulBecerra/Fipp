@@ -51,12 +51,10 @@ class ExpensesBalanceFragment : Fragment() {
 
     private fun loadProgressBar() {
         val progressBar = binding.progressBar
+
         progressBar.visibility = View.VISIBLE
-        // Change color to green
 
         progressBar.progressTintList = ColorStateList.valueOf(ContextCompat.getColor(requireActivity(), R.color.rojo))
-//        val progressIndicatorBinding: ActivityProgressIndicatorBinding = binding.progressIndicator
-//        val progressIndicator = progressIndicatorBinding.progressIndicator
     }
 
     /**
