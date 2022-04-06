@@ -15,7 +15,7 @@
         android:id="@+id/navigation_expenses"
         android:name="com.fipp.ui.expenses.ExpensesFragment"
         android:label="@string/title_expenses"
-        tools:layout="@layout/fragment_income" />
+        tools:layout="@layout/fragment_expenses" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
