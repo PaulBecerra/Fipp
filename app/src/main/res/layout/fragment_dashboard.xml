@@ -15,12 +15,12 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="230dp"
             app:cardBackgroundColor="@color/blanco"
             app:cardCornerRadius="20dp">
 
