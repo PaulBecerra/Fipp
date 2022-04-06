@@ -1,15 +1,17 @@
 package com.fipp.ui.dashboard
 
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.fipp.R
+import com.fipp.RegisterExpenseActivity
+import com.fipp.RegisterIncomeActivity
 import com.fipp.databinding.FragmentDashboardBinding
 
 class DashboardFragment : Fragment() {
@@ -32,6 +34,19 @@ class DashboardFragment : Fragment() {
         val root: View = binding.root
 
         loadProgressBar()
+
+        val botonIncomes: View = binding.buttonIncomesHome
+        val botonExpense: View = binding.buttonExpenseHome
+
+        botonIncomes.setOnClickListener {
+            val act = parentFragment?.parentFragment?.activity
+            act?.startActivity(Intent(act, RegisterIncomeActivity::class.java))
+        }
+        botonExpense.setOnClickListener {
+            val act = parentFragment?.parentFragment?.activity
+            act?.startActivity(Intent(act, RegisterExpenseActivity::class.java))
+        }
+
 
 
         return root

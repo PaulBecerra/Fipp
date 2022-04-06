@@ -3,9 +3,9 @@ package com.fipp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-class activity_register_income : AppCompatActivity() {
+class RegisterExpenseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register_income)
+        setContentView(R.layout.activity_register_expense)
     }
 }
