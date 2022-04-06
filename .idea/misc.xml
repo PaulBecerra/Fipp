@@ -39,13 +39,14 @@
         <entry key="..\:/Users/mavel/OneDrive/Documentos/GitHub/Fipp/app/src/main/res/drawable/background_categories.xml" value="0.1035" />
         <entry key="..\:/Users/mavel/OneDrive/Documentos/GitHub/Fipp/app/src/main/res/drawable/custom_progress_bar.xml" value="0.1035" />
         <entry key="..\:/Users/mavel/OneDrive/Documentos/GitHub/Fipp/app/src/main/res/drawable/ic_baseline_receipt_24.xml" value="0.159" />
+        <entry key="..\:/Users/mavel/OneDrive/Documentos/GitHub/Fipp/app/src/main/res/layout/activity_categories2_view.xml" value="0.22" />
         <entry key="..\:/Users/mavel/OneDrive/Documentos/GitHub/Fipp/app/src/main/res/layout/activity_categories_view.xml" value="0.22" />
         <entry key="..\:/Users/mavel/OneDrive/Documentos/GitHub/Fipp/app/src/main/res/layout/activity_create_account.xml" value="0.1" />
         <entry key="..\:/Users/mavel/OneDrive/Documentos/GitHub/Fipp/app/src/main/res/layout/activity_expenses_statistics.xml" value="0.1796875" />
         <entry key="..\:/Users/mavel/OneDrive/Documentos/GitHub/Fipp/app/src/main/res/layout/activity_home_view.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/mavel/OneDrive/Documentos/GitHub/Fipp/app/src/main/res/layout/activity_income_categories.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/mavel/OneDrive/Documentos/GitHub/Fipp/app/src/main/res/layout/activity_income_statistics.xml" value="0.1" />
-        <entry key="..\:/Users/mavel/OneDrive/Documentos/GitHub/Fipp/app/src/main/res/layout/activity_register_expense.xml" value="0.1118659420289855" />
+        <entry key="..\:/Users/mavel/OneDrive/Documentos/GitHub/Fipp/app/src/main/res/layout/activity_register_expense.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/mavel/OneDrive/Documentos/GitHub/Fipp/app/src/main/res/layout/activity_register_income.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/mavel/OneDrive/Documentos/GitHub/Fipp/app/src/main/res/layout/activity_register_income2.xml" value="0.1796875" />
         <entry key="..\:/Users/mavel/OneDrive/Documentos/GitHub/Fipp/app/src/main/res/layout/fragment_dashboard.xml" value="0.1796875" />
@@ -113,11 +114,7 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3578125" />
         <entry key="app/src/main/res/layout/activity_main2.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.3578125" />
-        <entry key="app/src/main/res/layout/fragment_expenses.xml" value="0.3578125" />
-        <entry key="app/src/main/res/layout/fragment_expenses_balance.xml" value="0.3578125" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.3578125" />
-        <entry key="app/src/main/res/layout/fragment_income.xml" value="0.3578125" />
-        <entry key="app/src/main/res/layout/fragment_income_balance.xml" value="0.3578125" />
         <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.3578125" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.3578125" />
       </map>
