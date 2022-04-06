@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Fipp">
         <activity
+            android:name=".activity_register_income"
+            android:exported="false" />
+        <activity
+            android:name=".activity_register_expense"
+            android:exported="false" />
+        <activity
             android:name=".RegisterNewExpensesCategoryActivity"
             android:exported="false" />
         <activity

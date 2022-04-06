@@ -1,25 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:scrollbarAlwaysDrawVerticalTrack="true"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".activity_register_income">
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="51dp"
-        android:layout_height="38dp"
-        android:layout_marginHorizontal="-24dp"
-        android:background="#5543FF"
-        android:layout_gravity="right"
-        app:srcCompat="@drawable/ic_baseline_arrow_circle_down_24" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:layout_marginHorizontal="24dp"
         android:layout_height="wrap_content">
+
+        <ImageButton
+            android:id="@+id/imageButton3"
+            android:layout_width="51dp"
+            android:layout_height="38dp"
+            android:background="#5543FF"
+            android:layout_gravity="right"
+            app:srcCompat="@drawable/ic_baseline_arrow_circle_down_24" />
         <TextView
             android:id="@+id/textView7"
             android:layout_width="match_parent"
@@ -40,6 +41,7 @@
             android:textSize="26sp" />
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_marginHorizontal="24dp"
@@ -67,9 +69,15 @@
             android:text="MXN" />
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="24dp"
+        android:layout_height="wrap_content">
+
+
     <TextView
         android:id="@+id/textView6"
-        android:layout_marginHorizontal="24dp"
         android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -78,10 +86,10 @@
         android:text="CATEGORÍA" />
 
     <androidx.cardview.widget.CardView
-        android:layout_width="365dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="24dp"
         android:layout_marginTop="5dp"
+        android:layout_gravity="center"
         app:cardBackgroundColor="#F4F4F4"
         app:cardCornerRadius="20dp">
 
@@ -89,9 +97,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginVertical="2dp"
             android:columnCount="2"
-            android:padding="4dp"
+            android:padding="9dp"
             android:rowCount="4">
 
             <include layout="@layout/activity_categories_view" />
@@ -106,25 +113,20 @@
 
             <include layout="@layout/activity_categories_view" />
 
-            <include layout="@layout/activity_categories_view" />
-
-            <include layout="@layout/activity_categories_view" />
 
         </GridLayout>
-
 
     </androidx.cardview.widget.CardView>
 
     <Button
         android:id="@+id/button"
-        android:layout_marginHorizontal="24dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="20dp"
         android:backgroundTint="@color/morado"
         android:fontFamily="@font/roboto_bold"
-        android:text="REGISTRAR"
-        android:textAllCaps="false" />
+        android:text="REGISTRAR"/>
 
+    </LinearLayout>
 
 </LinearLayout>
