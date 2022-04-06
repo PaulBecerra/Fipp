@@ -7,91 +7,15 @@
     tools:context=".ui.expenses.ExpensesFragment"
     android:orientation="vertical">
 
-    <LinearLayout
+    <include
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        layout="@layout/top_bar_period"/>
 
-        <ImageView
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/fipp_app_marcas_01"
-            android:layout_marginLeft="12dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="64sp"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Mes"
-            android:fontFamily="@font/roboto_bold"
-            android:textSize="10dp"
-            app:cornerRadius="20dp"
-            android:layout_gravity="center"
-            />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Semana"
-            android:fontFamily="@font/roboto_bold"
-            android:textSize="10dp"
-            app:cornerRadius="20dp"
-            android:textColor="@color/black"
-            android:layout_gravity="center"
-            android:backgroundTint="@color/white"
-            app:strokeWidth="0dp"
-            />
-    </LinearLayout>
-
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        app:strokeWidth="2dp"
-        app:strokeColor="@color/rojo"
-        app:cardCornerRadius="20dp">
-
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabLayoutExpense"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:tabTextAppearance="@style/tab_text"
-            app:tabIndicatorColor="@color/rojo"
-            app:tabSelectedTextColor="@color/white"
-            app:tabTextColor="@color/black"
-            app:tabIndicatorGravity="stretch"
-            app:tabMode="scrollable">
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="BALANCE" />
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="CLASIFICACIÓN" />
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="FIJOS" />
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="CATEGORÍAS" />
-
-        </com.google.android.material.tabs.TabLayout>
-
-    </com.google.android.material.card.MaterialCardView>
-
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewPagerExpenses"
+    <include
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+        android:layout_height="wrap_content"
+        layout="@layout/top_tab_layout"/>
 
 
 </LinearLayout>
