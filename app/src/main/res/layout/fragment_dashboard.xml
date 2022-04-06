@@ -13,29 +13,46 @@
         android:layout_height="wrap_content"
         layout="@layout/top_bar_period"/>
 
-    <androidx.cardview.widget.CardView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_marginTop="200dp"
-        app:cardBackgroundColor="@color/blanco"
-        app:cardCornerRadius="20dp"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
-        <GridLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:columnCount="1"
-            android:rowCount="4"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginVertical="10dp"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginTop="200dp"
+            app:cardBackgroundColor="@color/blanco"
+            app:cardCornerRadius="20dp">
 
-            <include layout="@layout/activity_home_view" />
-            <include layout="@layout/activity_home_view" />
-            <include layout="@layout/activity_home_view" />
-            <include layout="@layout/activity_home_view" />
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="10dp"
+                android:columnCount="1"
+                android:rowCount="4"
+                android:useDefaultMargins="true">
 
+                <include
+                    layout="@layout/activity_home_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
+                <include
+                    layout="@layout/activity_home_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-        </GridLayout>
+                <include
+                    layout="@layout/activity_home_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-    </androidx.cardview.widget.CardView>
+                <include
+                    layout="@layout/activity_home_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </GridLayout>
+        </androidx.cardview.widget.CardView>
+    </ScrollView>
 </LinearLayout>

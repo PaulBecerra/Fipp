@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:scrollbarAlwaysDrawVerticalTrack="true"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    tools:context=".RegisterNewExpensesCategoryActivity">
 
     <ImageButton
         android:layout_width="51dp"
@@ -31,7 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_regular"
-                android:text="@string/income_add_categories_title_1"
+                android:text="@string/expense_add_categories_title_1"
                 android:textColor="@color/gris_oscuro"
                 android:textSize="18sp" />
 
@@ -39,9 +41,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_black"
-                android:text="@string/income_add_categories_title_2"
+                android:text="@string/expense_add_categories_title_2"
                 android:textColor="@color/gris_oscuro"
-                android:textSize="22sp"
+                android:textSize="26sp"
                 android:textAlignment="center" />
 
             <EditText
@@ -50,7 +52,7 @@
                 android:background="#F4F4F4"
                 android:layout_marginVertical="16dp"
                 android:inputType="textPersonName"
-                android:text="@string/income_add_categories_placeholder"
+                android:text="@string/expense_add_categories_placeholder"
                 android:textColor="#8C8C8C"
                 android:textSize="16dp"
                 android:paddingHorizontal="20dp"/>
@@ -82,7 +84,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
- >
+            >
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -97,7 +99,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/roboto_regular"
-                    android:text="@string/income_add_categories_subcategory"
+                    android:text="@string/expense_add_categories_subcategory"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:layout_marginVertical="15dp"
@@ -132,7 +134,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/morado"
             android:fontFamily="@font/roboto_bold"
-            android:text="@string/income_add_categories_btn_text"
+            android:text="@string/expense_add_categories_btn_text"
             android:textAllCaps="false"
             android:textSize="18dp"
             android:padding="16dp"/>

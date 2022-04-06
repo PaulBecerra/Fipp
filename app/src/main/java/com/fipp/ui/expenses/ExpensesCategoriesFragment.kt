@@ -1,16 +1,22 @@
 package com.fipp.ui.expenses
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.fipp.R
+import com.fipp.RegisterNewExpensesCategoryActivity
+import com.fipp.RegisterNewIncomeCategoryActivity
+import com.fipp.databinding.FragmentExpensesCategoriesBinding
 
 class ExpensesCategoriesFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var _binding: FragmentExpensesCategoriesBinding? = null
+
+    // This property is only valid between onCreateView and
+    // onDestroyView.
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,7 +28,21 @@ class ExpensesCategoriesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_expenses_categories, container, false)
+        _binding = FragmentExpensesCategoriesBinding.inflate(inflater, container, false)
+
+        val boton: View = binding.buttonRegistrar
+
+        boton.setOnClickListener {
+//            val intent = Intent (parentFragment?.activity, RegisterNewIncomeCategoryActivity::class.java)
+//            parentFragment?.activity?.startActivity(intent)
+
+            val act = parentFragment?.parentFragment?.activity
+            act?.startActivity(Intent(act, RegisterNewExpensesCategoryActivity::class.java))
+        }
+
+        return binding.root
+//        return inflater.inflate(R.layout.fragment_income_categories, container, false)
+
     }
 
 }
