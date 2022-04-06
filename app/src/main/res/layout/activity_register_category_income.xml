@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
-        android:layout_marginHorizontal="45dp">
+        android:layout_marginHorizontal="55dp">
 
 
         <LinearLayout
@@ -41,7 +41,7 @@
                 android:fontFamily="@font/roboto_black"
                 android:text="@string/income_add_categories_title_2"
                 android:textColor="@color/gris_oscuro"
-                android:textSize="28sp"
+                android:textSize="22sp"
                 android:textAlignment="center" />
 
             <EditText
