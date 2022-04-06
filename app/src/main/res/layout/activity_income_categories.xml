@@ -54,13 +54,13 @@
             android:textSize="12sp"
             android:textColor="@color/gris_oscuro"
             android:fontFamily="@font/roboto_regular"
-            android:text="@string/inconme_categories_title_1" />
+            android:text="@string/income_categories_title_1" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_black"
-            android:text="@string/inconme_categories_title_2"
+            android:text="@string/income_categories_title_2"
             android:textColor="@color/gris_oscuro"
             android:textSize="30sp" />
     </LinearLayout>
@@ -76,7 +76,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
             android:fontFamily="@font/roboto_black"
-            android:text="@string/inconme_categories_title_3"
+            android:text="@string/income_categories_title_3"
             android:textColor="@color/gris_oscuro"
             android:textSize="16sp" />
 
@@ -125,7 +125,7 @@
         android:layout_marginTop="12dp"
         android:backgroundTint="@color/morado"
         android:fontFamily="@font/roboto_bold"
-        android:text="@string/inconme_categories_btn_text"
+        android:text="@string/income_categories_btn_text"
         android:textAllCaps="false" />
 
 
