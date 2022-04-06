@@ -39,11 +39,12 @@ class DashboardFragment : Fragment() {
         val botonExpense: View = binding.buttonExpenseHome
 
         botonIncomes.setOnClickListener {
-            val act = parentFragment?.parentFragment?.activity
+            val act = parentFragment?.activity
             act?.startActivity(Intent(act, RegisterIncomeActivity::class.java))
         }
+
         botonExpense.setOnClickListener {
-            val act = parentFragment?.parentFragment?.activity
+            val act = parentFragment?.activity
             act?.startActivity(Intent(act, RegisterExpenseActivity::class.java))
         }
 
