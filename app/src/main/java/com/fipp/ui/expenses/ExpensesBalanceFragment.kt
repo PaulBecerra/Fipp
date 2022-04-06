@@ -9,8 +9,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import com.fipp.R
 import com.fipp.databinding.ActivityChartBinding
-import com.fipp.databinding.ActivityProgressIndicatorBinding
-import com.fipp.databinding.FragmentIncomeBalanceBinding
+import com.fipp.databinding.FragmentExpensesBalanceBinding
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
@@ -20,7 +19,7 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 
 class ExpensesBalanceFragment : Fragment() {
 
-    private var _binding: FragmentIncomeBalanceBinding? = null
+    private var _binding: FragmentExpensesBalanceBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -34,7 +33,7 @@ class ExpensesBalanceFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentIncomeBalanceBinding.inflate(inflater, container, false)
+        _binding = FragmentExpensesBalanceBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         loadProgressBar()
