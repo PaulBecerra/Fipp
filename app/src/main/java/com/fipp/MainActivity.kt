@@ -1,5 +1,6 @@
 package com.fipp
 
+import android.content.Context
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
@@ -32,5 +33,14 @@ class MainActivity : AppCompatActivity() {
 //        setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
         navView.selectedItemId = R.id.navigation_dashboard
+
+        // email received from login activity
+        val bundle: Bundle? = intent.extras
+        val email: String = bundle?.getString("email")?:""
+
+        // email saved in shared preferences
+        val prefs = getSharedPreferences(getString(R.string.shared_prefences), Context.MODE_PRIVATE).edit()
+        prefs.putString("email", email)
+        prefs.apply()
     }
 }

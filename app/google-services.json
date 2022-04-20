@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "85270695483",
+    "project_id": "fipp-31ec2",
+    "storage_bucket": "fipp-31ec2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:85270695483:android:4e1e2b9914101d2c6bd61e",
+        "android_client_info": {
+          "package_name": "com.fipp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "85270695483-oq53cdau91hm1f5qd96b43fjfpvpko2p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhaVA25eQp1mXR2MvduSVDPUSQ4exAIbc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "85270695483-oq53cdau91hm1f5qd96b43fjfpvpko2p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

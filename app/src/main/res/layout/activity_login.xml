@@ -41,7 +41,7 @@
                 android:layout_weight="6"/>
 
             <EditText
-                android:id="@+id/editTextTextPersonName"
+                android:id="@+id/editTextEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -51,7 +51,7 @@
                 android:layout_weight="1"/>
 
             <EditText
-                android:id="@+id/editTextTextPassword"
+                android:id="@+id/editTextPass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -61,7 +61,7 @@
                 android:layout_weight="1"/>
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/btnEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
@@ -72,7 +72,7 @@
                 android:layout_weight="1"/>
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/btnGoogle"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

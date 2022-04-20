@@ -1,14 +1,21 @@
 package com.fipp.ui.notifications
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.fipp.LoginActivity
+import com.fipp.R
+import com.fipp.RegisterIncomeActivity
 import com.fipp.databinding.FragmentNotificationsBinding
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.TabLayoutOnPageChangeListener
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 
 class NotificationsFragment : Fragment() {
@@ -30,7 +37,24 @@ class NotificationsFragment : Fragment() {
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        val btnLogout = binding.btnLogout
+
+        btnLogout.setOnClickListener{
+            signOut()
+        }
+
         return root
+    }
+
+    private fun signOut(){
+        val prefs = activity?.getSharedPreferences(getString(R.string.shared_prefences), Context.MODE_PRIVATE)?.edit()
+        prefs?.clear()
+        prefs?.apply()
+
+        Firebase.auth.signOut()
+
+        val act = parentFragment?.activity
+        act?.startActivity(Intent(act, LoginActivity::class.java))
     }
 
     override fun onDestroyView() {
