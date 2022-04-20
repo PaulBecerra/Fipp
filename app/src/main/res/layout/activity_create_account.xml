@@ -45,7 +45,7 @@
                 android:textSize="26sp" />
 
             <EditText
-                android:id="@+id/editTextPersonName"
+                android:id="@+id/editTextName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -85,7 +85,7 @@
                 android:textSize="12sp" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/btn_create_account_with_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
@@ -96,7 +96,7 @@
                 android:textAllCaps="false" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/btn_create_account_with_google"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
