@@ -9,10 +9,12 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.fipp.databinding.ActivityMainBinding
+import com.google.firebase.firestore.FirebaseFirestore
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private val db = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,5 +44,22 @@ class MainActivity : AppCompatActivity() {
         val prefs = getSharedPreferences(getString(R.string.shared_prefences), Context.MODE_PRIVATE).edit()
         prefs.putString("email", email)
         prefs.apply()
+
+
+        /* save data
+        db.collection("users")
+            .document(email)
+            .set(hashMapOf("key_test" to "field test"))
+         */
+
+        /* get data
+        db.collection("users")
+            .document(email)
+            .get().addOnSuccessListener {
+                 val test = it.get("key_test")
+            }
+         */
+
+        //db.collection("users").document(email).delete()
     }
 }
