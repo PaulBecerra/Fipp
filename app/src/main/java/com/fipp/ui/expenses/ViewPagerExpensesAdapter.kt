@@ -6,7 +6,8 @@ import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.fipp.ui.income.*
 
-private const val NUM_TABS = 4
+// cambiar a 4 si vas a agregar clasificaciones y fijos!!
+private const val NUM_TABS = 2
 
 class ViewPagerExpensesAdapter (fragmentManager: FragmentManager, lifecycle: Lifecycle) :
     FragmentStateAdapter(fragmentManager, lifecycle) {
@@ -18,9 +19,11 @@ class ViewPagerExpensesAdapter (fragmentManager: FragmentManager, lifecycle: Lif
     override fun createFragment(position: Int): Fragment {
         when (position) {
             0 -> return ExpensesBalanceFragment()
-            1 -> return ExpensesClasificationFragment()
-            2 -> return ExpensesSetFragment()
-            3 -> return ExpensesCategoriesFragment()
+            // comenta la línea de abajo y descomenta las demás
+            1 -> return ExpensesCategoriesFragment()
+//            1 -> return ExpensesClasificationFragment()
+//            2 -> return ExpensesSetFragment()
+//            3 -> return ExpensesCategoriesFragment()
         }
         return ExpensesBalanceFragment()
     }
