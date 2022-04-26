@@ -36,6 +36,10 @@ class ExpensesBalanceFragment : Fragment() {
         _binding = FragmentExpensesBalanceBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         loadProgressBar()
 
         setLineChart()
@@ -45,7 +49,6 @@ class ExpensesBalanceFragment : Fragment() {
 //        homeViewModel.text.observe(viewLifecycleOwner) {
 //            textView.text = it
 //        }
-        return root
     }
 
     private fun loadProgressBar() {

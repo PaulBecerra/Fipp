@@ -36,12 +36,14 @@ class DashboardFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val dashboardViewModel =
-            ViewModelProvider(this).get(DashboardViewModel::class.java)
 
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         loadProgressBar()
 
         setHalfPieChart()
@@ -59,10 +61,6 @@ class DashboardFragment : Fragment() {
             val act = parentFragment?.activity
             act?.startActivity(Intent(act, RegisterExpenseActivity::class.java))
         }
-
-
-
-        return root
     }
 
     override fun onDestroyView() {

@@ -30,8 +30,14 @@ class ExpensesFragment : Fragment() {
         _binding = FragmentExpensesBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val viewPager: ViewPager2 = root.findViewById(R.id.viewPager)
-        val tabLayout: TabLayout = root.findViewById(R.id.tabLayout)
+        return root
+    }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        val viewPager: ViewPager2 = binding.root.findViewById(R.id.viewPager)
+        val tabLayout: TabLayout = binding.root.findViewById(R.id.tabLayout)
 
         viewPager.adapter = ViewPagerExpensesAdapter(childFragmentManager, lifecycle)
 
@@ -60,9 +66,6 @@ class ExpensesFragment : Fragment() {
 //        homeViewModel.text.observe(viewLifecycleOwner) {
 //            textView.text = it
 //        }
-        return root
     }
-
-
 
 }

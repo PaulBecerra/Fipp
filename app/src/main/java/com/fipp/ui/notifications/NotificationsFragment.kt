@@ -37,13 +37,15 @@ class NotificationsFragment : Fragment() {
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val btnLogout = binding.btnLogout
 
         btnLogout.setOnClickListener{
             signOut()
         }
-
-        return root
     }
 
     private fun signOut(){

@@ -44,16 +44,13 @@ class IncomeBalanceFragment : Fragment() {
         _binding = FragmentIncomeBalanceBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         loadProgressBar()
 
         setLineChart()
-
-
-//        val textView: TextView = binding.textHome
-//        homeViewModel.text.observe(viewLifecycleOwner) {
-//            textView.text = it
-//        }
-        return root
     }
 
     private fun loadProgressBar() {

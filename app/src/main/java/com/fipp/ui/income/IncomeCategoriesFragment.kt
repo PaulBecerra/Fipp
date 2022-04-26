@@ -36,6 +36,12 @@ class IncomeCategoriesFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentIncomeCategoriesBinding.inflate(inflater, container, false)
 
+        return binding.root
+//        return inflater.inflate(R.layout.fragment_income_categories, container, false)
+
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val boton: View = binding.buttonIncomes
 
         boton.setOnClickListener {
@@ -45,9 +51,5 @@ class IncomeCategoriesFragment : Fragment() {
             val act = parentFragment?.parentFragment?.activity
             act?.startActivity(Intent(act, RegisterNewIncomeCategoryActivity::class.java))
         }
-
-        return binding.root
-//        return inflater.inflate(R.layout.fragment_income_categories, container, false)
-
     }
 }
