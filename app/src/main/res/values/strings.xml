@@ -83,4 +83,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="shared_prefences">PREFERENCES_FILE</string>
+
+    <!-- String login -->
+    <string name="client_id">85270695483-oq53cdau91hm1f5qd96b43fjfpvpko2p.apps.googleusercontent.com</string>
+
+
 </resources>

@@ -63,7 +63,7 @@ class CreateAccountActivity : AppCompatActivity() {
 
         btnGoogle.setOnClickListener{
             val googleConf = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestIdToken(getString(R.string.client_id))
                 .requestEmail()
                 .build()
             val googleClient = GoogleSignIn.getClient(this, googleConf)

@@ -31,6 +31,12 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // elementos del layout
+        var Email: EditText= findViewById(R.id.editTextEmail)
+        var password: EditText=findViewById(R.id.editTextPass)
+        var btnEmail: Button = findViewById(R.id.btnEmail)
+        var btnGoogle1: Button= findViewById(R.id.btnGoogle)
+
         // Initialize Firebase Auth
         auth = Firebase.auth
         val tvCreateAccount = binding.textViewCreateAccount
@@ -64,7 +70,7 @@ class LoginActivity : AppCompatActivity() {
 
         btnGoogle.setOnClickListener{
             val googleConf = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestIdToken(getString(R.string.client_id))
                 .requestEmail()
                 .build()
             val googleClient = GoogleSignIn.getClient(this, googleConf)
@@ -95,7 +101,6 @@ class LoginActivity : AppCompatActivity() {
 
     private fun reload(user: FirebaseUser){
         val intent = Intent(this, MainActivity::class.java).apply {
-            putExtra("email", user.email.toString())
         }
         startActivity(intent)
     }
