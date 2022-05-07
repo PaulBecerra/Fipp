@@ -31,12 +31,6 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // elementos del layout
-        var Email: EditText= findViewById(R.id.editTextEmail)
-        var password: EditText=findViewById(R.id.editTextPass)
-        var btnEmail: Button = findViewById(R.id.btnEmail)
-        var btnGoogle1: Button= findViewById(R.id.btnGoogle)
-
         // Initialize Firebase Auth
         auth = Firebase.auth
         val tvCreateAccount = binding.textViewCreateAccount
@@ -62,7 +56,7 @@ class LoginActivity : AppCompatActivity() {
         // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = auth.currentUser
         if(currentUser != null){
-            reload(currentUser);
+            reload();
         }
 
         // google authenticator
@@ -87,21 +81,20 @@ class LoginActivity : AppCompatActivity() {
                     Log.d("TAG", "signInWithEmail:success")
                     val user = auth.currentUser
                     if (user != null) {
-                        reload(user)
+                        reload()
                     }
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w("TAG", "signInWithEmail:failure", task.exception)
-                    Toast.makeText(baseContext, "Authentication failed.",
+                    Toast.makeText(baseContext, task.exception?.message,
                         Toast.LENGTH_SHORT).show()
 
                 }
             }
     }
 
-    private fun reload(user: FirebaseUser){
-        val intent = Intent(this, MainActivity::class.java).apply {
-        }
+    private fun reload(){
+        val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
 
@@ -123,12 +116,12 @@ class LoginActivity : AppCompatActivity() {
                             Log.d("TAG", "signInWithEmail:success")
                             val user = auth.currentUser
                             if (user != null) {
-                                reload(user)
+                                reload()
                             }
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w("TAG", "signInWithEmail:failure", it.exception)
-                            Toast.makeText(baseContext, "Authentication failed.",
+                            Toast.makeText(baseContext, it.exception?.message,
                                 Toast.LENGTH_SHORT).show()
 
                         }

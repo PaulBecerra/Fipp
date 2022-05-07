@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "85270695483-o3d9s89luavqnqvu2elg5omsoajf4upc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fipp",
+            "certificate_hash": "d509023b9b59aaf82c1aafdb66d41bbd6ba108d8"
+          }
+        },
+        {
           "client_id": "85270695483-oq53cdau91hm1f5qd96b43fjfpvpko2p.apps.googleusercontent.com",
           "client_type": 3
         }
