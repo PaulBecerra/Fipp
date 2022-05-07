@@ -18,6 +18,8 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import java.util.regex.Matcher
+import java.util.regex.Pattern
 
 class CreateAccountActivity : AppCompatActivity() {
 
@@ -70,6 +72,11 @@ class CreateAccountActivity : AppCompatActivity() {
             googleClient.signOut()
             startActivityForResult(googleClient.signInIntent, GOOGLE_SIGN_IN)
         }
+    }
+    private fun validateEmail(email: String):Boolean{
+        var pat :Pattern=Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")
+        var comparador:Matcher=pat.matcher(email)
+        return comparador.find()
     }
 
     private fun createAccount(email: String, password: String){
