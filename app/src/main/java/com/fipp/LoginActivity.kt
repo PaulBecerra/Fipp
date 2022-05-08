@@ -40,6 +40,14 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        var password: TextView=findViewById(R.id.forgetPassword)
+
+        // cambio a la actividad de olvidaste tu contraseña
+        password.setOnClickListener{
+            startActivity(Intent(this,Activity_password::class.java))
+        }
+
+
         val btnLogin: Button = binding.btnEmail
 
         btnLogin.setOnClickListener {

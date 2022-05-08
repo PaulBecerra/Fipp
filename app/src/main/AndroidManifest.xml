@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Fipp">
         <activity
+            android:name=".Activity_password"
+            android:exported="false" />
+        <activity
             android:name=".RegisterIncomeActivity"
             android:exported="false" />
         <activity

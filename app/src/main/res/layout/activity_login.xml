@@ -87,14 +87,15 @@
                 android:layout_weight="1"/>
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/forgetPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/login_forget_password"
                 android:textAlignment="center"
+                android:textColor="@color/gris_oscuro"
                 android:fontFamily="@font/roboto_bold"
                 android:textSize="12sp"
-                android:textColor="@color/gris_oscuro"
+                android:layout_marginVertical="12dp"
                 android:layout_weight="1"/>
 
             <LinearLayout
