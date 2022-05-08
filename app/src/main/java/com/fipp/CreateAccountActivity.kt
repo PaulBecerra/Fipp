@@ -45,13 +45,13 @@ class CreateAccountActivity : AppCompatActivity() {
 
         val btnEmail = binding.btnCreateAccountWithEmail
         btnEmail.setOnClickListener{
-            val email = binding.editTextEmail.text.toString()
+            val email = binding.editTextEmail.text.toString().replace(" ", "")
             val pass = binding.editTextPassword.text.toString()
             val passConfirm = binding.editTextConfirmPassword.text.toString()
 
             if (email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()){
                 Toast.makeText(baseContext, "Email is not valid", Toast.LENGTH_SHORT).show()
-            } else if (pass.isEmpty()) {
+            } else if (pass.isEmpty() || isValidPassword(pass)){
                 Toast.makeText(baseContext, "Password is not valid", Toast.LENGTH_SHORT).show()
             } else if (pass != passConfirm){
                 Toast.makeText(baseContext, "Passwords are not equals",  Toast.LENGTH_SHORT).show()
@@ -59,6 +59,8 @@ class CreateAccountActivity : AppCompatActivity() {
                 createAccount(email, pass)
             }
         }
+
+
 
         // google authenticator
         val btnGoogle: Button = binding.btnCreateAccountWithGoogle
@@ -73,6 +75,25 @@ class CreateAccountActivity : AppCompatActivity() {
             startActivityForResult(googleClient.signInIntent, GOOGLE_SIGN_IN)
         }
     }
+
+//    fun isValidPassword(password: String?) : Boolean {
+//        password?.let {
+//            val passwordPattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{4,}$"
+//            val passwordMatcher = Regex(passwordPattern)
+//
+//            return passwordMatcher.find(password) != null
+//        } ?: return false
+//    }
+    private fun isValidPassword(password: String): Boolean {
+        val pattern: Pattern
+        val matcher: Matcher
+        val specialCharacters = "-@%\\[\\}+'!/#$^?:;,\\(\"\\)~`.*=&\\{>\\]<_"
+        val PASSWORD_REGEX = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[$specialCharacters])(?=\\S+$).{8,20}$"
+        pattern = Pattern.compile(PASSWORD_REGEX)
+        matcher = pattern.matcher(password)
+        return matcher.matches()
+    }
+
     private fun validateEmail(email: String):Boolean{
         var pat :Pattern=Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")
         var comparador:Matcher=pat.matcher(email)
