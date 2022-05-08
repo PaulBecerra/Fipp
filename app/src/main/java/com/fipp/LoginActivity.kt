@@ -51,8 +51,11 @@ class LoginActivity : AppCompatActivity() {
         val btnLogin: Button = binding.btnEmail
 
         btnLogin.setOnClickListener {
-            val email = binding.editTextEmail.text.toString()
+            val email = binding.editTextEmail.text.toString().replace(" ", "")
             val password = binding.editTextPass.text.toString()
+
+            // Regex to validate password
+            val pattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#\$%!\\-_?&])(?=\\S+\$).{8,}".toRegex()
 
             if(email.isEmpty() || password.isEmpty()){
                 Toast.makeText(baseContext, "email or password is wrong.", Toast.LENGTH_SHORT).show()
