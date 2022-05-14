@@ -1,32 +1,19 @@
 package com.fipp
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.util.Patterns
 import android.widget.Button
-import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import com.fipp.controller.UserController
 import com.fipp.databinding.ActivityCreateAccountBinding
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.common.api.ApiException
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.GoogleAuthProvider
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
-import java.util.regex.Matcher
-import java.util.regex.Pattern
+import com.fipp.model.User
 
-class CreateAccountActivity : AppCompatActivity() {
+class CreateAccountActivity : GoogleActivityResult() {
 
+    private lateinit var userController: UserController
     private lateinit var binding: ActivityCreateAccountBinding
-    private lateinit var auth: FirebaseAuth
-    // key for login with google
-    private val GOOGLE_SIGN_IN = 100
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,22 +28,25 @@ class CreateAccountActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        auth = Firebase.auth
+        userController = UserController(this)
 
         val btnEmail = binding.btnCreateAccountWithEmail
         btnEmail.setOnClickListener{
             val email = binding.editTextEmail.text.toString().replace(" ", "")
             val pass = binding.editTextPassword.text.toString()
             val passConfirm = binding.editTextConfirmPassword.text.toString()
+            val name = binding.editTextName.text.toString()
+
+            val user = User(email, pass, name)
 
             if (email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()){
                 Toast.makeText(baseContext, "Email is not valid", Toast.LENGTH_SHORT).show()
-            } else if (pass.isEmpty() || isValidPassword(pass)){
+            } else if (pass.isEmpty() || user.isValidPassword()){
                 Toast.makeText(baseContext, "Password is not valid", Toast.LENGTH_SHORT).show()
             } else if (pass != passConfirm){
                 Toast.makeText(baseContext, "Passwords are not equals",  Toast.LENGTH_SHORT).show()
             } else {
-                createAccount(email, pass)
+                userController.createAccount(user)
             }
         }
 
@@ -66,100 +56,12 @@ class CreateAccountActivity : AppCompatActivity() {
         val btnGoogle: Button = binding.btnCreateAccountWithGoogle
 
         btnGoogle.setOnClickListener{
-            val googleConf = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.client_id))
-                .requestEmail()
-                .build()
-            val googleClient = GoogleSignIn.getClient(this, googleConf)
-            googleClient.signOut()
-            startActivityForResult(googleClient.signInIntent, GOOGLE_SIGN_IN)
+            userController.signInWithGoogle()
         }
     }
 
-//    fun isValidPassword(password: String?) : Boolean {
-//        password?.let {
-//            val passwordPattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{4,}$"
-//            val passwordMatcher = Regex(passwordPattern)
-//
-//            return passwordMatcher.find(password) != null
-//        } ?: return false
-//    }
-    private fun isValidPassword(password: String): Boolean {
-        val pattern: Pattern
-        val matcher: Matcher
-        val specialCharacters = "-@%\\[\\}+'!/#$^?:;,\\(\"\\)~`.*=&\\{>\\]<_"
-        val PASSWORD_REGEX = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[$specialCharacters])(?=\\S+$).{8,20}$"
-        pattern = Pattern.compile(PASSWORD_REGEX)
-        matcher = pattern.matcher(password)
-        return matcher.matches()
-    }
-
-    private fun validateEmail(email: String):Boolean{
-        var pat :Pattern=Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")
-        var comparador:Matcher=pat.matcher(email)
-        return comparador.find()
-    }
-
-    private fun createAccount(email: String, password: String){
-        auth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    Log.d("TAG", "createUserWithEmail:success")
-                    val user = auth.currentUser
-                    if (user != null) {
-                        reload(user)
-                    }
-                } else {
-                    // If sign in fails, display a message to the user.
-                    Log.w("TAG", "createUserWithEmail:failure", task.exception)
-                    Toast.makeText(baseContext, "Authentication failed.",
-                        Toast.LENGTH_SHORT).show()
-                }
-            }
-    }
-
-    private fun reload(user: FirebaseUser){
-        val intent = Intent(this, MainActivity::class.java).apply {
-            putExtra("email", user.email.toString())
-        }
-        startActivity(intent)
-    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-
-        if (requestCode == GOOGLE_SIGN_IN) {
-            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
-
-            try{
-                val account = task.getResult(ApiException::class.java)
-
-                if (account != null){
-                    val credential = GoogleAuthProvider.getCredential(account.idToken, null)
-
-                    auth.signInWithCredential(credential).addOnCompleteListener{ it ->
-                        if (it.isSuccessful) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d("TAG", "signInWithEmail:success")
-                            val user = auth.currentUser
-                            if (user != null) {
-                                reload(user)
-                            }
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w("TAG", "signInWithEmail:failure", it.exception)
-                            Toast.makeText(baseContext, it.exception?.message,
-                                Toast.LENGTH_SHORT).show()
-
-                        }
-                    }
-                }
-            }catch (e: ApiException){
-                Toast.makeText(baseContext, "Authentication failed.",
-                    Toast.LENGTH_SHORT).show()
-            }
-
-        }
     }
 }
