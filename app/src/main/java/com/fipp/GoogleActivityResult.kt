@@ -10,12 +10,14 @@ import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 
 public open class GoogleActivityResult: AppCompatActivity() {
     // key for login with google
     private val GOOGLE_SIGN_IN = 100
     var authGoogle: FirebaseAuth = Firebase.auth
+    private val db = FirebaseFirestore.getInstance()
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -35,6 +37,10 @@ public open class GoogleActivityResult: AppCompatActivity() {
                             Log.d("TAG", "signInWithEmail:success")
                             val user = authGoogle.currentUser
                             if (user != null) {
+                                db.collection("users").document(user?.uid.toString()).set(
+                                    hashMapOf("email" to user?.email,
+                                        "name" to user?.displayName)
+                                )
                                 val intent = Intent(this, MainActivity::class.java)
                                 startActivity(intent)
                             }

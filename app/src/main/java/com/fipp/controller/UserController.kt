@@ -12,12 +12,14 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 
 class UserController {
     // key for login with google
     private val GOOGLE_SIGN_IN = 100
     private lateinit var auth: FirebaseAuth
+    private val db = FirebaseFirestore.getInstance()
     private var activity: Activity
 
     constructor(activity: Activity){
@@ -50,8 +52,12 @@ class UserController {
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d("TAG", "createUserWithEmail:success")
-                    val user = auth.currentUser
-                    if (user != null) reload(user)
+                    val currentUser = auth.currentUser
+                    db.collection("users").document(currentUser?.uid.toString()).set(
+                        hashMapOf("email" to currentUser?.email,
+                                    "name" to user.name)
+                    )
+                    if (currentUser != null) reload(currentUser)
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w("TAG", "createUserWithEmail:failure", task.exception)
