@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.fipp.*
+import com.fipp.ui.income.category.IncomeCategoriesFragment
 
 // cambiar a 4 si vas a agregar clasificaciones y fijos!!
 private const val NUM_TABS = 2

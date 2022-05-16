@@ -57,21 +57,21 @@
                 android:columnCount="2"
                 android:rowCount="4"
                 >
-                <include layout="@layout/activity_categories_view" />
+                <include layout="@layout/layout_categories_income" />
 
-                <include layout="@layout/activity_categories_view" />
+                <include layout="@layout/layout_categories_income" />
 
-                <include layout="@layout/activity_categories_view" />
+                <include layout="@layout/layout_categories_income" />
 
-                <include layout="@layout/activity_categories_view" />
+                <include layout="@layout/layout_categories_income" />
 
-                <include layout="@layout/activity_categories_view" />
+                <include layout="@layout/layout_categories_income" />
 
-                <include layout="@layout/activity_categories_view" />
+                <include layout="@layout/layout_categories_income" />
 
-                <include layout="@layout/activity_categories_view" />
+                <include layout="@layout/layout_categories_income" />
 
-                <include layout="@layout/activity_categories_view" />
+                <include layout="@layout/layout_categories_income" />
 
             </GridLayout>
         </androidx.cardview.widget.CardView>

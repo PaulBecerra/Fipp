@@ -1,4 +1,4 @@
-package com.fipp.ui.income
+package com.fipp.ui.income.category
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,17 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.fipp.R
 import com.fipp.RegisterNewIncomeCategoryActivity
 import com.fipp.databinding.FragmentIncomeCategoriesBinding
+import com.fipp.model.Category
 
-
-/**
- * A simple [Fragment] subclass.
- * Use the [IncomeCategoriesFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class IncomeCategoriesFragment : Fragment() {
+
+    private var categoryList: ArrayList<Category> = ArrayList()
     private var _binding: FragmentIncomeCategoriesBinding? = null
 
     // This property is only valid between onCreateView and
@@ -25,8 +24,6 @@ class IncomeCategoriesFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
     }
 
     override fun onCreateView(
@@ -35,10 +32,7 @@ class IncomeCategoriesFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentIncomeCategoriesBinding.inflate(inflater, container, false)
-
         return binding.root
-//        return inflater.inflate(R.layout.fragment_income_categories, container, false)
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -51,5 +45,23 @@ class IncomeCategoriesFragment : Fragment() {
             val act = parentFragment?.parentFragment?.activity
             act?.startActivity(Intent(act, RegisterNewIncomeCategoryActivity::class.java))
         }
+
+        getIncomeCategoriesByUser();
+
+        val adapter = CategoryAdapter(categoryList)
+
+        val recyclerView = binding.recyclerViewCategory
+
+        val grid: GridLayoutManager = GridLayoutManager(activity, 2, GridLayoutManager.VERTICAL, false)
+        recyclerView.layoutManager = grid
+        recyclerView.adapter = adapter
+    }
+
+    private fun getIncomeCategoriesByUser(){
+        val category1 = Category("test 1", "subtest 1", R.drawable.fipp_app_iconos_85)
+        val category2 = Category("test 2", "subtest 2", R.drawable.fipp_app_iconos_85)
+        val category3 = Category("test 3", "subtest 3", R.drawable.fipp_app_iconos_85)
+        val category4 = Category("test 4", "subtest 4", R.drawable.fipp_app_iconos_85)
+        categoryList.addAll(listOf(category1, category2, category3, category4, category1, category2, category3, category4, category1, category2, category3, category4));
     }
 }

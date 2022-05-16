@@ -101,17 +101,17 @@
             android:padding="9dp"
             android:rowCount="4">
 
-            <include layout="@layout/activity_categories_view" />
+            <include layout="@layout/layout_categories_income" />
 
-            <include layout="@layout/activity_categories_view" />
+            <include layout="@layout/layout_categories_income" />
 
-            <include layout="@layout/activity_categories_view" />
+            <include layout="@layout/layout_categories_income" />
 
-            <include layout="@layout/activity_categories_view" />
+            <include layout="@layout/layout_categories_income" />
 
-            <include layout="@layout/activity_categories_view" />
+            <include layout="@layout/layout_categories_income" />
 
-            <include layout="@layout/activity_categories_view" />
+            <include layout="@layout/layout_categories_income" />
 
 
         </GridLayout>
