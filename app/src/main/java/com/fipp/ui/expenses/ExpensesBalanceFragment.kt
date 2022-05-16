@@ -190,37 +190,29 @@ class ExpensesBalanceFragment : Fragment() {
             val row = TableRow(requireActivity())
             // Add padding to the row
             row.setPadding(10, 10, 10, 10)
+            // Set background to transparent
+            row.setBackgroundColor(Color.TRANSPARENT)
+
+
             val textView = TextView(requireActivity())
             val emissionsMilliSince1970Time = item.createdAt.atZone(ZoneOffset.UTC).toEpochSecond() * 1000
             val timeMilliseconds = Date(emissionsMilliSince1970Time)
             val date = dateTimeFormat.format(timeMilliseconds)
             textView.text = date
             textView.gravity = Gravity.CENTER
-            // Set weight for column
             textView.layoutParams = TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f)
-            // set widht as wrap content
-            textView.setTextColor(Color.BLACK)
-            textView.setBackgroundColor(Color.WHITE)
             row.addView(textView)
 
             val textView2 = TextView(requireActivity())
             textView2.text = item.category.categoryName
             textView2.gravity = Gravity.CENTER
-            // Set weight for column
             textView2.layoutParams = TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f)
-            // set widht as wrap content
-            textView2.setTextColor(Color.BLACK)
-            textView2.setBackgroundColor(Color.WHITE)
             row.addView(textView2)
 
             val textView3 = TextView(requireActivity())
             textView3.text = item.amount
             textView3.gravity = Gravity.CENTER
-            // Set weight for column
             textView3.layoutParams = TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f)
-            // set widht as wrap content
-            textView3.setTextColor(Color.BLACK)
-            textView3.setBackgroundColor(Color.WHITE)
             row.addView(textView3)
 
 
