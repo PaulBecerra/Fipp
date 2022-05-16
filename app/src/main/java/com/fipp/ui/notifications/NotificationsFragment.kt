@@ -7,13 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.fipp.LoginActivity
 import com.fipp.R
-import com.fipp.RegisterIncomeActivity
 import com.fipp.databinding.FragmentNotificationsBinding
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayout.TabLayoutOnPageChangeListener
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 

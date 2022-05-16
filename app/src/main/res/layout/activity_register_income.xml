@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".RegisterIncomeActivity">
+    tools:context=".ui.income.RegisterIncomeActivity">
 
 
     <LinearLayout
@@ -40,34 +40,34 @@
             android:textColor="@color/gris_oscuro"
             android:textSize="26sp" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="5dp"
-        android:layout_height="wrap_content">
-
-        <EditText
-            android:id="@+id/editTextTextPersonName2"
-            android:layout_width="282dp"
-            android:layout_height="38dp"
-            android:width="1dp"
-            android:textSize="15dp"
-            android:background="#F4F4F4"
-            android:textColor="#8C8C8C"
-            android:inputType="textPersonName"
-            android:text="Cantidad de ingreso..." />
-
-        <Button
-            android:id="@+id/button4"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:width="1dp"
-            android:textSize="12dp"
-            android:backgroundTint="@color/morado"
-            android:text="MXN" />
+            android:layout_marginTop="5dp"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/editTextTextPersonName2"
+                android:layout_width="282dp"
+                android:layout_height="38dp"
+                android:width="1dp"
+                android:textSize="15dp"
+                android:background="#F4F4F4"
+                android:textColor="#8C8C8C"
+                android:inputType="textPersonName"
+                android:text="Cantidad de ingreso..." />
+
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:width="1dp"
+                android:textSize="12dp"
+                android:backgroundTint="@color/morado"
+                android:text="MXN" />
+        </LinearLayout>
     </LinearLayout>
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -86,35 +86,17 @@
         android:text="CATEGORÍA" />
 
     <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_gravity="center"
         app:cardBackgroundColor="#F4F4F4"
         app:cardCornerRadius="20dp">
 
-        <GridLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:columnCount="2"
-            android:padding="9dp"
-            android:rowCount="4">
-
-            <include layout="@layout/layout_categories_income" />
-
-            <include layout="@layout/layout_categories_income" />
-
-            <include layout="@layout/layout_categories_income" />
-
-            <include layout="@layout/layout_categories_income" />
-
-            <include layout="@layout/layout_categories_income" />
-
-            <include layout="@layout/layout_categories_income" />
-
-
-        </GridLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewNewIncomeCategory"
+            android:layout_width="match_parent"
+            android:layout_height="350dp" />
 
     </androidx.cardview.widget.CardView>
 

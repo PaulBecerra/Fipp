@@ -1,6 +1,5 @@
-package com.fipp.ui.income.category
+package com.fipp.ui.income
 
-import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,8 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.fipp.R
 import com.fipp.model.Category
 
-class CategoryAdapter(private var categoryList: List<Category>) :
-    RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
+class CategoryIncomeAdapter(private var categoryList: List<Category>) :
+    RecyclerView.Adapter<CategoryIncomeAdapter.ViewHolder>() {
 
         class ViewHolder(view: View): RecyclerView.ViewHolder(view){
             val image: ImageView

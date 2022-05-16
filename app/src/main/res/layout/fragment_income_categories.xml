@@ -38,12 +38,21 @@
             android:text="@string/income_categories_title_3"
             android:textColor="@color/gris_oscuro"
             android:textSize="16sp"
+            android:layout_marginVertical="15dp"
             />
 
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            app:cardBackgroundColor="#F4F4F4"
+            app:cardCornerRadius="20dp">
+
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewCategory"
+                android:id="@+id/recyclerViewIncomeCategory"
                 android:layout_width="match_parent"
                 android:layout_height="250dp" />
+
+        </androidx.cardview.widget.CardView>
 
         <Button
             android:id="@+id/buttonIncomes"

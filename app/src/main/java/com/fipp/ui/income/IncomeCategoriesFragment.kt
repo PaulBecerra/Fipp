@@ -1,4 +1,4 @@
-package com.fipp.ui.income.category
+package com.fipp.ui.income
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.fipp.R
 import com.fipp.RegisterNewIncomeCategoryActivity
 import com.fipp.databinding.FragmentIncomeCategoriesBinding
@@ -48,11 +47,11 @@ class IncomeCategoriesFragment : Fragment() {
 
         getIncomeCategoriesByUser();
 
-        val adapter = CategoryAdapter(categoryList)
+        val adapter = CategoryIncomeAdapter(categoryList)
 
-        val recyclerView = binding.recyclerViewCategory
+        val recyclerView = binding.recyclerViewIncomeCategory
 
-        val grid: GridLayoutManager = GridLayoutManager(activity, 2, GridLayoutManager.VERTICAL, false)
+        val grid = GridLayoutManager(activity, 2, GridLayoutManager.VERTICAL, false)
         recyclerView.layoutManager = grid
         recyclerView.adapter = adapter
     }

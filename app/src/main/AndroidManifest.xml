@@ -13,10 +13,10 @@
             android:name=".Activity_password"
             android:exported="false" />
         <activity
-            android:name=".RegisterIncomeActivity"
+            android:name=".ui.income.RegisterIncomeActivity"
             android:exported="false" />
         <activity
-            android:name=".RegisterExpenseActivity"
+            android:name=".ui.expenses.RegisterExpenseActivity"
             android:exported="false" />
         <activity
             android:name=".RegisterNewExpensesCategoryActivity"

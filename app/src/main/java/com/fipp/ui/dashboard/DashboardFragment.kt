@@ -10,10 +10,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.fipp.R
-import com.fipp.RegisterExpenseActivity
-import com.fipp.RegisterIncomeActivity
+import com.fipp.ui.expenses.RegisterExpenseActivity
+import com.fipp.ui.income.RegisterIncomeActivity
 import com.fipp.databinding.FragmentDashboardBinding
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.PieChart
