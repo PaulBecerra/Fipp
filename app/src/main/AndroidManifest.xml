@@ -10,6 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Fipp">
         <activity
+            android:name=".ui.income.RegisterNewIncomeSubcategoryActivity"
+            android:exported="false"
+            android:label="@string/title_activity_subcategory"
+            android:theme="@style/Theme.Fipp.NoActionBar" />
+        <activity
             android:name=".Activity_password"
             android:exported="false" />
         <activity
@@ -22,7 +27,7 @@
             android:name=".RegisterNewExpensesCategoryActivity"
             android:exported="false" />
         <activity
-            android:name=".RegisterNewIncomeCategoryActivity"
+            android:name=".ui.income.RegisterNewIncomeCategoryActivity"
             android:exported="false" />
         <activity
             android:name=".ChartActivity"

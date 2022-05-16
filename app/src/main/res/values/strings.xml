@@ -86,6 +86,8 @@
 
     <!-- String login -->
     <string name="client_id">85270695483-oq53cdau91hm1f5qd96b43fjfpvpko2p.apps.googleusercontent.com</string>
+    <string name="title_activity_subcategory">SubcategoryActivity</string>
+    <string name="income_add_categories_title_subcategory">SELECCIONA SUBCATEGORÍA</string>
 
 
 </resources>

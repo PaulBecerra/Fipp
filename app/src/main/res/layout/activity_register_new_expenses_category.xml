@@ -44,8 +44,7 @@
                 android:fontFamily="@font/roboto_black"
                 android:text="@string/expense_add_categories_title_2"
                 android:textColor="@color/gris_oscuro"
-                android:textSize="26sp"
-                android:textAlignment="center" />
+                android:textSize="22sp" />
 
             <EditText
                 android:layout_width="match_parent"
@@ -53,7 +52,7 @@
                 android:background="#F4F4F4"
                 android:layout_marginVertical="16dp"
                 android:inputType="textPersonName"
-                android:text="@string/expense_add_categories_placeholder"
+                android:hint="@string/expense_add_categories_placeholder"
                 android:textColor="#8C8C8C"
                 android:textSize="16dp"
                 android:paddingHorizontal="20dp"/>
@@ -67,18 +66,13 @@
             app:cardBackgroundColor="#F4F4F4"
             app:cardCornerRadius="20dp">
 
-            <GridLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginVertical="50dp"
-                android:columnCount="1"
-                android:padding="4dp"
-                android:rowCount="4">
 
-                <include layout="@layout/layout_categories_income" />
 
-            </GridLayout>
+                <include layout="@layout/layout_categories_expense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+
         </androidx.cardview.widget.CardView>
 
         <LinearLayout

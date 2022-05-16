@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.fipp.R
-import com.fipp.RegisterNewIncomeCategoryActivity
 import com.fipp.databinding.FragmentIncomeCategoriesBinding
 import com.fipp.model.Category
 
