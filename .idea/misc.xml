@@ -59,14 +59,10 @@
         <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.258" />
         <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.258" />
         <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.258" />
-        <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/drawable/ic_subcategory_01.xml" value="0.2275" />
         <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/drawable/tab_color_selector.xml" value="0.2075" />
         <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/drawable/tab_color_selector_period.xml" value="0.2075" />
         <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/drawable/tab_text.xml" value="0.2075" />
         <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/font/roboto_family.xml" value="0.284375" />
-        <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/activity_categories2_view.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/activity_categories_view.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/activity_chart.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/activity_create_account.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/activity_expenses_statistics.xml" value="0.184375" />
         <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/activity_income_categories.xml" value="0.184375" />
@@ -74,12 +70,10 @@
         <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/activity_login.xml" value="0.4" />
         <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/activity_progress_indicator.xml" value="0.1609375" />
-        <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/activity_register_expense.xml" value="0.264" />
-        <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/activity_register_income.xml" value="0.264" />
-        <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/activity_register_new_expenses_category.xml" value="0.264" />
-        <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/activity_register_new_income_category.xml" value="0.264" />
-        <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/activity_subcategory.xml" value="0.264" />
-        <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/content_subcategory.xml" value="0.24010416666666667" />
+        <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/activity_register_expense.xml" value="0.1609375" />
+        <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/activity_register_income.xml" value="0.1609375" />
+        <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/activity_register_new_expenses_category.xml" value="0.1609375" />
+        <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/activity_register_new_income_category.xml" value="0.1609375" />
         <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/expenses_fragment.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/fragment_dashboard.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/fragment_expenses.xml" value="0.25416666666666665" />
@@ -106,13 +100,11 @@
         <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/fragment_notifications.xml" value="0.264" />
         <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/fragment_test.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/ingresos_fragment.xml" value="0.21927083333333333" />
-        <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/layout_categories_expense.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/layout_categories_income.xml" value="0.264" />
-        <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/layout_subcategory.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/top_bar_period.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/layout/top_tab_layout.xml" value="0.4" />
         <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/paulb/AndroidStudioProjects/Fipp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.258" />
+        <entry key="app/src/main/res/layout/activity_chart.xml" value="0.28703703703703703" />
         <entry key="app/src/main/res/layout/activity_create_account.xml" value="0.3578125" />
         <entry key="app/src/main/res/layout/activity_expenses_statistics.xml" value="0.3578125" />
         <entry key="app/src/main/res/layout/activity_income_statistics.xml" value="0.21" />
@@ -120,8 +112,10 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3578125" />
         <entry key="app/src/main/res/layout/activity_main2.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.3578125" />
+        <entry key="app/src/main/res/layout/fragment_expenses_balance.xml" value="0.28703703703703703" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.3578125" />
         <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.3578125" />
+        <entry key="app/src/main/res/layout/layout_categories_expense.xml" value="0.34923076923076923" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.3578125" />
       </map>
     </option>

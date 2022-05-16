@@ -1,21 +1,30 @@
 package com.fipp.ui.expenses
 
 import android.content.res.ColorStateList
+import android.os.Build
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import com.fipp.LineChartXAxisValueFormatter
 import com.fipp.R
 import com.fipp.databinding.ActivityChartBinding
 import com.fipp.databinding.FragmentExpensesBalanceBinding
+import com.fipp.model.Category
+import com.fipp.model.Expense
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
+import java.time.LocalDateTime
+import java.time.ZoneOffset
+import java.util.*
+
 
 class ExpensesBalanceFragment : Fragment() {
 
@@ -39,16 +48,13 @@ class ExpensesBalanceFragment : Fragment() {
         return root
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         loadProgressBar()
 
         setLineChart()
 
 
-//        val textView: TextView = binding.textHome
-//        homeViewModel.text.observe(viewLifecycleOwner) {
-//            textView.text = it
-//        }
     }
 
     private fun loadProgressBar() {
@@ -62,6 +68,7 @@ class ExpensesBalanceFragment : Fragment() {
     /**
      *
      */
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun setLineChart(){
         val lineChartBinding: ActivityChartBinding = binding.lineChart
         var lineChart: LineChart = lineChartBinding.lineChart
@@ -82,24 +89,31 @@ class ExpensesBalanceFragment : Fragment() {
         y.setLabelCount(5, true)
 
 
-        val entries = ArrayList<Entry>()
-        val entries2 = ArrayList<Entry>()
-        val entries3 = ArrayList<Entry>()
 
-        entries.add(Entry(1f, 4000f))
-        entries.add(Entry(2f, 8000f))
-        entries.add(Entry(3f, 15000f))
-        entries.add(Entry(4f, 16000f))
 
-        entries2.add(Entry(1f, 5000f))
-        entries2.add(Entry(2f, 7000f))
-        entries2.add(Entry(3f, 13000f))
-        entries2.add(Entry(4f, 18000f))
+        val expenses: ArrayList<Expense> = ArrayList()
+        val expenses2: ArrayList<Expense> = ArrayList()
 
-        entries3.add(Entry(1f, 1000f))
-        entries3.add(Entry(2f, 6000f))
-        entries3.add(Entry(3f, 11000f))
-        entries3.add(Entry(4f, 14000f))
+        val category = Category("Miau", "miau", 1)
+
+        val date = LocalDateTime.of(2022,5,5, 0, 0)
+        val date2 = LocalDateTime.of(2022,5,15, 0, 0)
+        val date3 = LocalDateTime.of(2022,5,20, 0, 0)
+        val date4 = LocalDateTime.of(2022,5,22, 0, 0)
+
+        expenses.add(Expense("500.0", date, category))
+        expenses.add(Expense("600.0", date2, category))
+        expenses.add(Expense("400.0", date3, category))
+        expenses.add(Expense("800.0", date4, category))
+
+        val entries = loadChartData(expenses)
+
+        expenses2.add(Expense("570.0", date, category))
+        expenses2.add(Expense("800.0", date2, category))
+        expenses2.add(Expense("450.0", date3, category))
+        expenses2.add(Expense("160.0", date4, category))
+
+        val entries2 = loadChartData(expenses2)
 
 
         val green = ContextCompat.getColor(requireActivity(), R.color.rojo)
@@ -118,23 +132,25 @@ class ExpensesBalanceFragment : Fragment() {
         lineDataSet2.lineWidth = 5f
         lineDataSet2.setDrawCircles(false);
         lineDataSet2.setDrawValues(false);
-
-
-        val lineDataSet3 = LineDataSet(entries3, "PRESUPUESTO")
-        lineDataSet3.color = gris
-        lineDataSet3.lineWidth = 5f
-        lineDataSet3.setDrawCircles(false);
-        lineDataSet3.setDrawValues(false);
+//
+//
+//        val lineDataSet3 = LineDataSet(entries3, "PRESUPUESTO")
+//        lineDataSet3.color = gris
+//        lineDataSet3.lineWidth = 5f
+//        lineDataSet3.setDrawCircles(false);
+//        lineDataSet3.setDrawValues(false);
 
 
         lineChart.xAxis.labelRotationAngle = 0f
 
+        lineChart.xAxis.valueFormatter = LineChartXAxisValueFormatter()
+
         val dataSet = ArrayList<ILineDataSet>()
         dataSet.add(lineDataSet)
         dataSet.add(lineDataSet2)
-        dataSet.add(lineDataSet3)
+//        dataSet.add(lineDataSet3)
 
-        var data = LineData(dataSet)
+        val data = LineData(dataSet)
 
         lineChart.data = data
 
@@ -144,6 +160,21 @@ class ExpensesBalanceFragment : Fragment() {
 
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun loadChartData(data: ArrayList<Expense>): ArrayList<Entry> {
+        val entries = ArrayList<Entry>()
+
+        for (item in data) {
+            val x: Float = item.createdAt.atZone(ZoneOffset.UTC).toEpochSecond().toFloat()
+            val y: Float = item.amount.toFloat()
+            entries.add(Entry(x, y))
+        }
+        return entries
+    }
+
+    private fun loadTableChart(data: ArrayList<Expense>){
+
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

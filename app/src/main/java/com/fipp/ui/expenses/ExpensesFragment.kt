@@ -24,8 +24,6 @@ class ExpensesFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-//        val expensesViewModel =
-//            ViewModelProvider(this).get(ExpensesViewModel::class.java)
 
         _binding = FragmentExpensesBinding.inflate(inflater, container, false)
         val root: View = binding.root

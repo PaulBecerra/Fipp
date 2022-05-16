@@ -1,4 +1,5 @@
 package com.fipp.model
 
-class Income {
-}
+import java.util.*
+
+class Income (val amount: String, val createdAt: Date, val category: Category)
