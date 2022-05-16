@@ -1,11 +1,17 @@
 package com.fipp.ui.expenses
 
 import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.transition.Scene
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TableLayout
+import android.widget.TableRow
+import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -21,6 +27,7 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
+import java.text.DateFormat
 import java.time.LocalDateTime
 import java.time.ZoneOffset
 import java.util.*
@@ -106,6 +113,8 @@ class ExpensesBalanceFragment : Fragment() {
         expenses.add(Expense("400.0", date3, category))
         expenses.add(Expense("800.0", date4, category))
 
+        loadTableChart(expenses)
+
         val entries = loadChartData(expenses)
 
         expenses2.add(Expense("570.0", date, category))
@@ -172,7 +181,51 @@ class ExpensesBalanceFragment : Fragment() {
         return entries
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun loadTableChart(data: ArrayList<Expense>){
+        val dateTimeFormat = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.getDefault())
+        val table = binding.tableLayout
+
+        for (item in data){
+            val row = TableRow(requireActivity())
+            // Add padding to the row
+            row.setPadding(10, 10, 10, 10)
+            val textView = TextView(requireActivity())
+            val emissionsMilliSince1970Time = item.createdAt.atZone(ZoneOffset.UTC).toEpochSecond() * 1000
+            val timeMilliseconds = Date(emissionsMilliSince1970Time)
+            val date = dateTimeFormat.format(timeMilliseconds)
+            textView.text = date
+            textView.gravity = Gravity.CENTER
+            // Set weight for column
+            textView.layoutParams = TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f)
+            // set widht as wrap content
+            textView.setTextColor(Color.BLACK)
+            textView.setBackgroundColor(Color.WHITE)
+            row.addView(textView)
+
+            val textView2 = TextView(requireActivity())
+            textView2.text = item.category.categoryName
+            textView2.gravity = Gravity.CENTER
+            // Set weight for column
+            textView2.layoutParams = TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f)
+            // set widht as wrap content
+            textView2.setTextColor(Color.BLACK)
+            textView2.setBackgroundColor(Color.WHITE)
+            row.addView(textView2)
+
+            val textView3 = TextView(requireActivity())
+            textView3.text = item.amount
+            textView3.gravity = Gravity.CENTER
+            // Set weight for column
+            textView3.layoutParams = TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f)
+            // set widht as wrap content
+            textView3.setTextColor(Color.BLACK)
+            textView3.setBackgroundColor(Color.WHITE)
+            row.addView(textView3)
+
+
+            table.addView(row)
+        }
 
     }
 
