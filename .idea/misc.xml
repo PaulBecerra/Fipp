@@ -116,9 +116,15 @@
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.3578125" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3578125" />
         <entry key="app/src/main/res/layout/activity_main2.xml" value="0.14444444444444443" />
+        <entry key="app/src/main/res/layout/activity_register_income.xml" value="0.3546875" />
+        <entry key="app/src/main/res/layout/activity_register_new_expenses_category.xml" value="0.3546875" />
+        <entry key="app/src/main/res/layout/activity_register_new_income_category.xml" value="0.3546875" />
+        <entry key="app/src/main/res/layout/activity_register_new_income_subcategory.xml" value="0.3546875" />
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.3578125" />
+        <entry key="app/src/main/res/layout/fragment_expenses.xml" value="0.34923076923076923" />
         <entry key="app/src/main/res/layout/fragment_expenses_balance.xml" value="0.28703703703703703" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.3578125" />
+        <entry key="app/src/main/res/layout/fragment_income_balance.xml" value="0.28703703703703703" />
         <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.3578125" />
         <entry key="app/src/main/res/layout/layout_categories_expense.xml" value="0.34923076923076923" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.3578125" />
