@@ -1,25 +1,31 @@
-package com.fipp.ui.dashboard
+package com.fipp.ui.home
 
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.Typeface
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.fipp.R
 import com.fipp.ui.expenses.RegisterExpenseActivity
 import com.fipp.ui.income.RegisterIncomeActivity
 import com.fipp.databinding.FragmentDashboardBinding
+import com.fipp.model.Category
+import com.fipp.model.Expense
+import com.fipp.model.Income
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.PercentFormatter
+import java.time.LocalDateTime
 
 
 class DashboardFragment : Fragment() {
@@ -29,6 +35,10 @@ class DashboardFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    private var expenses = java.util.ArrayList<Expense>()
+    private var income = java.util.ArrayList<Income>()
+    private var budget = 0.0
+    private var totalExpense = 0.0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,11 +52,38 @@ class DashboardFragment : Fragment() {
         return root
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val category = Category("Miau", "miau", 1)
+
+        val date = LocalDateTime.of(2022,5,5, 0, 0)
+        val date2 = LocalDateTime.of(2022,5,15, 0, 0)
+        val date3 = LocalDateTime.of(2022,5,20, 0, 0)
+        val date4 = LocalDateTime.of(2022,5,22, 0, 0)
+
+        expenses.add(Expense("500.0", date, category))
+        expenses.add(Expense("600.0", date2, category))
+        expenses.add(Expense("400.0", date3, category))
+        expenses.add(Expense("800.0", date4, category))
+
+
+        income.add(Income("500.0", date, category))
+        income.add(Income("1000.0", date2, category))
+        income.add(Income("2500.0", date4, category))
+
+        for (money in income) {
+            budget += money.amount.toFloat()
+        }
+
+        for (expense in expenses){
+            totalExpense += expense.amount.toFloat()
+        }
+
+
         loadProgressBar()
 
-        setHalfPieChart()
-        setHalfPieChart2()
+        setHalfPieChartIncome()
+        setHalfPieChartExpenses()
 
         val botonIncomes: View = binding.buttonIncomesHome
         val botonExpense: View = binding.buttonExpenseHome
@@ -68,17 +105,24 @@ class DashboardFragment : Fragment() {
     }
 
     private fun loadProgressBar() {
-        val progressBar = binding.progressBar1
-        progressBar.visibility = View.VISIBLE
-        progressBar.progressTintList =
+        val progressBarIncome = binding.progressBar1
+        progressBarIncome.visibility = View.VISIBLE
+
+        var progress =  (totalExpense * 100 ) / budget
+
+        progressBarIncome.progress = 100 - progress.toInt()
+
+        progressBarIncome.progressTintList =
             ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.verde_principal))
 
-        val progressBar2 = binding.progressBar2
-        progressBar2.visibility = View.VISIBLE
-        progressBar2.progressTintList = ColorStateList.valueOf(ContextCompat.getColor(requireActivity(), R.color.rojo))
+        val progressBarExpenses = binding.progressBar2
+        progressBarExpenses.visibility = View.VISIBLE
+        progressBarExpenses.progress = progress.toInt()
+        progressBarExpenses.progressTintList =
+            ColorStateList.valueOf(ContextCompat.getColor(requireActivity(), R.color.rojo))
     }
 
-    private fun setHalfPieChart(){
+    private fun setHalfPieChartIncome(){
         val pieChart: PieChart = binding.pieChart
 
         pieChart.setUsePercentValues(true)
@@ -141,7 +185,7 @@ class DashboardFragment : Fragment() {
 
     }
     
-    private fun setHalfPieChart2(){
+    private fun setHalfPieChartExpenses(){
         val pieChart: PieChart = binding.pieChart2
 
         pieChart.setUsePercentValues(true)

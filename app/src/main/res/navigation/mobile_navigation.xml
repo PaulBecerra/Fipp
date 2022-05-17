@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.fipp.ui.dashboard.DashboardFragment"
+        android:name="com.fipp.ui.home.DashboardFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_dashboard" />
 

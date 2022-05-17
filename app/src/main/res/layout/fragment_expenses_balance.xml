@@ -49,17 +49,6 @@
             android:maxLines="1"
             app:drawableLeftCompat="@drawable/circle_red" />
         <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:textSize="15sp"
-            android:text="@string/statistics_gap"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:drawablePadding="5dp"
-            android:maxLines="1"
-            app:drawableLeftCompat="@drawable/circle_red_dark" />
-        <TextView
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

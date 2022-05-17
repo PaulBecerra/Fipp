@@ -67,7 +67,7 @@ class IncomeBalanceFragment : Fragment() {
 
 
         income.add(Income("500.0", date, category))
-        income.add(Income("2000.0", date2, category))
+        income.add(Income("1000.0", date2, category))
         income.add(Income("2500.0", date4, category))
 
         for (money in income) {
@@ -102,7 +102,9 @@ class IncomeBalanceFragment : Fragment() {
             expenses += expense.amount.toFloat()
         }
         // set progress
-        val progress =  (expenses * 100 ) / budget
+        var progress =  (expenses * 100 ) / budget
+
+        progress = 100 - progress
         progressBar.progress = progress.toInt()
 
         progressBar.progressTintList = ColorStateList.valueOf(ContextCompat.getColor(requireActivity(), R.color.verde_principal))
@@ -167,7 +169,7 @@ class IncomeBalanceFragment : Fragment() {
     private fun loadChartData(): java.util.ArrayList<Entry> {
         val entries = java.util.ArrayList<Entry>()
 
-        for (item in expenses) {
+        for (item in income) {
             val x: Float = item.createdAt.atZone(ZoneOffset.UTC).toEpochSecond().toFloat()
             val y: Float = item.amount.toFloat()
             entries.add(Entry(x, y))
@@ -180,7 +182,7 @@ class IncomeBalanceFragment : Fragment() {
         val dateTimeFormat = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.getDefault())
         val table = binding.tableLayout
 
-        for (item in expenses) {
+        for (item in income) {
             val row = TableRow(requireActivity())
             // Add padding to the row
             row.setPadding(10, 10, 10, 10)
