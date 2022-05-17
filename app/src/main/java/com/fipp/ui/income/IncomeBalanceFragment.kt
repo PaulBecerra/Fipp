@@ -6,22 +6,37 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.drawable.AnimationDrawable
 import android.graphics.drawable.GradientDrawable
+import android.os.Build
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
+import android.widget.TableRow
+import android.widget.TextView
+import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.fipp.R
 import com.fipp.databinding.ActivityChartBinding
 import com.fipp.databinding.FragmentIncomeBalanceBinding
+import com.fipp.formatters.LineChartXAxisValueFormatter
+import com.fipp.model.Category
+import com.fipp.model.Expense
+import com.fipp.model.Income
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
+import java.text.DateFormat
+import java.time.LocalDateTime
+import java.time.ZoneOffset
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class IncomeBalanceFragment : Fragment() {
@@ -31,9 +46,33 @@ class IncomeBalanceFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    private var expenses = java.util.ArrayList<Expense>()
+    private var income = java.util.ArrayList<Income>()
+    private var budget = 0.0
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val category = Category("Miau", "miau", 1)
+        val date = LocalDateTime.of(2022,5,5, 0, 0)
+        val date2 = LocalDateTime.of(2022,5,15, 0, 0)
+        val date3 = LocalDateTime.of(2022,5,20, 0, 0)
+        val date4 = LocalDateTime.of(2022,5,22, 0, 0)
+
+        expenses.add(Expense("500.0", date, category))
+        expenses.add(Expense("600.0", date2, category))
+        expenses.add(Expense("400.0", date3, category))
+        expenses.add(Expense("800.0", date4, category))
+
+
+        income.add(Income("500.0", date, category))
+        income.add(Income("2000.0", date2, category))
+        income.add(Income("2500.0", date4, category))
+
+        for (money in income) {
+            budget += money.amount.toFloat()
+        }
     }
 
     override fun onCreateView(
@@ -57,6 +96,14 @@ class IncomeBalanceFragment : Fragment() {
         val progressBar = binding.progressBar
 
         progressBar.visibility = View.VISIBLE
+
+        var expenses = 0.0
+        for (expense in this.expenses) {
+            expenses += expense.amount.toFloat()
+        }
+        // set progress
+        val progress =  (expenses * 100 ) / budget
+        progressBar.progress = progress.toInt()
 
         progressBar.progressTintList = ColorStateList.valueOf(ContextCompat.getColor(requireActivity(), R.color.verde_principal))
 
@@ -86,30 +133,11 @@ class IncomeBalanceFragment : Fragment() {
         // Set label count y axis to 5
         y.setLabelCount(5, true)
 
+        loadTableChart()
 
-        val entries = ArrayList<Entry>()
-        val entries2 = ArrayList<Entry>()
-        val entries3 = ArrayList<Entry>()
-
-        entries.add(Entry(1f, 4000f))
-        entries.add(Entry(2f, 8000f))
-        entries.add(Entry(3f, 15000f))
-        entries.add(Entry(4f, 16000f))
-
-        entries2.add(Entry(1f, 5000f))
-        entries2.add(Entry(2f, 7000f))
-        entries2.add(Entry(3f, 13000f))
-        entries2.add(Entry(4f, 18000f))
-
-        entries3.add(Entry(1f, 1000f))
-        entries3.add(Entry(2f, 6000f))
-        entries3.add(Entry(3f, 11000f))
-        entries3.add(Entry(4f, 14000f))
-
+        val entries = loadChartData()
 
         val green = ContextCompat.getColor(requireActivity(), R.color.verde_principal)
-        val darkGreen = ContextCompat.getColor(requireActivity(), R.color.verde_obscuro)
-        val gris = ContextCompat.getColor(requireActivity(), R.color.gris)
         // First line
         val lineDataSet = LineDataSet(entries, "ACTUAL")
         lineDataSet.color = green
@@ -118,26 +146,12 @@ class IncomeBalanceFragment : Fragment() {
         lineDataSet.setDrawValues(false);
 
 
-        val lineDataSet2 = LineDataSet(entries2, "DEFASE")
-        lineDataSet2.color = darkGreen
-        lineDataSet2.lineWidth = 5f
-        lineDataSet2.setDrawCircles(false);
-        lineDataSet2.setDrawValues(false);
-
-
-        val lineDataSet3 = LineDataSet(entries3, "PRESUPUESTO")
-        lineDataSet3.color = gris
-        lineDataSet3.lineWidth = 5f
-        lineDataSet3.setDrawCircles(false);
-        lineDataSet3.setDrawValues(false);
-
 
         lineChart.xAxis.labelRotationAngle = 0f
+        lineChart.xAxis.valueFormatter = LineChartXAxisValueFormatter()
 
         val dataSet = ArrayList<ILineDataSet>()
         dataSet.add(lineDataSet)
-        dataSet.add(lineDataSet2)
-        dataSet.add(lineDataSet3)
 
         var data = LineData(dataSet)
 
@@ -147,6 +161,66 @@ class IncomeBalanceFragment : Fragment() {
         lineChart.description.text = ""
         lineChart.setNoDataText("No forex yet!")
 
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun loadChartData(): java.util.ArrayList<Entry> {
+        val entries = java.util.ArrayList<Entry>()
+
+        for (item in expenses) {
+            val x: Float = item.createdAt.atZone(ZoneOffset.UTC).toEpochSecond().toFloat()
+            val y: Float = item.amount.toFloat()
+            entries.add(Entry(x, y))
+        }
+        return entries
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun loadTableChart(){
+        val dateTimeFormat = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.getDefault())
+        val table = binding.tableLayout
+
+        for (item in expenses) {
+            val row = TableRow(requireActivity())
+            // Add padding to the row
+            row.setPadding(10, 10, 10, 10)
+            // Set background to transparent
+            row.setBackgroundColor(Color.TRANSPARENT)
+
+
+            val textView = TextView(requireActivity())
+            val emissionsMilliSince1970Time = item.createdAt.atZone(ZoneOffset.UTC).toEpochSecond() * 1000
+            val timeMilliseconds = Date(emissionsMilliSince1970Time)
+            val date = dateTimeFormat.format(timeMilliseconds)
+            textView.text = date
+            textView.gravity = Gravity.CENTER
+            textView.layoutParams = TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f)
+            row.addView(textView)
+
+            val textView2 = TextView(requireActivity())
+            textView2.text = item.category.categoryName
+            textView2.gravity = Gravity.CENTER
+            textView2.layoutParams = TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f)
+            row.addView(textView2)
+
+            val textView3 = TextView(requireActivity())
+            textView3.text = item.amount
+            textView3.gravity = Gravity.CENTER
+            textView3.layoutParams = TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f)
+            row.addView(textView3)
+
+
+            table.addView(row)
+        }
+
+    }
+
+    fun setExpensesList(expenses: java.util.ArrayList<Expense>) {
+        this.expenses = expenses
+    }
+
+    fun setIncomeList(income: java.util.ArrayList<Income>) {
+        this.income = income
     }
 
 

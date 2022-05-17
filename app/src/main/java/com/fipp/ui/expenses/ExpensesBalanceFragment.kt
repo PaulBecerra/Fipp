@@ -101,8 +101,6 @@ class ExpensesBalanceFragment : Fragment() {
         val progress =  (expenses * 100 ) / budget
         progressBar.progress = progress.toInt()
 
-        Toast.makeText(binding.root.context, "Progress: $progress", Toast.LENGTH_SHORT).show()
-
 
         progressBar.progressTintList = ColorStateList.valueOf(ContextCompat.getColor(requireActivity(), R.color.rojo))
     }
@@ -134,31 +132,13 @@ class ExpensesBalanceFragment : Fragment() {
 
         val entries = loadChartData()
 
-//        expenses2.add(Expense("570.0", date, category))
-//        expenses2.add(Expense("800.0", date2, category))
-//        expenses2.add(Expense("450.0", date3, category))
-//        expenses2.add(Expense("160.0", date4, category))
-
-//        val entries2 = loadChartData()
-//
-//
         val green = ContextCompat.getColor(requireActivity(), R.color.rojo)
-//        val darkGreen = ContextCompat.getColor(requireActivity(), R.color.rojo_obscuro)
-//        val gris = ContextCompat.getColor(requireActivity(), R.color.gris)
         // First line
         val lineDataSet = LineDataSet(entries, "ACTUAL")
         lineDataSet.color = green
         lineDataSet.lineWidth = 5f
         lineDataSet.setDrawCircles(false);
         lineDataSet.setDrawValues(false);
-//
-//
-//        val lineDataSet2 = LineDataSet(entries2, "DEFASE")
-//        lineDataSet2.color = darkGreen
-//        lineDataSet2.lineWidth = 5f
-//        lineDataSet2.setDrawCircles(false);
-//        lineDataSet2.setDrawValues(false);
-;
 
 
         lineChart.xAxis.labelRotationAngle = 0f
@@ -167,7 +147,6 @@ class ExpensesBalanceFragment : Fragment() {
 
         val dataSet = ArrayList<ILineDataSet>()
         dataSet.add(lineDataSet)
-//        dataSet.add(lineDataSet2)
 
         val data = LineData(dataSet)
 
