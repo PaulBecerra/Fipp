@@ -1,4 +1,4 @@
-package com.fipp
+package com.fipp.formatters
 
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import java.text.DateFormat
