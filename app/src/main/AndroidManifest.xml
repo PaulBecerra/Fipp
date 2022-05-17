@@ -24,7 +24,7 @@
             android:name=".ui.expenses.RegisterExpenseActivity"
             android:exported="false" />
         <activity
-            android:name=".RegisterNewExpensesCategoryActivity"
+            android:name=".ui.expenses.RegisterNewExpensesCategoryActivity"
             android:exported="false" />
         <activity
             android:name=".ui.income.RegisterNewIncomeCategoryActivity"

@@ -9,7 +9,7 @@
     tools:context=".ui.income.RegisterNewIncomeSubcategoryActivity">
 
     <ImageButton
-        android:id="@+id/btn_new_income_subcategory_close"
+        android:id="@+id/btn_new_expenses_subcategory_close"
         android:layout_width="51dp"
         android:layout_height="38dp"
         android:background="@color/morado"
@@ -33,7 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_regular"
-                android:text="@string/income_add_categories_title_1"
+                android:text="@string/outcome_categories_title_1"
                 android:textColor="@color/gris_oscuro"
                 android:textSize="18sp" />
 
