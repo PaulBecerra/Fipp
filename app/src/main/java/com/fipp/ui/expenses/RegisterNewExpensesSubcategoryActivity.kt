@@ -2,6 +2,7 @@ package com.fipp.ui.expenses
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageButton
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.fipp.R
@@ -9,7 +10,6 @@ import com.fipp.model.Category
 import com.fipp.model.Subcategory
 
 class RegisterNewExpensesSubcategoryActivity : AppCompatActivity() {
-
     private var categoryList: ArrayList<Subcategory> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,11 +20,17 @@ class RegisterNewExpensesSubcategoryActivity : AppCompatActivity() {
 
         val adapter = SubcategoryExpensesAdapter(categoryList)
 
-        val recyclerView: RecyclerView = findViewById(R.id.recyclerViewSubcategory)
+        val recyclerView: RecyclerView = findViewById(R.id.recyclerViewSubcategoryExpenses)
 
         val grid = GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false)
         recyclerView.layoutManager = grid
         recyclerView.adapter = adapter
+
+        val btn_close: ImageButton = findViewById(R.id.btn_new_expenses_subcategory_close)
+
+        btn_close.setOnClickListener{
+            finish()
+        }
     }
 
     private fun getExpensesSubCategoriesByUser(){

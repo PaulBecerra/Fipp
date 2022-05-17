@@ -44,7 +44,7 @@
             app:cardCornerRadius="20dp">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewCategory"
+                android:id="@+id/recyclerViewExpensesCategory"
                 android:layout_width="match_parent"
                 android:layout_height="250dp" />
 

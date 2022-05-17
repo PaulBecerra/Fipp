@@ -2,6 +2,7 @@ package com.fipp.ui.income
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageButton
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.fipp.R
@@ -20,11 +21,17 @@ class RegisterNewIncomeSubcategoryActivity : AppCompatActivity() {
 
         val adapter = SubcategoryIncomeAdapter(categoryList)
 
-        val recyclerView: RecyclerView = findViewById(R.id.recyclerViewSubcategory)
+        val recyclerView: RecyclerView = findViewById(R.id.recyclerViewSubcategoryIncome)
 
         val grid = GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false)
         recyclerView.layoutManager = grid
         recyclerView.adapter = adapter
+
+        val btn_close: ImageButton = findViewById(R.id.btn_new_income_subcategory_close)
+
+        btn_close.setOnClickListener{
+            finish()
+        }
     }
 
     private fun getIncomeSubCategoriesByUser(){

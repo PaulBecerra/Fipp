@@ -52,9 +52,9 @@ class ExpensesCategoriesFragment : Fragment() {
 
         val adapter = CategoryExpenseAdapter(categoryList)
 
-        val recyclerView = binding.recyclerViewCategory
+        val recyclerView = binding.recyclerViewExpensesCategory
 
-        val grid: GridLayoutManager = GridLayoutManager(activity, 2, GridLayoutManager.VERTICAL, false)
+        val grid = GridLayoutManager(activity, 2, GridLayoutManager.VERTICAL, false)
         recyclerView.layoutManager = grid
         recyclerView.adapter = adapter
     }
