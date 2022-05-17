@@ -6,7 +6,7 @@
     android:scrollbarAlwaysDrawVerticalTrack="true"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".RegisterNewExpensesCategoryActivity">
+    tools:context=".ui.expenses.RegisterNewExpensesCategoryActivity">
 
     <ImageButton
         android:id="@+id/btn_new_expense_category_close"
