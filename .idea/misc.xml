@@ -26,6 +26,7 @@
         <entry key="..\:/Users/Mortis/Documents/GitHub/Fipp/app/src/main/res/layout/activity_register_income.xml" value="0.33" />
         <entry key="..\:/Users/Mortis/Documents/GitHub/Fipp/app/src/main/res/layout/activity_register_new_expenses_category.xml" value="0.18854166666666666" />
         <entry key="..\:/Users/Mortis/Documents/GitHub/Fipp/app/src/main/res/layout/activity_register_new_income_category.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Mortis/Documents/GitHub/Fipp/app/src/main/res/layout/activity_register_new_income_subcategory.xml" value="0.2536231884057971" />
         <entry key="..\:/Users/Mortis/Documents/GitHub/Fipp/app/src/main/res/layout/fragment_dashboard.xml" value="0.33" />
         <entry key="..\:/Users/Mortis/Documents/GitHub/Fipp/app/src/main/res/layout/fragment_expenses.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Mortis/Documents/GitHub/Fipp/app/src/main/res/layout/fragment_expenses_balance.xml" value="0.36666666666666664" />
@@ -35,6 +36,7 @@
         <entry key="..\:/Users/Mortis/Documents/GitHub/Fipp/app/src/main/res/layout/fragment_income.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Mortis/Documents/GitHub/Fipp/app/src/main/res/layout/fragment_income_balance.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Mortis/Documents/GitHub/Fipp/app/src/main/res/layout/fragment_income_categories.xml" value="0.2717391304347826" />
+        <entry key="..\:/Users/Mortis/Documents/GitHub/Fipp/app/src/main/res/layout/fragment_income_set.xml" value="0.2536231884057971" />
         <entry key="..\:/Users/Mortis/Documents/GitHub/Fipp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/mavel/OneDrive/Documentos/GitHub/Fipp/app/src/main/res/drawable/background_categories.xml" value="0.1035" />
         <entry key="..\:/Users/mavel/OneDrive/Documentos/GitHub/Fipp/app/src/main/res/drawable/ic_baseline_receipt_24.xml" value="0.159" />
