@@ -4,23 +4,23 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
-import android.transition.Scene
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TableLayout
 import android.widget.TableRow
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import com.fipp.LineChartXAxisValueFormatter
+import com.fipp.formatters.LineChartXAxisValueFormatter
 import com.fipp.R
 import com.fipp.databinding.ActivityChartBinding
 import com.fipp.databinding.FragmentExpensesBalanceBinding
 import com.fipp.model.Category
 import com.fipp.model.Expense
+import com.fipp.model.Income
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
@@ -36,13 +36,39 @@ import java.util.*
 class ExpensesBalanceFragment : Fragment() {
 
     private var _binding: FragmentExpensesBalanceBinding? = null
+    private var expenses = ArrayList<Expense>()
+    private var income = ArrayList<Income>()
+    private var budget = 0.0
 
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
+        val category = Category("Miau", "miau", 1)
+
+        val date = LocalDateTime.of(2022,5,5, 0, 0)
+        val date2 = LocalDateTime.of(2022,5,15, 0, 0)
+        val date3 = LocalDateTime.of(2022,5,20, 0, 0)
+        val date4 = LocalDateTime.of(2022,5,22, 0, 0)
+
+        expenses.add(Expense("500.0", date, category))
+        expenses.add(Expense("600.0", date2, category))
+        expenses.add(Expense("400.0", date3, category))
+        expenses.add(Expense("800.0", date4, category))
+
+
+        income.add(Income("500.0", date, category))
+        income.add(Income("1000.0", date2, category))
+        income.add(Income("2500.0", date4, category))
+
+        for (money in income) {
+            budget += money.amount.toFloat()
+        }
     }
 
     override fun onCreateView(
@@ -60,14 +86,23 @@ class ExpensesBalanceFragment : Fragment() {
         loadProgressBar()
 
         setLineChart()
-
-
     }
 
     private fun loadProgressBar() {
         val progressBar = binding.progressBar
 
         progressBar.visibility = View.VISIBLE
+
+        var expenses = 0.0
+        for (expense in this.expenses) {
+            expenses += expense.amount.toFloat()
+        }
+        // set progress
+        val progress =  (expenses * 100 ) / budget
+        progressBar.progress = progress.toInt()
+
+        Toast.makeText(binding.root.context, "Progress: $progress", Toast.LENGTH_SHORT).show()
+
 
         progressBar.progressTintList = ColorStateList.valueOf(ContextCompat.getColor(requireActivity(), R.color.rojo))
     }
@@ -95,59 +130,35 @@ class ExpensesBalanceFragment : Fragment() {
         // Set label count y axis to 5
         y.setLabelCount(5, true)
 
+        loadTableChart()
 
+        val entries = loadChartData()
 
+//        expenses2.add(Expense("570.0", date, category))
+//        expenses2.add(Expense("800.0", date2, category))
+//        expenses2.add(Expense("450.0", date3, category))
+//        expenses2.add(Expense("160.0", date4, category))
 
-        val expenses: ArrayList<Expense> = ArrayList()
-        val expenses2: ArrayList<Expense> = ArrayList()
-
-        val category = Category("Miau", "miau", 1)
-
-        val date = LocalDateTime.of(2022,5,5, 0, 0)
-        val date2 = LocalDateTime.of(2022,5,15, 0, 0)
-        val date3 = LocalDateTime.of(2022,5,20, 0, 0)
-        val date4 = LocalDateTime.of(2022,5,22, 0, 0)
-
-        expenses.add(Expense("500.0", date, category))
-        expenses.add(Expense("600.0", date2, category))
-        expenses.add(Expense("400.0", date3, category))
-        expenses.add(Expense("800.0", date4, category))
-
-        loadTableChart(expenses)
-
-        val entries = loadChartData(expenses)
-
-        expenses2.add(Expense("570.0", date, category))
-        expenses2.add(Expense("800.0", date2, category))
-        expenses2.add(Expense("450.0", date3, category))
-        expenses2.add(Expense("160.0", date4, category))
-
-        val entries2 = loadChartData(expenses2)
-
-
+//        val entries2 = loadChartData()
+//
+//
         val green = ContextCompat.getColor(requireActivity(), R.color.rojo)
-        val darkGreen = ContextCompat.getColor(requireActivity(), R.color.rojo_obscuro)
-        val gris = ContextCompat.getColor(requireActivity(), R.color.gris)
+//        val darkGreen = ContextCompat.getColor(requireActivity(), R.color.rojo_obscuro)
+//        val gris = ContextCompat.getColor(requireActivity(), R.color.gris)
         // First line
         val lineDataSet = LineDataSet(entries, "ACTUAL")
         lineDataSet.color = green
         lineDataSet.lineWidth = 5f
         lineDataSet.setDrawCircles(false);
         lineDataSet.setDrawValues(false);
-
-
-        val lineDataSet2 = LineDataSet(entries2, "DEFASE")
-        lineDataSet2.color = darkGreen
-        lineDataSet2.lineWidth = 5f
-        lineDataSet2.setDrawCircles(false);
-        lineDataSet2.setDrawValues(false);
 //
 //
-//        val lineDataSet3 = LineDataSet(entries3, "PRESUPUESTO")
-//        lineDataSet3.color = gris
-//        lineDataSet3.lineWidth = 5f
-//        lineDataSet3.setDrawCircles(false);
-//        lineDataSet3.setDrawValues(false);
+//        val lineDataSet2 = LineDataSet(entries2, "DEFASE")
+//        lineDataSet2.color = darkGreen
+//        lineDataSet2.lineWidth = 5f
+//        lineDataSet2.setDrawCircles(false);
+//        lineDataSet2.setDrawValues(false);
+;
 
 
         lineChart.xAxis.labelRotationAngle = 0f
@@ -156,8 +167,7 @@ class ExpensesBalanceFragment : Fragment() {
 
         val dataSet = ArrayList<ILineDataSet>()
         dataSet.add(lineDataSet)
-        dataSet.add(lineDataSet2)
-//        dataSet.add(lineDataSet3)
+//        dataSet.add(lineDataSet2)
 
         val data = LineData(dataSet)
 
@@ -170,10 +180,10 @@ class ExpensesBalanceFragment : Fragment() {
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun loadChartData(data: ArrayList<Expense>): ArrayList<Entry> {
+    private fun loadChartData(): ArrayList<Entry> {
         val entries = ArrayList<Entry>()
 
-        for (item in data) {
+        for (item in expenses) {
             val x: Float = item.createdAt.atZone(ZoneOffset.UTC).toEpochSecond().toFloat()
             val y: Float = item.amount.toFloat()
             entries.add(Entry(x, y))
@@ -182,11 +192,11 @@ class ExpensesBalanceFragment : Fragment() {
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun loadTableChart(data: ArrayList<Expense>){
+    private fun loadTableChart(){
         val dateTimeFormat = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.getDefault())
         val table = binding.tableLayout
 
-        for (item in data){
+        for (item in expenses) {
             val row = TableRow(requireActivity())
             // Add padding to the row
             row.setPadding(10, 10, 10, 10)
@@ -219,6 +229,14 @@ class ExpensesBalanceFragment : Fragment() {
             table.addView(row)
         }
 
+    }
+
+    fun setExpensesList(expenses: ArrayList<Expense>) {
+        this.expenses = expenses
+    }
+
+    fun setIncomeList(income: ArrayList<Income>) {
+        this.income = income
     }
 
     override fun onDestroyView() {
