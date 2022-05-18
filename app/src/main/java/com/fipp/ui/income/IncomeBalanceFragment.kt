@@ -4,6 +4,7 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -56,6 +57,7 @@ class IncomeBalanceFragment : Fragment() {
     private var expenses = java.util.ArrayList<Expense>()
     private var income = java.util.ArrayList<Income>()
     private var budget = 0.0
+    private var totalExpense = 0.0
     private lateinit var expensesController: ExpenseController
     private lateinit var IncomeController: IncomeController
     private val db = FirebaseFirestore.getInstance()
@@ -193,7 +195,6 @@ class IncomeBalanceFragment : Fragment() {
             override fun onCallback(value: List<Income>) {
                 income = value as java.util.ArrayList<Income>
 
-
             }
 
         })
@@ -202,13 +203,11 @@ class IncomeBalanceFragment : Fragment() {
             override fun onCallback(value: List<Expense>) {
                 expenses = value as java.util.ArrayList<Expense>
 
-                for (i in income) {
-                    val x: Float = i.createdAt.atZone(ZoneOffset.UTC).toEpochSecond().toFloat()
-                    val y: Float = i.amount.toFloat()
-                    entries.add(Entry(x, y))
+                for(i in income){
+                    budget += i.amount.toFloat()
                 }
-                for (money in income) {
-                    budget += money.amount.toFloat()
+                for(i in expenses){
+                    totalExpense += i.amount.toFloat()
                 }
 
                 loadProgressBar()
@@ -295,6 +294,7 @@ class IncomeBalanceFragment : Fragment() {
 
         loadTableChart()
 
+        val entries = loadChartData()
 
         val red = ContextCompat.getColor(requireActivity(), R.color.verde_principal)
         // First line
@@ -328,6 +328,7 @@ class IncomeBalanceFragment : Fragment() {
         val entries = java.util.ArrayList<Entry>()
 
         for (item in income) {
+            Log.d("Income", item.toString())
             val x: Float = item.createdAt.atZone(ZoneOffset.UTC).toEpochSecond().toFloat()
             val y: Float = item.amount.toFloat()
             entries.add(Entry(x, y))
@@ -391,6 +392,21 @@ class IncomeBalanceFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onPause() {
+        super.onPause()
+        // Empty table
+        val table = binding.tableLayout
+        table.removeAllViews()
+
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    override fun onResume() {
+        super.onResume()
+        Log.d("ExpensesBalanceFragment", "onResume")
+        setLineChart()
     }
 }
 

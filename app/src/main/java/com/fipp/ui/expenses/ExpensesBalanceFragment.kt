@@ -210,8 +210,16 @@ class ExpensesBalanceFragment : Fragment() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        Log.d("ExpensesBalanceFragment", "onViewCreated")
         loadProgressBar()
 
+        setLineChart()
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    override fun onResume() {
+        super.onResume()
+        Log.d("ExpensesBalanceFragment", "onResume")
         setLineChart()
     }
 
@@ -258,9 +266,12 @@ class ExpensesBalanceFragment : Fragment() {
 
         loadTableChart()
 
+
         val entries = loadChartData()
 
-
+        for (entry in entries) {
+            Log.d("Entry", entry.toString())
+        }
         val red = ContextCompat.getColor(requireActivity(), R.color.rojo)
         // First line
         val lineDataSet = LineDataSet(entries, "ACTUAL")
@@ -352,7 +363,16 @@ class ExpensesBalanceFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        Log.d(TAG, "onDestroyView")
         _binding = null
+    }
+
+    override fun onPause() {
+        super.onPause()
+        // Empty table
+        val table = binding.tableLayout
+        table.removeAllViews()
+
     }
 }
 
