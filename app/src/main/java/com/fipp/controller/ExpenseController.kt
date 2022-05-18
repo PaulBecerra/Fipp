@@ -37,23 +37,27 @@ class ExpenseController(private var activity: Activity) {
 
         val startDate = LocalDateTime.of(year, month, 1, 0, 0)
         val endDate = LocalDateTime.of(year, month, daysInMonth, 0, 0)
-        Toast.makeText(activity, "Start: $startDate End: $endDate", Toast.LENGTH_LONG).show()
-        Toast.makeText(activity, "UserId: $userId", Toast.LENGTH_LONG).show()
+//        Toast.makeText(activity, "Start: $startDate End: $endDate", Toast.LENGTH_LONG).show()
+//        Toast.makeText(activity, "UserId: $userId", Toast.LENGTH_LONG).show()
         db.collection(collection).whereEqualTo("user", userId)
             .whereGreaterThanOrEqualTo("createdAt", startDate)
             .whereLessThanOrEqualTo("createdAt", endDate)
             .get()
             .addOnSuccessListener {
                 for (document in it) {
+                    println(document.id + " => " + document.data)
+
+                    val createdAt = document.data["createdAt"] as Map<*, *>
+                    val date = createdAt["dayOfMonth"] as Long
+                    val month = createdAt["monthValue"] as Long
+                    val year = createdAt["year"] as Long
                     val expense = Expense(
                         document.data["amount"].toString(),
-                        document.data["createdAt"] as LocalDateTime,
+                        LocalDateTime.of(year.toInt(), month.toInt(), date.toInt(), 0, 0),
                         categoryController.getCategoryById(document.data["category"].toString()),
                     )
-                    println("Expense: $expense")
 //                    val expense = document.toObject(Expense::class.java)
 //                    expenses.add(expense)
-                    println(document.id + " => " + document.data)
                 }
             }
             .addOnFailureListener { exception ->
@@ -85,3 +89,5 @@ class ExpenseController(private var activity: Activity) {
     }
 
 }
+
+
