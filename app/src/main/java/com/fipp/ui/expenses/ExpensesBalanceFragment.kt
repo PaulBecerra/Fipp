@@ -38,6 +38,8 @@ class ExpensesBalanceFragment : Fragment() {
     private var expenses = ArrayList<Expense>()
     private var income = ArrayList<Income>()
     private var budget = 0.0
+    val expensesCollection = db.collection("expenses")
+    val incomeCollection = db.collection("income")
 
     // This property is only valid between onCreateView and
     // onDestroyView.
