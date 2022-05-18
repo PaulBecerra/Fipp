@@ -65,7 +65,7 @@ class NotificationsFragment : Fragment() {
         }
         btnGuardar.setOnClickListener{
 
-            userController.updateUser(nombre.toString())
+            userController.updateUser(nombre.toString(),correo.toString())
 
         }
 
