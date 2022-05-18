@@ -48,7 +48,7 @@ class IncomeBalanceFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val category = Category("","Miau", "miau", 1)
+        val category = Category("","Miau", "miau", 1,"Incomes")
         val date = LocalDateTime.of(2022,5,5, 0, 0)
         val date2 = LocalDateTime.of(2022,5,15, 0, 0)
         val date3 = LocalDateTime.of(2022,5,20, 0, 0)

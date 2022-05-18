@@ -38,7 +38,7 @@ class RegisterExpenseActivity : AppCompatActivity() {
 
         btn.setOnClickListener{
             // Create an instance of income
-            val catogory = Category("4SPIEKMdIz3E59Kdud9N","PruebaCategoria", "LLfg1Ds8zC1jNj0FZlL9")
+            val catogory = Category("4SPIEKMdIz3E59Kdud9N","PruebaCategoria", "LLfg1Ds8zC1jNj0FZlL9", 0,"Expenses")
             val amountEditView: EditText = findViewById(R.id.editTextAmount)
             val amount = amountEditView.text.toString()
             // Check if amount is null
@@ -98,10 +98,10 @@ class RegisterExpenseActivity : AppCompatActivity() {
     }
 
     private fun getExpenseCategoriesByUser(){
-        val category1 = Category("", "test 1", "subtest 1", R.drawable.fipp_app_iconos_22)
-        val category2 = Category("","test 2", "subtest 2", R.drawable.fipp_app_iconos_22)
-        val category3 = Category("","test 3", "subtest 3", R.drawable.fipp_app_iconos_22)
-        val category4 = Category("","test 4", "subtest 4", R.drawable.fipp_app_iconos_22)
+        val category1 = Category("", "test 1", "subtest 1", R.drawable.fipp_app_iconos_22,"Expenses")
+        val category2 = Category("","test 2", "subtest 2", R.drawable.fipp_app_iconos_22,"Expenses")
+        val category3 = Category("","test 3", "subtest 3", R.drawable.fipp_app_iconos_22,"Expenses")
+        val category4 = Category("","test 4", "subtest 4", R.drawable.fipp_app_iconos_22,"Expenses")
         categoryList.addAll(listOf(category1, category2, category3, category4, category1, category2, category3, category4, category1, category2, category3, category4));
     }
 }

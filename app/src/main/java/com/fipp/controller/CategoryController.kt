@@ -14,7 +14,7 @@ class CategoryController(private var activity: Activity) {
 
     private var auth: FirebaseAuth
     private val db = FirebaseFirestore.getInstance()
-    private val collection = "expenses"
+    private val collection = "categories"
 
     init {
         this.auth = Firebase.auth
@@ -25,10 +25,22 @@ class CategoryController(private var activity: Activity) {
         db.collection(collection).document(id).get().addOnSuccessListener {
             category = Category(
                 it.id,
-                it.data?.get("catogoryName").toString(),
-                it.data?.get("subCategory").toString()
+                it.data?.get("categoryName").toString(),
+                it.data?.get("subCategory").toString(),
+                0,
+                it.data?.get("categoryType").toString()
             )
         }
         return category
+    }
+
+    fun saveCategory(category: Category){
+        db.collection(collection)
+            .document(category.uid.toString())
+            .set(
+                hashMapOf("categoryName" to category.categoryName,
+                        "subCategory" to category.subCategory,
+                        "categoryType" to category.categoryType)
+            )
     }
 }

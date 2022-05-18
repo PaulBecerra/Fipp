@@ -55,7 +55,7 @@ class DashboardFragment : Fragment() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val category = Category("","Miau", "miau", 1)
+        val category = Category("","Miau", "miau", 1,"Expenses")
 
         val date = LocalDateTime.of(2022,5,5, 0, 0)
         val date2 = LocalDateTime.of(2022,5,15, 0, 0)

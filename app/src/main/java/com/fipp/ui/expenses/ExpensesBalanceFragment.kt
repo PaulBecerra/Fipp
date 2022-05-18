@@ -53,7 +53,7 @@ class ExpensesBalanceFragment : Fragment() {
 
         expensesController = ExpenseController(requireActivity())
         expenses = expensesController.getMonthExpenses(5, 2022)
-        val category = Category("", "Miau", "miau", 1)
+        val category = Category("", "Miau", "miau", 1, "Expenses")
 //
         val date = LocalDateTime.of(2022,5,5, 0, 0)
         val date2 = LocalDateTime.of(2022,5,15, 0, 0)
