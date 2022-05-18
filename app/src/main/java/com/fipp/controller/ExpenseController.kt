@@ -5,11 +5,9 @@ import android.os.Build
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.fipp.model.Expense
-import com.fipp.model.Income
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.auth.User
 import com.google.firebase.ktx.Firebase
 import java.time.LocalDateTime
 import java.time.YearMonth
@@ -19,9 +17,11 @@ class ExpenseController(private var activity: Activity) {
     private var auth: FirebaseAuth
     private val db = FirebaseFirestore.getInstance()
     private val collection = "expenses"
+    private lateinit var categoryController: CategoryController
 
     init {
         this.auth = Firebase.auth
+        this.categoryController = CategoryController(activity)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -48,9 +48,9 @@ class ExpenseController(private var activity: Activity) {
                     val expense = Expense(
                         document.data["amount"].toString(),
                         document.data["createdAt"] as LocalDateTime,
-                        document.data["category"].toString(),
-
-                        )
+                        categoryController.getCategoryById(document.data["category"].toString()),
+                    )
+                    println("Expense: $expense")
 //                    val expense = document.toObject(Expense::class.java)
 //                    expenses.add(expense)
                     println(document.id + " => " + document.data)

@@ -1,6 +1,7 @@
 package com.fipp.controller
 
 import android.app.Activity
+import android.widget.Toast
 import com.fipp.model.Category
 import com.fipp.model.Expense
 import com.google.firebase.auth.FirebaseAuth
@@ -19,12 +20,15 @@ class CategoryController(private var activity: Activity) {
         this.auth = Firebase.auth
     }
 
-    fun getCategoryById(id: String): Category {
-        var category = Category()
+    fun getCategoryById(id: String): Category? {
+        var category: Category? = null
         db.collection(collection).document(id).get().addOnSuccessListener {
-            category = it.toObject(Category::class.java)!!
+            category = Category(
+                it.id,
+                it.data?.get("catogoryName").toString(),
+                it.data?.get("subCategory").toString()
+            )
         }
-//        return Category(result.get("name").toString(), result.get("id").toString())
         return category
     }
 }
