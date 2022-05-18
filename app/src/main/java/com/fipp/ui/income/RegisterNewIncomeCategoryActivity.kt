@@ -77,7 +77,7 @@ class RegisterNewIncomeCategoryActivity : AppCompatActivity() {
             subcategoryTextView = cardView.findViewById(R.id.textViewSubCategoryIncome)
             val subcategoryName = subcategoryTextView.text.toString()
 
-            val category = Category(UUID.randomUUID().toString(), categoryName, subcategoryName, "", CategoryType.INCOMES)
+            val category = Category(UUID.randomUUID().toString(), categoryName, subcategoryName, imageUrl, CategoryType.INCOMES)
             categoryController.saveCategory(category)
             finish()
         }

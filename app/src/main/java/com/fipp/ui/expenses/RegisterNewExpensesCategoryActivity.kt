@@ -28,8 +28,8 @@ class RegisterNewExpensesCategoryActivity : AppCompatActivity() {
 
     val SUBCATEGORY_REQUEST = 0
     private lateinit var categoryController: CategoryController
-    val PERM_IMG = 22
-    val PICK_IMG = 24
+    val PERM_IMG = 20
+    val PICK_IMG = 18
     private lateinit var imageView: ImageView
     private lateinit var cardView: CardView
     private lateinit var subcategoryTextView: TextView
@@ -56,7 +56,7 @@ class RegisterNewExpensesCategoryActivity : AppCompatActivity() {
 
         val btnSaveCategory: Button = findViewById(R.id.btn_new_expense_category)
 
-        val searchImage : CardView = findViewById(R.id.cardViewExpenseSubcategory)
+        val searchImage : ImageButton = findViewById(R.id.imageButtonNewExpenseCategory)
 
         editTextCategory.doOnTextChanged{ text, start, count, after ->
             categoryTextView.text = text
