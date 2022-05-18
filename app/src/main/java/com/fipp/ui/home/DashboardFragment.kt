@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -97,6 +98,12 @@ class DashboardFragment : Fragment() {
             val act = parentFragment?.activity
             act?.startActivity(Intent(act, RegisterExpenseActivity::class.java))
         }
+
+        val textViewIncome: TextView = binding.tvIncome
+        val textViewExpense: TextView = binding.tvExpense
+
+        textViewIncome.text = budget.toString()
+        textViewExpense.text = totalExpense.toString()
     }
 
     override fun onDestroyView() {

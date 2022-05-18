@@ -86,6 +86,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="25dp"
+                    android:paddingBottom="25dp"
                     android:orientation="vertical">
 
                     <LinearLayout
@@ -94,7 +95,7 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/textView2"
+                            android:id="@+id/tvIncome"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_black"
@@ -112,41 +113,41 @@
                             android:progressDrawable="@drawable/custom_progress_bar" />
                     </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="10dp">
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginVertical="10dp">-->
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:layout_weight="50"
-                            android:fontFamily="@font/roboto_regular"
-                            android:text="10,000"
-                            android:textColor="@color/gris_oscuro"
-                            android:textSize="12sp" />
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_gravity="left"-->
+<!--                            android:layout_weight="50"-->
+<!--                            android:fontFamily="@font/roboto_regular"-->
+<!--                            android:text="10,000"-->
+<!--                            android:textColor="@color/gris_oscuro"-->
+<!--                            android:textSize="12sp" />-->
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="50"
-                            android:fontFamily="@font/roboto_regular"
-                            android:gravity="center"
-                            android:text="15,000"
-                            android:textColor="@color/gris_oscuro"
-                            android:textSize="12sp" />
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_weight="50"-->
+<!--                            android:fontFamily="@font/roboto_regular"-->
+<!--                            android:gravity="center"-->
+<!--                            android:text="15,000"-->
+<!--                            android:textColor="@color/gris_oscuro"-->
+<!--                            android:textSize="12sp" />-->
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="50"
-                            android:fontFamily="@font/roboto_regular"
-                            android:gravity="right"
-                            android:text="20,000"
-                            android:textColor="@color/gris_oscuro"
-                            android:textSize="12sp" />
-                    </LinearLayout>
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_weight="50"-->
+<!--                            android:fontFamily="@font/roboto_regular"-->
+<!--                            android:gravity="right"-->
+<!--                            android:text="20,000"-->
+<!--                            android:textColor="@color/gris_oscuro"-->
+<!--                            android:textSize="12sp" />-->
+<!--                    </LinearLayout>-->
                 </LinearLayout>
             </LinearLayout>
 
@@ -194,10 +195,11 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:paddingBottom="25dp"
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/textView1"
+                            android:id="@+id/tvExpense"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_black"
@@ -215,41 +217,41 @@
                             android:progressDrawable="@drawable/custom_progress_bar" />
                     </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="10dp">
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginVertical="10dp">-->
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left"
-                            android:layout_weight="50"
-                            android:fontFamily="@font/roboto_regular"
-                            android:text="10,000"
-                            android:textColor="@color/gris_oscuro"
-                            android:textSize="12sp" />
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_gravity="left"-->
+<!--                            android:layout_weight="50"-->
+<!--                            android:fontFamily="@font/roboto_regular"-->
+<!--                            android:text="10,000"-->
+<!--                            android:textColor="@color/gris_oscuro"-->
+<!--                            android:textSize="12sp" />-->
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="50"
-                            android:fontFamily="@font/roboto_regular"
-                            android:gravity="center"
-                            android:text="15,000"
-                            android:textColor="@color/gris_oscuro"
-                            android:textSize="12sp" />
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_weight="50"-->
+<!--                            android:fontFamily="@font/roboto_regular"-->
+<!--                            android:gravity="center"-->
+<!--                            android:text="15,000"-->
+<!--                            android:textColor="@color/gris_oscuro"-->
+<!--                            android:textSize="12sp" />-->
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="50"
-                            android:fontFamily="@font/roboto_regular"
-                            android:gravity="right"
-                            android:text="20,000"
-                            android:textColor="@color/gris_oscuro"
-                            android:textSize="12sp" />
-                    </LinearLayout>
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_weight="50"-->
+<!--                            android:fontFamily="@font/roboto_regular"-->
+<!--                            android:gravity="right"-->
+<!--                            android:text="20,000"-->
+<!--                            android:textColor="@color/gris_oscuro"-->
+<!--                            android:textSize="12sp" />-->
+<!--                    </LinearLayout>-->
                 </LinearLayout>
             </LinearLayout>
         </GridLayout>

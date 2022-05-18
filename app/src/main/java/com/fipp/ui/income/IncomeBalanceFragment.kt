@@ -67,6 +67,8 @@ class IncomeBalanceFragment : Fragment() {
         for (money in income) {
             budget += money.amount.toFloat()
         }
+
+
     }
 
     override fun onCreateView(
