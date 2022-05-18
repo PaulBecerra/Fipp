@@ -1,11 +1,16 @@
 package com.fipp.ui.income
 
+import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.GestureDetector
+import android.view.MotionEvent
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -18,7 +23,7 @@ import java.time.LocalDateTime
 class RegisterIncomeActivity : AppCompatActivity() {
 
     private var categoryList: ArrayList<Category> = ArrayList()
-
+    private var currentPosition = -1
     private lateinit var incomeController: IncomeController
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -53,13 +58,44 @@ class RegisterIncomeActivity : AppCompatActivity() {
 
         getIncomeCategoriesByUser();
 
-        val adapter = CategoryIncomeAdapter(categoryList)
+        val adapter = CategoryIncomeAdapter(categoryList, this)
 
         val recyclerView: RecyclerView = findViewById(R.id.recyclerViewNewIncomeCategory)
 
         val grid: GridLayoutManager = GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false)
         recyclerView.layoutManager = grid
+        recyclerView.setHasFixedSize(true)
         recyclerView.adapter = adapter
+
+        val mGestureDetector = GestureDetector(this@RegisterIncomeActivity, object : GestureDetector.SimpleOnGestureListener() {
+            override fun onSingleTapUp(e: MotionEvent): Boolean {
+                return true
+            }
+        })
+
+        recyclerView.addOnItemTouchListener(object : RecyclerView.OnItemTouchListener {
+            override fun onRequestDisallowInterceptTouchEvent(b: Boolean) {}
+            override fun onInterceptTouchEvent(
+                recyclerView: RecyclerView,
+                motionEvent: MotionEvent
+            ): Boolean {
+                try {
+                    val child: View? = recyclerView.findChildViewUnder(motionEvent.x, motionEvent.y)
+                    if (child != null && mGestureDetector.onTouchEvent(motionEvent)) {
+                        val pos = recyclerView.getChildAdapterPosition(child)
+
+                        currentPosition = pos
+
+                        Toast.makeText(baseContext, "the item selected is $currentPosition", Toast.LENGTH_SHORT).show()
+                    }
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+                return false
+            }
+
+            override fun onTouchEvent(recyclerView: RecyclerView, motionEvent: MotionEvent) {}
+        })
     }
 
     private fun getIncomeCategoriesByUser(){
