@@ -130,12 +130,9 @@ class DashboardFragment : Fragment() {
         val green = ContextCompat.getColor(requireActivity(), R.color.verde)
         val gris = ContextCompat.getColor(requireActivity(), R.color.gris_claro)
 
-        val yvalues = ArrayList<PieEntry>()
-        yvalues.add(PieEntry(8f, 0))
-        yvalues.add(PieEntry(12f, 2))
+        var entries =  loadIncomePieChart()
 
-
-        val dataSet = PieDataSet(yvalues, "Reward Points")
+        val dataSet = PieDataSet(entries, "Reward Points")
 
         val data = PieData(dataSet)
 
@@ -193,12 +190,11 @@ class DashboardFragment : Fragment() {
         val rojo = ContextCompat.getColor(requireActivity(), R.color.rojo)
         val gris = ContextCompat.getColor(requireActivity(), R.color.gris_claro)
 
-        val yvalues = ArrayList<PieEntry>()
-        yvalues.add(PieEntry(8f, 0))
-        yvalues.add(PieEntry(12f, 2))
+        val enties = loadExpensesPieChart()
 
 
-        val dataSet = PieDataSet(yvalues, "Reward Points")
+
+        val dataSet = PieDataSet(enties, "")
 
         val data = PieData(dataSet)
 
@@ -247,4 +243,29 @@ class DashboardFragment : Fragment() {
 
 
     }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun loadIncomePieChart(): java.util.ArrayList<PieEntry> {
+        val entries = java.util.ArrayList<PieEntry>()
+
+        var progress =  (totalExpense * 100 ) / budget
+
+
+        entries.add(PieEntry((100-progress).toFloat(), 0))
+        entries.add(PieEntry(progress.toFloat(), 2))
+        return entries
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun loadExpensesPieChart(): java.util.ArrayList<PieEntry> {
+        val entries = java.util.ArrayList<PieEntry>()
+
+        var progress =  (totalExpense * 100 ) / budget
+
+
+        entries.add(PieEntry(progress.toFloat(), 0))
+        entries.add(PieEntry((100-progress).toFloat(), 2))
+        return entries
+    }
+
 }
