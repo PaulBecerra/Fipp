@@ -48,7 +48,7 @@ class ExpensesBalanceFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
 
-        val category = Category("Miau", "miau", 1)
+        val category = Category("", "Miau", "miau", 1)
 
         val date = LocalDateTime.of(2022,5,5, 0, 0)
         val date2 = LocalDateTime.of(2022,5,15, 0, 0)

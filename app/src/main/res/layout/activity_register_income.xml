@@ -10,25 +10,26 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="vertical"
+        android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
-        android:layout_height="wrap_content">
+        android:orientation="vertical">
 
         <ImageButton
             android:id="@+id/btn_new_income_close"
             android:layout_width="51dp"
             android:layout_height="38dp"
+            android:layout_gravity="end"
             android:background="#5543FF"
-            android:layout_gravity="right"
             app:srcCompat="@drawable/ic_baseline_arrow_circle_down_24" />
+
         <TextView
             android:id="@+id/textView7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="12sp"
-            android:textColor="@color/gris_oscuro"
             android:fontFamily="@font/roboto_regular"
-            android:text="INGRESO" />
+            android:text="INGRESO"
+            android:textColor="@color/gris_oscuro"
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/tvIncome"
@@ -36,78 +37,77 @@
             android:layout_height="wrap_content"
             android:layout_weight="6"
             android:fontFamily="@font/roboto_black"
-            android:text="REGISTRAR INGRESO"
+            android:text="@string/registrar_ingreso"
             android:textColor="@color/gris_oscuro"
             android:textSize="26sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_marginTop="5dp"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp">
 
             <EditText
-                android:id="@+id/editTextTextPersonName2"
+                android:id="@+id/editTextAmount"
                 android:layout_width="282dp"
                 android:layout_height="38dp"
                 android:width="1dp"
-                android:textSize="15dp"
                 android:background="#F4F4F4"
-                android:textColor="#8C8C8C"
+                android:hint="@string/cantidad_de_ingreso"
                 android:inputType="textPersonName"
-                android:text="Cantidad de ingreso..." />
+                android:textColor="#8C8C8C"
+                android:textSize="15sp" />
 
             <Button
                 android:id="@+id/button4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:width="1dp"
-                android:textSize="12dp"
                 android:backgroundTint="@color/morado"
-                android:text="MXN" />
+                android:text="@string/mxn"
+                android:textSize="12sp" />
         </LinearLayout>
     </LinearLayout>
 
 
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="vertical"
+        android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
-        android:layout_height="wrap_content">
+        android:orientation="vertical">
 
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_marginTop="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:fontFamily="@font/roboto_bold"
-        android:text="CATEGORÍA" />
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center"
-        app:cardBackgroundColor="#F4F4F4"
-        app:cardCornerRadius="20dp">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewNewIncomeCategory"
+        <TextView
+            android:id="@+id/textView6"
             android:layout_width="match_parent"
-            android:layout_height="350dp" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="CATEGORÍA"
+            android:textColor="@color/black" />
 
-    </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            app:cardBackgroundColor="#F4F4F4"
+            app:cardCornerRadius="20dp">
 
-    <Button
-        android:id="@+id/btn_new_income"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@color/morado"
-        android:fontFamily="@font/roboto_bold"
-        android:text="REGISTRAR"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewNewIncomeCategory"
+                android:layout_width="match_parent"
+                android:layout_height="350dp" />
+
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/btn_new_income"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/morado"
+            android:fontFamily="@font/roboto_bold"
+            android:text="REGISTRAR" />
 
     </LinearLayout>
 
