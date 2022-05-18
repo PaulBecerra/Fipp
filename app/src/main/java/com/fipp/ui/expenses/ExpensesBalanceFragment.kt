@@ -18,6 +18,7 @@ import com.fipp.formatters.LineChartXAxisValueFormatter
 import com.fipp.R
 import com.fipp.controller.CategoryController
 import com.fipp.controller.ExpenseController
+import com.fipp.controller.MyCallbackCategory
 import com.fipp.databinding.ActivityChartBinding
 import com.fipp.databinding.FragmentExpensesBalanceBinding
 import com.fipp.model.Category
@@ -81,21 +82,29 @@ class ExpensesBalanceFragment : Fragment() {
                     val date = createdAt["dayOfMonth"] as Long
                     val month = createdAt["monthValue"] as Long
                     val year = createdAt["year"] as Long
+                    var category: Category? = null
+                    categoryController.getCategoryById(document.data["category"].toString(), object:
+                        MyCallbackCategory {
+                        override fun onCallback(value: Category) {
+                            category = value
+
+                        }
+                    })
                     val expense = Expense(
                         document.data["amount"].toString(),
                         LocalDateTime.of(year.toInt(), month.toInt(), date.toInt(), 0, 0),
-                        categoryController.getCategoryById(document.data["category"].toString()),
+                        category,
                     )
-                    Toast.makeText(activity, expense.amount, Toast.LENGTH_LONG).show()
-                    Toast.makeText(activity, "Expenses: $expenses", Toast.LENGTH_LONG).show()
+//                    Toast.makeText(activity, expense.amount, Toast.LENGTH_LONG).show()
+//                    Toast.makeText(activity, "Expenses: $expenses", Toast.LENGTH_LONG).show()
                     simon.add(expense)
 
                 }
                 myCallback.onCallback(simon)
-                expenses = simon
+//                expenses = simon
             }
         }
-        Toast.makeText(activity, "Expenses2: $expenses", Toast.LENGTH_LONG).show()
+//        Toast.makeText(activity, "Expenses2: $expenses", Toast.LENGTH_LONG).show()
         return expenses    }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -107,11 +116,13 @@ class ExpensesBalanceFragment : Fragment() {
 
         this.getMonthExpenses(5, 2022, object: MyCallback {
             override fun onCallback(value: List<Expense>) {
-                Toast.makeText(activity, "Expenses3: $value", Toast.LENGTH_LONG).show()
+//                Toast.makeText(activity, "Expenses3: $value", Toast.LENGTH_LONG).show()
                 expenses = value as ArrayList<Expense>
-                loadProgressBar()
 
                 setLineChart()
+
+                loadProgressBar()
+
             }
         })
 
@@ -197,6 +208,8 @@ class ExpensesBalanceFragment : Fragment() {
 
         val entries = loadChartData()
 
+        Toast.makeText(activity, "Entries: $entries", Toast.LENGTH_LONG).show()
+
         val red = ContextCompat.getColor(requireActivity(), R.color.rojo)
         // First line
         val lineDataSet = LineDataSet(entries, "ACTUAL")
@@ -227,8 +240,8 @@ class ExpensesBalanceFragment : Fragment() {
     private fun loadChartData(): ArrayList<Entry> {
         val entries = ArrayList<Entry>()
 
-        Toast.makeText(requireActivity(), "Income4: $expenses", Toast.LENGTH_SHORT).show()
         for (item in expenses) {
+            Toast.makeText(requireActivity(), item.amount, Toast.LENGTH_SHORT).show()
             val x: Float = item.createdAt.atZone(ZoneOffset.UTC).toEpochSecond().toFloat()
             val y: Float = item.amount.toFloat()
             entries.add(Entry(x, y))
@@ -241,6 +254,7 @@ class ExpensesBalanceFragment : Fragment() {
         val dateTimeFormat = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.getDefault())
         val table = binding.tableLayout
 
+        Toast.makeText(requireActivity(), "Cargando tabla", Toast.LENGTH_SHORT).show()
         for (item in expenses) {
             val row = TableRow(requireActivity())
             // Add padding to the row
@@ -293,3 +307,4 @@ class ExpensesBalanceFragment : Fragment() {
 interface MyCallback {
     fun onCallback(value: List<Expense>)
 }
+

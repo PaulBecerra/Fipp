@@ -20,7 +20,7 @@ class CategoryController(private var activity: Activity) {
         this.auth = Firebase.auth
     }
 
-    fun getCategoryById(id: String): Category? {
+    fun getCategoryById(id: String, callbackCategory: MyCallbackCategory) {
         var category: Category? = null
         db.collection(collection).document(id).get().addOnSuccessListener {
             category = Category(
@@ -29,6 +29,10 @@ class CategoryController(private var activity: Activity) {
                 it.data?.get("subCategory").toString()
             )
         }
-        return category
+        category?.let { callbackCategory.onCallback(it) }
+//        return category
     }
+}
+interface MyCallbackCategory {
+    fun onCallback(value: Category)
 }
