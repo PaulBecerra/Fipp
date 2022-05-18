@@ -45,6 +45,7 @@ class IncomeCategoriesFragment : Fragment() {
         return binding.root
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val boton: View = binding.buttonIncomes
 
@@ -57,8 +58,17 @@ class IncomeCategoriesFragment : Fragment() {
             act?.startActivity(Intent(act, RegisterNewIncomeCategoryActivity::class.java))
         }
 
-        getIncomeCategoriesByUser();
+        this.getIncomeCategories( object: MyCallbackIncomeCategories {
+            override fun onCallback(value: List<Category>) {
+                categoryList = value as java.util.ArrayList<Category>
 
+                configRecyclerview()
+            }
+        })
+    }
+
+    private fun configRecyclerview(){
+        val act = parentFragment?.parentFragment?.activity
         val adapter = CategoryIncomeAdapter(categoryList, parentFragment?.parentFragment?.activity)
 
         val recyclerView = binding.recyclerViewIncomeCategory
@@ -99,14 +109,6 @@ class IncomeCategoriesFragment : Fragment() {
         })
     }
 
-    private fun getIncomeCategoriesByUser(){
-        val category1 = Category("","test 1", "subtest 1", "car.jpg", CategoryType.INCOMES)
-        val category2 = Category("","test 2", "subtest 2", "car.jpg", CategoryType.INCOMES)
-        val category3 = Category("","test 3", "subtest 3", "car.jpg", CategoryType.INCOMES)
-        val category4 = Category("","test 4", "subtest 4", "car.jpg", CategoryType.INCOMES)
-        categoryList.addAll(listOf(category1, category2, category3, category4, category1, category2, category3, category4, category1, category2, category3, category4));
-    }
-
     @RequiresApi(Build.VERSION_CODES.O)
     fun getIncomeCategories(myCallback : MyCallbackIncomeCategories) {
         val user = auth.currentUser
@@ -120,7 +122,7 @@ class IncomeCategoriesFragment : Fragment() {
                     for (document in task.result!!){
                         val uuid = document.data["uuid"].toString()
                         val name = document.data["categoryName"].toString()
-                        val subcategory = document.data["subcategoryName"].toString()
+                        val subcategory = document.data["subCategory"].toString()
                         val image = document.data["image"].toString()
                         val category = Category(uuid, name, subcategory, image, CategoryType.INCOMES)
                         categoryList.add(category)
