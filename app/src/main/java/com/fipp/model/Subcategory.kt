@@ -1,3 +1,5 @@
 package com.fipp.model
 
-class Subcategory(val name: String, val image: Int)
+import java.io.Serializable
+
+class Subcategory(val name: String, val image: Int): Serializable

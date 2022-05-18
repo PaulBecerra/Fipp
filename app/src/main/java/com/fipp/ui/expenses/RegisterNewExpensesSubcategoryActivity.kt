@@ -18,7 +18,7 @@ class RegisterNewExpensesSubcategoryActivity : AppCompatActivity() {
 
         getExpensesSubCategoriesByUser();
 
-        val adapter = SubcategoryExpensesAdapter(categoryList)
+        val adapter = SubcategoryExpensesAdapter(categoryList, this)
 
         val recyclerView: RecyclerView = findViewById(R.id.recyclerViewSubcategoryExpenses)
 

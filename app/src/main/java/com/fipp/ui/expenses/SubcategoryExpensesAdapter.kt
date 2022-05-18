@@ -1,5 +1,8 @@
 package com.fipp.ui.expenses
 
+import android.app.Activity
+import android.app.Activity.RESULT_OK
+import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.fipp.R
 import com.fipp.model.Subcategory
 
-class SubcategoryExpensesAdapter(private var categoryList: List<Subcategory>) :
+class SubcategoryExpensesAdapter(private var categoryList: List<Subcategory>, var activity: Activity?) :
     RecyclerView.Adapter<SubcategoryExpensesAdapter.ViewHolder>() {
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view){
@@ -34,10 +37,12 @@ class SubcategoryExpensesAdapter(private var categoryList: List<Subcategory>) :
         holder.image.setImageResource(category.image)
 
         holder.itemView.setOnClickListener{
-            val intent = Intent(holder.itemView.context, RegisterNewExpensesCategoryActivity::class.java)
-            intent.putExtra("subcategory", category.name)
-            intent.putExtra("image", category.image)
-            holder.itemView.context.startActivity(intent)
+            var intent = Intent()
+            //intent.putExtra("subcategory", category.name)
+            //intent.putExtra("image", category.image)
+            intent.putExtra("subcategory", category)
+            activity?.setResult(RESULT_OK, intent)
+            activity?.finish()
         }
     }
 

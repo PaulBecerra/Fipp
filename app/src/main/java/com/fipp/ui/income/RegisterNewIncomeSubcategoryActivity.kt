@@ -19,7 +19,7 @@ class RegisterNewIncomeSubcategoryActivity : AppCompatActivity() {
 
         getIncomeSubCategoriesByUser();
 
-        val adapter = SubcategoryIncomeAdapter(categoryList)
+        val adapter = SubcategoryIncomeAdapter(categoryList, this)
 
         val recyclerView: RecyclerView = findViewById(R.id.recyclerViewSubcategoryIncome)
 
