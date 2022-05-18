@@ -61,6 +61,7 @@ class IncomeBalanceFragment : Fragment() {
     private val db = FirebaseFirestore.getInstance()
     private var auth: FirebaseAuth = Firebase.auth
     private lateinit var categoryController: CategoryController
+    private var entries = ArrayList<Entry>()
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun getMonthExpenses(
@@ -187,18 +188,25 @@ class IncomeBalanceFragment : Fragment() {
         // Create instance of LocalDateTime with the month and year
         val actualDate = LocalDateTime.now()
 
-        this.getMonthExpenses(actualDate.monthValue, actualDate.year, object : MyCallback {
-            override fun onCallback(value: List<Expense>) {
-                expenses = value as java.util.ArrayList<Expense>
-            }
-        })
-
-
-
         this.getMonthIncome(actualDate.monthValue, actualDate.year, object : MyCallbackIncome {
 
             override fun onCallback(value: List<Income>) {
                 income = value as java.util.ArrayList<Income>
+
+
+            }
+
+        })
+
+        this.getMonthExpenses(actualDate.monthValue, actualDate.year, object : MyCallback {
+            override fun onCallback(value: List<Expense>) {
+                expenses = value as java.util.ArrayList<Expense>
+
+                for (i in income) {
+                    val x: Float = i.createdAt.atZone(ZoneOffset.UTC).toEpochSecond().toFloat()
+                    val y: Float = i.amount.toFloat()
+                    entries.add(Entry(x, y))
+                }
                 for (money in income) {
                     budget += money.amount.toFloat()
                 }
@@ -208,6 +216,7 @@ class IncomeBalanceFragment : Fragment() {
                 setLineChart()
             }
         })
+
 
 
     }
@@ -285,8 +294,6 @@ class IncomeBalanceFragment : Fragment() {
         y.setLabelCount(5, true)
 
         loadTableChart()
-
-        val entries = loadChartData()
 
 
         val red = ContextCompat.getColor(requireActivity(), R.color.verde_principal)
