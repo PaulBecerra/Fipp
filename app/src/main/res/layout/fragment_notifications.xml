@@ -73,10 +73,20 @@
                 android:textSize="12sp" />
 
             <Button
+                android:id="@+id/btn_guardar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Guardar cambios"
+                android:layout_marginTop="50dp"
+                android:layout_marginHorizontal="50dp"
+                android:backgroundTint="@color/purple_500"
+                />
+
+            <Button
                 android:id="@+id/btn_logout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="log out"
+                android:text="cerrar Sesión"
                 android:layout_marginVertical="50dp"
                 android:layout_marginHorizontal="50dp"
                 android:backgroundTint="@color/purple_500"
