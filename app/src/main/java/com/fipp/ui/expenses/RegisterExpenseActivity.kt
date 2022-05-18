@@ -30,11 +30,12 @@ class RegisterExpenseActivity : AppCompatActivity() {
 
         getExpenseCategoriesByUser();
 
-        val adapter = CategoryExpenseAdapter(categoryList)
+        val adapter = CategoryExpenseAdapter(categoryList, this)
 
         val recyclerView: RecyclerView = findViewById(R.id.recyclerViewNewExpenseCategory)
 
         val grid: GridLayoutManager = GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false)
+        recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = grid
         recyclerView.adapter = adapter
     }

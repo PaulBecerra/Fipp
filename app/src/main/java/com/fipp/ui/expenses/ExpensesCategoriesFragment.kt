@@ -50,7 +50,7 @@ class ExpensesCategoriesFragment : Fragment() {
 
         getExpenseCategoriesByUser();
 
-        val adapter = CategoryExpenseAdapter(categoryList)
+        val adapter = CategoryExpenseAdapter(categoryList, parentFragment?.parentFragment?.context)
 
         val recyclerView = binding.recyclerViewExpensesCategory
 
