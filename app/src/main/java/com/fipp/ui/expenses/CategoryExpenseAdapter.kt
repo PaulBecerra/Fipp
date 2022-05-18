@@ -1,21 +1,33 @@
 package com.fipp.ui.expenses
 
+import android.app.Activity
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.fipp.R
 import com.fipp.interfaces.ItemClickListener
 import com.fipp.model.Category
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
+
 
 class CategoryExpenseAdapter(private var categoryList: List<Category>, var context: Context?) :
     RecyclerView.Adapter<CategoryExpenseAdapter.ViewHolder>() {
     private var selectedPos = -1
+    private val storage = Firebase.storage
 
         class ViewHolder(view: View): RecyclerView.ViewHolder(view), View.OnClickListener{
             val image: ImageView
@@ -48,7 +60,7 @@ class CategoryExpenseAdapter(private var categoryList: List<Category>, var conte
         val category = categoryList[position]
         holder.categoryName.text = category.categoryName
         holder.subCategoryName.text = category.subCategory
-        holder.image.setImageResource(category.image)
+
         //holder.itemView.setSelected(selectedPos == position);
         holder.setOnClickListener (
             object : ItemClickListener{

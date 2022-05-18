@@ -18,6 +18,7 @@ import com.fipp.ui.expenses.RegisterExpenseActivity
 import com.fipp.ui.income.RegisterIncomeActivity
 import com.fipp.databinding.FragmentDashboardBinding
 import com.fipp.model.Category
+import com.fipp.model.CategoryType
 import com.fipp.model.Expense
 import com.fipp.model.Income
 import com.github.mikephil.charting.animation.Easing
@@ -55,7 +56,7 @@ class DashboardFragment : Fragment() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val category = Category("","Miau", "miau", 1,"Expenses")
+        val category = Category("","Miau", "miau", "car.jpg",CategoryType.EXPENSES)
 
         val date = LocalDateTime.of(2022,5,5, 0, 0)
         val date2 = LocalDateTime.of(2022,5,15, 0, 0)
@@ -188,7 +189,7 @@ class DashboardFragment : Fragment() {
 
 
     }
-    
+
     private fun setHalfPieChartExpenses(){
         val pieChart: PieChart = binding.pieChart2
 

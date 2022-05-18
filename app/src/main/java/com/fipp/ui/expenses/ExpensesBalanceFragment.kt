@@ -172,8 +172,6 @@ class ExpensesBalanceFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         expensesController = ExpenseController(requireActivity())
-        expenses = expensesController.getMonthExpenses(5, 2022)
-
         categoryController = CategoryController(requireActivity())
 
 
@@ -385,4 +383,3 @@ interface MyCallback {
 interface MyCallbackIncome {
     fun onCallback(value: List<Income>)
 }
-

@@ -11,11 +11,19 @@ import com.fipp.R
 import com.fipp.databinding.FragmentExpensesCategoriesBinding
 import com.fipp.model.Category
 import com.fipp.model.CategoryType
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
 
 class ExpensesCategoriesFragment : Fragment() {
     private var categoryList: ArrayList<Category> = ArrayList()
     private var _binding: FragmentExpensesCategoriesBinding? = null
     private var currentPosition = -1
+    private val storage = Firebase.storage
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -53,7 +61,7 @@ class ExpensesCategoriesFragment : Fragment() {
 
         getExpenseCategoriesByUser();
 
-        val adapter = CategoryExpenseAdapter(categoryList, parentFragment?.parentFragment?.context)
+        val adapter = CategoryExpenseAdapter(categoryList,parentFragment?.parentFragment?.context)
 
         val recyclerView = binding.recyclerViewExpensesCategory
 
@@ -94,10 +102,10 @@ class ExpensesCategoriesFragment : Fragment() {
     }
 
     private fun getExpenseCategoriesByUser(){
-        val category1 = Category("","test 1", "subtest 1", R.drawable.fipp_app_iconos_22, CategoryType.EXPENSES)
-        val category2 = Category("", "test 2", "subtest 2", R.drawable.fipp_app_iconos_22,CategoryType.EXPENSES)
-        val category3 = Category("", "test 3", "subtest 3", R.drawable.fipp_app_iconos_22,CategoryType.EXPENSES)
-        val category4 = Category("", "test 4", "subtest 4", R.drawable.fipp_app_iconos_22,CategoryType.EXPENSES)
+        val category1 = Category("","test 1", "subtest 1", "bills.png", CategoryType.EXPENSES)
+        val category2 = Category("", "test 2", "subtest 2", "car.jpg",CategoryType.EXPENSES)
+        val category3 = Category("", "test 3", "subtest 3", "communication.png",CategoryType.EXPENSES)
+        val category4 = Category("", "test 4", "subtest 4", "gifts.png",CategoryType.EXPENSES)
         categoryList.addAll(listOf(category1, category2, category3, category4, category1, category2, category3, category4, category1, category2, category3, category4));
     }
 }

@@ -106,7 +106,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardViewExpenseCategory"
+                android:id="@+id/cardViewExpenseSubcategory"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginVertical="20dp"

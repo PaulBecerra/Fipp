@@ -169,8 +169,16 @@ class IncomeBalanceFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        expensesController = ExpenseController(requireActivity())
+        categoryController = CategoryController(requireActivity())
+
+
+        // Create instance of LocalDateTime with the month and year
+        val actualDate = LocalDateTime.now()
+
         this.getMonthExpenses(actualDate.monthValue, actualDate.year, object: MyCallback {
             override fun onCallback(value: List<Expense>) {
+//                Toast.makeText(activity, "Expenses3: $value", Toast.LENGTH_LONG).show()
                 expenses = value as java.util.ArrayList<Expense>
             }
         })

@@ -1,9 +1,11 @@
 package com.fipp.ui.income
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -11,11 +13,19 @@ import com.fipp.R
 import com.fipp.databinding.FragmentIncomeCategoriesBinding
 import com.fipp.model.Category
 import com.fipp.model.CategoryType
+import com.fipp.model.Expense
+import com.fipp.ui.expenses.MyCallback
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 
 class IncomeCategoriesFragment : Fragment() {
 
     private var categoryList: ArrayList<Category> = ArrayList()
     private var _binding: FragmentIncomeCategoriesBinding? = null
+    private val db = FirebaseFirestore.getInstance()
+    private var auth: FirebaseAuth = Firebase.auth
     private var currentPosition = -1
 
     // This property is only valid between onCreateView and
@@ -90,10 +100,37 @@ class IncomeCategoriesFragment : Fragment() {
     }
 
     private fun getIncomeCategoriesByUser(){
-        val category1 = Category("","test 1", "subtest 1", R.drawable.fipp_app_iconos_85, CategoryType.INCOMES)
-        val category2 = Category("","test 2", "subtest 2", R.drawable.fipp_app_iconos_85, CategoryType.INCOMES)
-        val category3 = Category("","test 3", "subtest 3", R.drawable.fipp_app_iconos_85, CategoryType.INCOMES)
-        val category4 = Category("","test 4", "subtest 4", R.drawable.fipp_app_iconos_85, CategoryType.INCOMES)
+        val category1 = Category("","test 1", "subtest 1", "car.jpg", CategoryType.INCOMES)
+        val category2 = Category("","test 2", "subtest 2", "car.jpg", CategoryType.INCOMES)
+        val category3 = Category("","test 3", "subtest 3", "car.jpg", CategoryType.INCOMES)
+        val category4 = Category("","test 4", "subtest 4", "car.jpg", CategoryType.INCOMES)
         categoryList.addAll(listOf(category1, category2, category3, category4, category1, category2, category3, category4, category1, category2, category3, category4));
     }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun getIncomeCategories(myCallback : MyCallbackIncomeCategories) {
+        val user = auth.currentUser
+        val userId = user?.uid
+
+        db.collection("categories").whereEqualTo("user", userId)
+            .whereEqualTo("categoryType", CategoryType.INCOMES.toString()).get()
+            .addOnCompleteListener{ task ->
+                if (task.isSuccessful){
+                    val categoryList : ArrayList<Category> = ArrayList<Category>()
+                    for (document in task.result!!){
+                        val uuid = document.data["uuid"].toString()
+                        val name = document.data["categoryName"].toString()
+                        val subcategory = document.data["subcategoryName"].toString()
+                        val image = document.data["image"].toString()
+                        val category = Category(uuid, name, subcategory, image, CategoryType.INCOMES)
+                        categoryList.add(category)
+                    }
+                    myCallback.onCallback(categoryList)
+                }
+            }
+    }
+}
+
+interface MyCallbackIncomeCategories {
+    fun onCallback(value: List<Category>)
 }
