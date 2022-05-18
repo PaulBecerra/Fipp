@@ -26,6 +26,6 @@
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.fipp.ui.notifications.NotificationsFragment"
-        android:label="@string/title_config"
+        android:label="@string/title_perfil"
         tools:layout="@layout/fragment_notifications" />
 </navigation>
