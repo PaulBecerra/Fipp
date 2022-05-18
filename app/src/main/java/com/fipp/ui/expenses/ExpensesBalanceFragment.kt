@@ -1,9 +1,11 @@
 package com.fipp.ui.expenses
 
+import android.content.ContentValues.TAG
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -126,7 +128,6 @@ class ExpensesBalanceFragment : Fragment() {
             db.collection("income").whereEqualTo("user", userId)
                 .whereGreaterThanOrEqualTo("createdAt", startDate)
                 .whereLessThanOrEqualTo("createdAt", endDate).get()
-
         algo.addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 val simon :ArrayList<Income> = ArrayList<Income>()
@@ -148,7 +149,7 @@ class ExpensesBalanceFragment : Fragment() {
                         LocalDateTime.of(year.toInt(), month.toInt(), date.toInt(), 0, 0),
                         category,
                     )
-//                    Toast.makeText(activity, expense.amount, Toast.LENGTH_LONG).show()
+                    Toast.makeText(activity, income.amount, Toast.LENGTH_LONG).show()
 //                    Toast.makeText(activity, "Expenses: $expenses", Toast.LENGTH_LONG).show()
                     simon.add(income)
 
@@ -157,6 +158,10 @@ class ExpensesBalanceFragment : Fragment() {
 //                expenses = simon
             }
         }
+            .addOnFailureListener { exception ->
+                Toast.makeText(activity, "Error getting documents: $exception", Toast.LENGTH_LONG).show()
+                println("Error getting documents: $exception")
+            }
 //        Toast.makeText(activity, "Expenses2: $expenses", Toast.LENGTH_LONG).show()
         return income
     }
@@ -175,6 +180,7 @@ class ExpensesBalanceFragment : Fragment() {
         this.getMonthIncome(actualDate.monthValue, actualDate.year, object: MyCallbackIncome {
 
             override fun onCallback(value: List<Income>) {
+                Toast.makeText(requireActivity(), "Income: $value", Toast.LENGTH_LONG).show()
                 income = value as ArrayList<Income>
             }
         })
@@ -184,9 +190,14 @@ class ExpensesBalanceFragment : Fragment() {
 //                Toast.makeText(activity, "Expenses3: $value", Toast.LENGTH_LONG).show()
                 expenses = value as ArrayList<Expense>
 
+                for (money in income) {
+                    budget += money.amount.toFloat()
+                }
+
                 setLineChart()
 
                 loadProgressBar()
+
 
             }
         })
@@ -194,21 +205,19 @@ class ExpensesBalanceFragment : Fragment() {
 
 
 //        expenses = expensesController.getMonthExpenses(5, 2022)
-        val category = Category("", "Miau", "miau", 1)
+//        val category = Category("", "Miau", "miau", 1)
+////
+//        val date = LocalDateTime.of(2022,5,5, 0, 0)
+//        val date2 = LocalDateTime.of(2022,5,15, 0, 0)
+//        val date3 = LocalDateTime.of(2022,5,20, 0, 0)
+//        val date4 = LocalDateTime.of(2022,5,22, 0, 0)
 //
-        val date = LocalDateTime.of(2022,5,5, 0, 0)
-        val date2 = LocalDateTime.of(2022,5,15, 0, 0)
-        val date3 = LocalDateTime.of(2022,5,20, 0, 0)
-        val date4 = LocalDateTime.of(2022,5,22, 0, 0)
+//
+//        income.add(Income("500.0", date, category))
+//        income.add(Income("1000.0", date2, category))
+//        income.add(Income("2500.0", date4, category))
 
 
-        income.add(Income("500.0", date, category))
-        income.add(Income("1000.0", date2, category))
-        income.add(Income("2500.0", date4, category))
-
-        for (money in income) {
-            budget += money.amount.toFloat()
-        }
     }
 
     override fun onCreateView(
@@ -270,7 +279,7 @@ class ExpensesBalanceFragment : Fragment() {
 
         val entries = loadChartData()
 
-        Toast.makeText(activity, "Entries: $entries", Toast.LENGTH_LONG).show()
+//        Toast.makeText(activity, "Entries: $entries", Toast.LENGTH_LONG).show()
 
         val red = ContextCompat.getColor(requireActivity(), R.color.rojo)
         // First line
@@ -303,7 +312,7 @@ class ExpensesBalanceFragment : Fragment() {
         val entries = ArrayList<Entry>()
 
         for (item in expenses) {
-            Toast.makeText(requireActivity(), item.amount, Toast.LENGTH_SHORT).show()
+//            Toast.makeText(requireActivity(), item.amount, Toast.LENGTH_SHORT).show()
             val x: Float = item.createdAt.atZone(ZoneOffset.UTC).toEpochSecond().toFloat()
             val y: Float = item.amount.toFloat()
             entries.add(Entry(x, y))
@@ -316,7 +325,7 @@ class ExpensesBalanceFragment : Fragment() {
         val dateTimeFormat = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.getDefault())
         val table = binding.tableLayout
 
-        Toast.makeText(requireActivity(), "Cargando tabla", Toast.LENGTH_SHORT).show()
+//        Toast.makeText(requireActivity(), "Cargando tabla", Toast.LENGTH_SHORT).show()
         for (item in expenses) {
             val row = TableRow(requireActivity())
             // Add padding to the row
