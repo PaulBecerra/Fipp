@@ -10,11 +10,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TableRow
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.fipp.formatters.LineChartXAxisValueFormatter
 import com.fipp.R
+import com.fipp.controller.ExpenseController
 import com.fipp.databinding.ActivityChartBinding
 import com.fipp.databinding.FragmentExpensesBalanceBinding
 import com.fipp.model.Category
@@ -42,23 +44,26 @@ class ExpensesBalanceFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    private lateinit var expensesController: ExpenseController
+
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
+        expensesController = ExpenseController(requireActivity())
+        expenses = expensesController.getMonthExpenses(5, 2022)
         val category = Category("", "Miau", "miau", 1)
-
+//
         val date = LocalDateTime.of(2022,5,5, 0, 0)
         val date2 = LocalDateTime.of(2022,5,15, 0, 0)
         val date3 = LocalDateTime.of(2022,5,20, 0, 0)
         val date4 = LocalDateTime.of(2022,5,22, 0, 0)
 
-        expenses.add(Expense("500.0", date, category))
-        expenses.add(Expense("600.0", date2, category))
-        expenses.add(Expense("400.0", date3, category))
-        expenses.add(Expense("800.0", date4, category))
+//        expenses.add(Expense("500.0", date, category))
+//        expenses.add(Expense("600.0", date2, category))
+//        expenses.add(Expense("400.0", date3, category))
+//        expenses.add(Expense("800.0", date4, category))
 
 
         income.add(Income("500.0", date, category))

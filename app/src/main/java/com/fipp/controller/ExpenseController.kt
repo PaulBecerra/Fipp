@@ -29,28 +29,37 @@ class ExpenseController(private var activity: Activity) {
         val expenses = ArrayList<Expense>()
         val user = auth.currentUser
         val userId = user?.uid
-        // Create instnace of localDateTime with the month and year
+        // Create instance of localDateTime with the month and year
         val yearMonthObject = YearMonth.of(year, month)
-        val daysInMonth = yearMonthObject.lengthOfMonth(); 
-        
-        
+        val daysInMonth = yearMonthObject.lengthOfMonth();
+
+
+
         val startDate = LocalDateTime.of(year, month, 1, 0, 0)
         val endDate = LocalDateTime.of(year, month, daysInMonth, 0, 0)
-        db.collection("expenses").whereEqualTo("user", userId)
+        Toast.makeText(activity, "Start: $startDate End: $endDate", Toast.LENGTH_LONG).show()
+        Toast.makeText(activity, "UserId: $userId", Toast.LENGTH_LONG).show()
+        db.collection(collection).whereEqualTo("user", userId)
             .whereGreaterThanOrEqualTo("createdAt", startDate)
             .whereLessThanOrEqualTo("createdAt", endDate)
             .get()
             .addOnSuccessListener {
                 for (document in it) {
-                    val expense = document.toObject(Expense::class.java)
-                    expenses.add(expense)
+                    val expense = Expense(
+                        document.data["amount"].toString(),
+                        document.data["createdAt"] as LocalDateTime,
+                        document.data["category"].toString(),
+
+                        )
+//                    val expense = document.toObject(Expense::class.java)
+//                    expenses.add(expense)
                     println(document.id + " => " + document.data)
                 }
             }
             .addOnFailureListener { exception ->
                 // Create a Toast with a message
-                Toast.makeText(activity, "Hubo un error obteniendo los gastos ", Toast.LENGTH_LONG).show()
-                println("Error getting documents: " + exception)
+                Toast.makeText(activity, "$exception", Toast.LENGTH_LONG).show()
+                println("Error getting documents: $exception")
             }
         return expenses
     }
