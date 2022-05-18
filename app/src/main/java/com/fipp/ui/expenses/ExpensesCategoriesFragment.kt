@@ -82,7 +82,7 @@ class ExpensesCategoriesFragment : Fragment() {
     private fun configRecyclerview(){
         val act = parentFragment?.parentFragment?.activity
 
-        val adapter = CategoryExpenseAdapter(categoryList,parentFragment?.parentFragment?.context)
+        val adapter = CategoryExpenseAdapter(categoryList,parentFragment?.parentFragment?.activity)
 
         val recyclerView = binding.recyclerViewExpensesCategory
 

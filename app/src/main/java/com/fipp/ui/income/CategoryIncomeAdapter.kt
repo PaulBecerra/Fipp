@@ -1,5 +1,6 @@
 package com.fipp.ui.income
 
+import android.app.Activity
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -10,13 +11,14 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.fipp.R
 import com.fipp.interfaces.ItemClickListener
 import com.fipp.model.Category
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 
-class CategoryIncomeAdapter(private var categoryList: List<Category>, var context: Context?) :
+class CategoryIncomeAdapter(private var categoryList: List<Category>, var activity: Activity?) :
     RecyclerView.Adapter<CategoryIncomeAdapter.ViewHolder>() {
     private var selectedPos = -1
     private val storage = Firebase.storage
@@ -53,18 +55,10 @@ class CategoryIncomeAdapter(private var categoryList: List<Category>, var contex
         holder.categoryName.text = category.categoryName
         holder.subCategoryName.text = category.subCategory
 
-        val storageRef = storage.reference
-
-        val pathReference = storageRef.child("images/${category.image}")
-
-        val ONE_MEGABYTE: Long = 1024 * 1024
-        pathReference.getBytes(ONE_MEGABYTE).addOnSuccessListener {
-            val bmp = BitmapFactory.decodeByteArray(it, 0, it.size)
-            holder.image.setImageBitmap(Bitmap.createScaledBitmap(bmp, holder.image.width, holder.image.height, false));
-
-        }.addOnFailureListener {
-            // Handle any errors
-        }
+        val url = "https://fipp-31ec2.appspot.com.storage.googleapis.com/img%2F${category.image}"
+        Glide.with(activity!! /* context */)
+            .load(url)
+            .into(holder.image)
 
         holder.setOnClickListener (
             object : ItemClickListener{
