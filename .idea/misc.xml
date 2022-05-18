@@ -124,6 +124,7 @@
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.3578125" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3578125" />
         <entry key="app/src/main/res/layout/activity_main2.xml" value="0.14444444444444443" />
+        <entry key="app/src/main/res/layout/activity_register_expense.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_register_income.xml" value="0.3546875" />
         <entry key="app/src/main/res/layout/activity_register_new_expenses_category.xml" value="0.3546875" />
         <entry key="app/src/main/res/layout/activity_register_new_income_category.xml" value="0.3546875" />
