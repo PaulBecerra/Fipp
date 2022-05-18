@@ -204,6 +204,14 @@ class IncomeBalanceFragment : Fragment() {
 
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
+    override fun onStart(){
+        super.onStart()
+        loadProgressBar()
+
+        setLineChart()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

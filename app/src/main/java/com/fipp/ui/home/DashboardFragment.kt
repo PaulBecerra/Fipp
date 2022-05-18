@@ -1,5 +1,6 @@
 package com.fipp.ui.home
 
+import android.content.Context
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
@@ -174,6 +175,11 @@ class DashboardFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
         categoryController = CategoryController(requireActivity())
 
 
@@ -182,8 +188,8 @@ class DashboardFragment : Fragment() {
 
         this.getMonthExpenses(actualDate.monthValue, actualDate.year, object: MyCallback {
             override fun onCallback(value: List<Expense>) {
-//                Toast.makeText(activity, "Expenses3: $value", Toast.LENGTH_LONG).show()
                 expenses = value as java.util.ArrayList<Expense>
+
             }
         })
 
@@ -193,54 +199,77 @@ class DashboardFragment : Fragment() {
 
             override fun onCallback(value: List<Income>) {
                 income = value as java.util.ArrayList<Income>
-                for (money in income) {
-                    budget += money.amount.toFloat()
-                }
 
-                setLineChart()
+
 
                 loadProgressBar()
             }
         })
-
-
-
-
     }
 
-
     @RequiresApi(Build.VERSION_CODES.O)
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val category = Category("","Miau", "miau", "car.jpg",CategoryType.EXPENSES)
-
-        val date = LocalDateTime.of(2022,5,5, 0, 0)
-        val date2 = LocalDateTime.of(2022,5,15, 0, 0)
-        val date3 = LocalDateTime.of(2022,5,20, 0, 0)
-        val date4 = LocalDateTime.of(2022,5,22, 0, 0)
-
-        expenses.add(Expense("500.0", date, category))
-        expenses.add(Expense("600.0", date2, category))
-        expenses.add(Expense("400.0", date3, category))
-        expenses.add(Expense("800.0", date4, category))
-
-
-        income.add(Income("500.0", date, category))
-        income.add(Income("1000.0", date2, category))
-        income.add(Income("2500.0", date4, category))
-
-        for (money in income) {
-            budget += money.amount.toFloat()
-        }
-
-        for (expense in expenses){
-            totalExpense += expense.amount.toFloat()
-        }
-
-
+    override fun onStart() {
+        super.onStart()
         loadProgressBar()
 
         setHalfPieChartIncome()
         setHalfPieChartExpenses()
+
+        val textViewIncome: TextView = binding.tvIncome
+        val textViewExpense: TextView = binding.tvExpense
+
+        textViewIncome.text = budget.toString()
+        textViewExpense.text = totalExpense.toString()
+
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    override fun onResume() {
+        super.onResume()
+        loadProgressBar()
+
+        setHalfPieChartIncome()
+        setHalfPieChartExpenses()
+
+        val textViewIncome: TextView = binding.tvIncome
+        val textViewExpense: TextView = binding.tvExpense
+
+        textViewIncome.text = budget.toString()
+        textViewExpense.text = totalExpense.toString()
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        val category = Category("","Miau", "miau", "car.jpg",CategoryType.EXPENSES)
+//
+//        val date = LocalDateTime.of(2022,5,5, 0, 0)
+//        val date2 = LocalDateTime.of(2022,5,15, 0, 0)
+//        val date3 = LocalDateTime.of(2022,5,20, 0, 0)
+//        val date4 = LocalDateTime.of(2022,5,22, 0, 0)
+//
+//        expenses.add(Expense("500.0", date, category))
+//        expenses.add(Expense("600.0", date2, category))
+//        expenses.add(Expense("400.0", date3, category))
+//        expenses.add(Expense("800.0", date4, category))
+//
+//
+//        income.add(Income("500.0", date, category))
+//        income.add(Income("1000.0", date2, category))
+//        income.add(Income("2500.0", date4, category))
+//
+//        for (money in income) {
+//            budget += money.amount.toFloat()
+//        }
+//
+//        for (expense in expenses){
+//            totalExpense += expense.amount.toFloat()
+//        }
+
+
+//        loadProgressBar()
+//
+//        setHalfPieChartIncome()
+//        setHalfPieChartExpenses()
 
         val botonIncomes: View = binding.buttonIncomesHome
         val botonExpense: View = binding.buttonExpenseHome
@@ -255,11 +284,7 @@ class DashboardFragment : Fragment() {
             act?.startActivity(Intent(act, RegisterExpenseActivity::class.java))
         }
 
-        val textViewIncome: TextView = binding.tvIncome
-        val textViewExpense: TextView = binding.tvExpense
 
-        textViewIncome.text = budget.toString()
-        textViewExpense.text = totalExpense.toString()
     }
 
     override fun onDestroyView() {
@@ -285,6 +310,7 @@ class DashboardFragment : Fragment() {
             ColorStateList.valueOf(ContextCompat.getColor(requireActivity(), R.color.rojo))
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun setHalfPieChartIncome(){
         val pieChart: PieChart = binding.pieChart
 
@@ -345,6 +371,7 @@ class DashboardFragment : Fragment() {
 
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun setHalfPieChartExpenses(){
         val pieChart: PieChart = binding.pieChart2
 
