@@ -9,6 +9,7 @@ import androidx.core.widget.doOnTextChanged
 import com.fipp.R
 import com.fipp.controller.CategoryController
 import com.fipp.model.Category
+import com.fipp.model.CategoryType
 import com.fipp.model.Subcategory
 import java.util.*
 
@@ -61,7 +62,7 @@ class RegisterNewIncomeCategoryActivity : AppCompatActivity() {
 
             var imagetView: ImageView = cardView.findViewById(R.id.imageViewCategoryIncome)
 
-            val category = Category(UUID.randomUUID().toString(), categoryName, subcategoryName, 0, "Incomes")
+            val category = Category(UUID.randomUUID().toString(), categoryName, subcategoryName, 0, CategoryType.INCOMES)
             categoryController.saveCategory(category)
             finish()
         }

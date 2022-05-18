@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.fipp.R
 import com.fipp.databinding.FragmentExpensesCategoriesBinding
 import com.fipp.model.Category
+import com.fipp.model.CategoryType
 
 class ExpensesCategoriesFragment : Fragment() {
     private var categoryList: ArrayList<Category> = ArrayList()
@@ -93,10 +94,10 @@ class ExpensesCategoriesFragment : Fragment() {
     }
 
     private fun getExpenseCategoriesByUser(){
-        val category1 = Category("","test 1", "subtest 1", R.drawable.fipp_app_iconos_22, "Expenses")
-        val category2 = Category("", "test 2", "subtest 2", R.drawable.fipp_app_iconos_22,"Expenses")
-        val category3 = Category("", "test 3", "subtest 3", R.drawable.fipp_app_iconos_22,"Expenses")
-        val category4 = Category("", "test 4", "subtest 4", R.drawable.fipp_app_iconos_22,"Expenses")
+        val category1 = Category("","test 1", "subtest 1", R.drawable.fipp_app_iconos_22, CategoryType.EXPENSES)
+        val category2 = Category("", "test 2", "subtest 2", R.drawable.fipp_app_iconos_22,CategoryType.EXPENSES)
+        val category3 = Category("", "test 3", "subtest 3", R.drawable.fipp_app_iconos_22,CategoryType.EXPENSES)
+        val category4 = Category("", "test 4", "subtest 4", R.drawable.fipp_app_iconos_22,CategoryType.EXPENSES)
         categoryList.addAll(listOf(category1, category2, category3, category4, category1, category2, category3, category4, category1, category2, category3, category4));
     }
 }

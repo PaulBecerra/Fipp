@@ -18,6 +18,7 @@ import com.fipp.databinding.ActivityChartBinding
 import com.fipp.databinding.FragmentIncomeBalanceBinding
 import com.fipp.formatters.LineChartXAxisValueFormatter
 import com.fipp.model.Category
+import com.fipp.model.CategoryType
 import com.fipp.model.Expense
 import com.fipp.model.Income
 import com.github.mikephil.charting.charts.LineChart
@@ -48,7 +49,7 @@ class IncomeBalanceFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val category = Category("","Miau", "miau", 1,"Incomes")
+        val category = Category("","Miau", "miau", 1, CategoryType.INCOMES)
         val date = LocalDateTime.of(2022,5,5, 0, 0)
         val date2 = LocalDateTime.of(2022,5,15, 0, 0)
         val date3 = LocalDateTime.of(2022,5,20, 0, 0)
@@ -82,6 +83,7 @@ class IncomeBalanceFragment : Fragment() {
         return root
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         loadProgressBar()
 
@@ -112,6 +114,7 @@ class IncomeBalanceFragment : Fragment() {
     /**
      *
      */
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun setLineChart(){
         val lineChartBinding: ActivityChartBinding = binding.lineChart
         var lineChart: LineChart = lineChartBinding.lineChart
@@ -196,7 +199,7 @@ class IncomeBalanceFragment : Fragment() {
             row.addView(textView)
 
             val textView2 = TextView(requireActivity())
-            textView2.text = item.category.categoryName
+            textView2.text = item.category?.categoryName ?: "-"
             textView2.gravity = Gravity.CENTER
             textView2.layoutParams = TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f)
             row.addView(textView2)

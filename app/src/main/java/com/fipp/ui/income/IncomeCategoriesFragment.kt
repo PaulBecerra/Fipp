@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.fipp.R
 import com.fipp.databinding.FragmentIncomeCategoriesBinding
 import com.fipp.model.Category
+import com.fipp.model.CategoryType
 
 class IncomeCategoriesFragment : Fragment() {
 
@@ -89,10 +90,10 @@ class IncomeCategoriesFragment : Fragment() {
     }
 
     private fun getIncomeCategoriesByUser(){
-        val category1 = Category("","test 1", "subtest 1", R.drawable.fipp_app_iconos_85,"Incomes")
-        val category2 = Category("","test 2", "subtest 2", R.drawable.fipp_app_iconos_85,"Incomes")
-        val category3 = Category("","test 3", "subtest 3", R.drawable.fipp_app_iconos_85,"Incomes")
-        val category4 = Category("","test 4", "subtest 4", R.drawable.fipp_app_iconos_85,"Incomes")
+        val category1 = Category("","test 1", "subtest 1", R.drawable.fipp_app_iconos_85, CategoryType.INCOMES)
+        val category2 = Category("","test 2", "subtest 2", R.drawable.fipp_app_iconos_85, CategoryType.INCOMES)
+        val category3 = Category("","test 3", "subtest 3", R.drawable.fipp_app_iconos_85, CategoryType.INCOMES)
+        val category4 = Category("","test 4", "subtest 4", R.drawable.fipp_app_iconos_85, CategoryType.INCOMES)
         categoryList.addAll(listOf(category1, category2, category3, category4, category1, category2, category3, category4, category1, category2, category3, category4));
     }
 }

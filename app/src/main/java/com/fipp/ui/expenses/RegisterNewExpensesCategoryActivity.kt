@@ -12,6 +12,7 @@ import com.fipp.R
 import com.fipp.controller.CategoryController
 import com.fipp.controller.UserController
 import com.fipp.model.Category
+import com.fipp.model.CategoryType
 import com.fipp.model.Subcategory
 import java.util.*
 
@@ -64,7 +65,7 @@ class RegisterNewExpensesCategoryActivity : AppCompatActivity() {
 
             var imagetView: ImageView = cardView.findViewById(R.id.imageViewCategoryExpense)
 
-            val category = Category(UUID.randomUUID().toString(), categoryName, subcategoryName, 0, "Expenses")
+            val category = Category(UUID.randomUUID().toString(), categoryName, subcategoryName, 0, CategoryType.EXPENSES)
             categoryController.saveCategory(category)
             finish()
         }

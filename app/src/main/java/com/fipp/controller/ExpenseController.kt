@@ -5,12 +5,14 @@ import android.os.Build
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.fipp.model.Expense
+import com.google.android.gms.tasks.Tasks
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import java.time.LocalDateTime
 import java.time.YearMonth
+import java.util.concurrent.TimeUnit
 
 class ExpenseController(private var activity: Activity) {
     // key for login with google
@@ -24,49 +26,7 @@ class ExpenseController(private var activity: Activity) {
         this.categoryController = CategoryController(activity)
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun getMonthExpenses(month: Int, year: Int): ArrayList<Expense> {
-        val expenses = ArrayList<Expense>()
-        val user = auth.currentUser
-        val userId = user?.uid
-        // Create instance of localDateTime with the month and year
-        val yearMonthObject = YearMonth.of(year, month)
-        val daysInMonth = yearMonthObject.lengthOfMonth();
 
-
-
-        val startDate = LocalDateTime.of(year, month, 1, 0, 0)
-        val endDate = LocalDateTime.of(year, month, daysInMonth, 0, 0)
-//        Toast.makeText(activity, "Start: $startDate End: $endDate", Toast.LENGTH_LONG).show()
-//        Toast.makeText(activity, "UserId: $userId", Toast.LENGTH_LONG).show()
-        db.collection(collection).whereEqualTo("user", userId)
-            .whereGreaterThanOrEqualTo("createdAt", startDate)
-            .whereLessThanOrEqualTo("createdAt", endDate)
-            .get()
-            .addOnSuccessListener {
-                for (document in it) {
-                    println(document.id + " => " + document.data)
-
-                    val createdAt = document.data["createdAt"] as Map<*, *>
-                    val date = createdAt["dayOfMonth"] as Long
-                    val month = createdAt["monthValue"] as Long
-                    val year = createdAt["year"] as Long
-                    val expense = Expense(
-                        document.data["amount"].toString(),
-                        LocalDateTime.of(year.toInt(), month.toInt(), date.toInt(), 0, 0),
-                        categoryController.getCategoryById(document.data["category"].toString()),
-                    )
-//                    val expense = document.toObject(Expense::class.java)
-//                    expenses.add(expense)
-                }
-            }
-            .addOnFailureListener { exception ->
-                // Create a Toast with a message
-                Toast.makeText(activity, "$exception", Toast.LENGTH_LONG).show()
-                println("Error getting documents: $exception")
-            }
-        return expenses
-    }
 
     fun createExpense(expense: Expense) {
         val user = auth.currentUser
