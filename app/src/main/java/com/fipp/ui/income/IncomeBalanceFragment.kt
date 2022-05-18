@@ -201,24 +201,6 @@ class IncomeBalanceFragment : Fragment() {
 
 
 
-//        val category = Category("","Miau", "miau", 1)
-//        val date = LocalDateTime.of(2022,5,5, 0, 0)
-//        val date2 = LocalDateTime.of(2022,5,15, 0, 0)
-//        val date3 = LocalDateTime.of(2022,5,20, 0, 0)
-//        val date4 = LocalDateTime.of(2022,5,22, 0, 0)
-
-//        expenses.add(Expense("500.0", date, category))
-//        expenses.add(Expense("600.0", date2, category))
-//        expenses.add(Expense("400.0", date3, category))
-//        expenses.add(Expense("800.0", date4, category))
-//
-//
-//        income.add(Income("500.0", date, category))
-//        income.add(Income("1000.0", date2, category))
-//        income.add(Income("2500.0", date4, category))
-
-
-
 
     }
 

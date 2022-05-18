@@ -32,8 +32,9 @@ class CategoryController(private var activity: Activity) {
         this.auth = Firebase.auth
     }
 
-    fun getCategoryById(id: String, callbackCategory: MyCallbackCategory) {
+    fun getCategoryById(id: String, callbackCategory: MyCallbackCategory): Category? {
         var category: Category? = null
+
         db.collection(collection).document(id).get().addOnSuccessListener {
             val categoryType: CategoryType
             if (it.data?.get("categoryType").toString() == CategoryType.INCOMES.toString()){
@@ -48,9 +49,10 @@ class CategoryController(private var activity: Activity) {
                 it.data?.get("image").toString(),
                 categoryType
             )
+            callbackCategory.onCallback(category!!)
+
         }
-        category?.let { callbackCategory.onCallback(it) }
-//        return category
+        return category
     }
 
     fun saveCategory(category: Category){
@@ -110,8 +112,6 @@ class CategoryController(private var activity: Activity) {
                     "problemas al subir la imagen",
                     Toast.LENGTH_SHORT
                 ).show()
-            }.addOnSuccessListener { taskSnapshot ->
-
             }
 
     }

@@ -62,14 +62,13 @@ class ExpensesBalanceFragment : Fragment() {
     private lateinit var IncomeController: IncomeController
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun getMonthExpenses(month: Int, year: Int, myCallback : MyCallback): ArrayList<Expense> {
+    fun getMonthExpenses(month: Int, year: Int, myCallback: MyCallback): ArrayList<Expense> {
         val miau: ArrayList<String> = ArrayList()
         val user = auth.currentUser
         val userId = user?.uid
         // Create instance of localDateTime with the month and year
         val yearMonthObject = YearMonth.of(year, month)
         val daysInMonth = yearMonthObject.lengthOfMonth();
-
 
 
         val startDate = LocalDateTime.of(year, month, 1, 0, 0)
@@ -81,46 +80,44 @@ class ExpensesBalanceFragment : Fragment() {
 
         algo.addOnCompleteListener { task ->
             if (task.isSuccessful) {
-                val simon :ArrayList<Expense> = ArrayList<Expense>()
+                val simon: ArrayList<Expense> = ArrayList<Expense>()
                 for (document in task.result!!) {
                     val createdAt = document.data["createdAt"] as Map<*, *>
                     val date = createdAt["dayOfMonth"] as Long
                     val month = createdAt["monthValue"] as Long
                     val year = createdAt["year"] as Long
                     var category: Category? = null
-                    categoryController.getCategoryById(document.data["category"].toString(), object:
-                        MyCallbackCategory {
-                        override fun onCallback(value: Category) {
-                            category = value
+                    val pedro = categoryController.getCategoryById(
+                        document.data["category"].toString(),
+                        object :
+                            MyCallbackCategory {
+                            override fun onCallback(value: Category) {
+                                category = value
 
-                        }
-                    })
+                            }
+                        })
                     val expense = Expense(
                         document.data["amount"].toString(),
                         LocalDateTime.of(year.toInt(), month.toInt(), date.toInt(), 0, 0),
                         category,
                     )
-//                    Toast.makeText(activity, expense.amount, Toast.LENGTH_LONG).show()
-//                    Toast.makeText(activity, "Expenses: $expenses", Toast.LENGTH_LONG).show()
                     simon.add(expense)
 
                 }
                 myCallback.onCallback(simon)
-//                expenses = simon
             }
         }
-//        Toast.makeText(activity, "Expenses2: $expenses", Toast.LENGTH_LONG).show()
-        return expenses    }
+        return expenses
+    }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun getMonthIncome(month: Int, year: Int, myCallback : MyCallbackIncome): ArrayList<Income> {
+    fun getMonthIncome(month: Int, year: Int, myCallback: MyCallbackIncome): ArrayList<Income> {
         val miau: ArrayList<String> = ArrayList()
         val user = auth.currentUser
         val userId = user?.uid
         // Create instance of localDateTime with the month and year
         val yearMonthObject = YearMonth.of(year, month)
         val daysInMonth = yearMonthObject.lengthOfMonth();
-
 
 
         val startDate = LocalDateTime.of(year, month, 1, 0, 0)
@@ -131,27 +128,27 @@ class ExpensesBalanceFragment : Fragment() {
                 .whereLessThanOrEqualTo("createdAt", endDate).get()
         algo.addOnCompleteListener { task ->
             if (task.isSuccessful) {
-                val simon :ArrayList<Income> = ArrayList<Income>()
+                val simon: ArrayList<Income> = ArrayList<Income>()
                 for (document in task.result!!) {
                     val createdAt = document.data["createdAt"] as Map<*, *>
                     val date = createdAt["dayOfMonth"] as Long
                     val month = createdAt["monthValue"] as Long
                     val year = createdAt["year"] as Long
                     var category: Category? = null
-                    categoryController.getCategoryById(document.data["category"].toString(), object:
-                        MyCallbackCategory {
-                        override fun onCallback(value: Category) {
-                            category = value
+                    categoryController.getCategoryById(
+                        document.data["category"].toString(),
+                        object :
+                            MyCallbackCategory {
+                            override fun onCallback(value: Category) {
+                                category = value
 
-                        }
-                    })
+                            }
+                        })
                     val income = Income(
                         document.data["amount"].toString(),
                         LocalDateTime.of(year.toInt(), month.toInt(), date.toInt(), 0, 0),
                         category,
                     )
-                    Toast.makeText(activity, income.amount, Toast.LENGTH_LONG).show()
-//                    Toast.makeText(activity, "Expenses: $expenses", Toast.LENGTH_LONG).show()
                     simon.add(income)
 
                 }
@@ -160,10 +157,10 @@ class ExpensesBalanceFragment : Fragment() {
             }
         }
             .addOnFailureListener { exception ->
-                Toast.makeText(activity, "Error getting documents: $exception", Toast.LENGTH_LONG).show()
+                Toast.makeText(activity, "Error getting documents: $exception", Toast.LENGTH_LONG)
+                    .show()
                 println("Error getting documents: $exception")
             }
-//        Toast.makeText(activity, "Expenses2: $expenses", Toast.LENGTH_LONG).show()
         return income
     }
 
@@ -178,15 +175,14 @@ class ExpensesBalanceFragment : Fragment() {
         // Create instance of LocalDateTime with the month and year
         val actualDate = LocalDateTime.now()
 
-        this.getMonthIncome(actualDate.monthValue, actualDate.year, object: MyCallbackIncome {
+        this.getMonthIncome(actualDate.monthValue, actualDate.year, object : MyCallbackIncome {
 
             override fun onCallback(value: List<Income>) {
-                Toast.makeText(requireActivity(), "Income: $value", Toast.LENGTH_LONG).show()
                 income = value as ArrayList<Income>
             }
         })
 
-        this.getMonthExpenses(actualDate.monthValue, actualDate.year, object: MyCallback {
+        this.getMonthExpenses(actualDate.monthValue, actualDate.year, object : MyCallback {
             override fun onCallback(value: List<Expense>) {
 //                Toast.makeText(activity, "Expenses3: $value", Toast.LENGTH_LONG).show()
                 expenses = value as ArrayList<Expense>
@@ -194,29 +190,11 @@ class ExpensesBalanceFragment : Fragment() {
                 for (money in income) {
                     budget += money.amount.toFloat()
                 }
-
                 setLineChart()
 
                 loadProgressBar()
-
-
             }
         })
-
-
-
-//        expenses = expensesController.getMonthExpenses(5, 2022)
-//        val category = Category("", "Miau", "miau", 1)
-////
-//        val date = LocalDateTime.of(2022,5,5, 0, 0)
-//        val date2 = LocalDateTime.of(2022,5,15, 0, 0)
-//        val date3 = LocalDateTime.of(2022,5,20, 0, 0)
-//        val date4 = LocalDateTime.of(2022,5,22, 0, 0)
-//
-//
-//        income.add(Income("500.0", date, category))
-//        income.add(Income("1000.0", date2, category))
-//        income.add(Income("2500.0", date4, category))
 
 
     }
@@ -233,7 +211,9 @@ class ExpensesBalanceFragment : Fragment() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        loadProgressBar()
 
+        setLineChart()
     }
 
     private fun loadProgressBar() {
@@ -246,18 +226,19 @@ class ExpensesBalanceFragment : Fragment() {
             expenses += expense.amount.toFloat()
         }
         // set progress
-        val progress =  (expenses * 100 ) / budget
+        val progress = (expenses * 100) / budget
         progressBar.progress = progress.toInt()
 
 
-        progressBar.progressTintList = ColorStateList.valueOf(ContextCompat.getColor(requireActivity(), R.color.rojo))
+        progressBar.progressTintList =
+            ColorStateList.valueOf(ContextCompat.getColor(requireActivity(), R.color.rojo))
     }
 
     /**
      *
      */
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun setLineChart(){
+    private fun setLineChart() {
         val lineChartBinding: ActivityChartBinding = binding.lineChart
         var lineChart: LineChart = lineChartBinding.lineChart
 
@@ -280,7 +261,6 @@ class ExpensesBalanceFragment : Fragment() {
 
         val entries = loadChartData()
 
-//        Toast.makeText(activity, "Entries: $entries", Toast.LENGTH_LONG).show()
 
         val red = ContextCompat.getColor(requireActivity(), R.color.rojo)
         // First line
@@ -313,7 +293,6 @@ class ExpensesBalanceFragment : Fragment() {
         val entries = ArrayList<Entry>()
 
         for (item in expenses) {
-//            Toast.makeText(requireActivity(), item.amount, Toast.LENGTH_SHORT).show()
             val x: Float = item.createdAt.atZone(ZoneOffset.UTC).toEpochSecond().toFloat()
             val y: Float = item.amount.toFloat()
             entries.add(Entry(x, y))
@@ -322,11 +301,10 @@ class ExpensesBalanceFragment : Fragment() {
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun loadTableChart(){
+    private fun loadTableChart() {
         val dateTimeFormat = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.getDefault())
         val table = binding.tableLayout
 
-//        Toast.makeText(requireActivity(), "Cargando tabla", Toast.LENGTH_SHORT).show()
         for (item in expenses) {
             val row = TableRow(requireActivity())
             // Add padding to the row
@@ -336,7 +314,8 @@ class ExpensesBalanceFragment : Fragment() {
 
 
             val textView = TextView(requireActivity())
-            val emissionsMilliSince1970Time = item.createdAt.atZone(ZoneOffset.UTC).toEpochSecond() * 1000
+            val emissionsMilliSince1970Time =
+                item.createdAt.atZone(ZoneOffset.UTC).toEpochSecond() * 1000
             val timeMilliseconds = Date(emissionsMilliSince1970Time)
             val date = dateTimeFormat.format(timeMilliseconds)
             textView.text = date
@@ -347,13 +326,15 @@ class ExpensesBalanceFragment : Fragment() {
             val textView2 = TextView(requireActivity())
             textView2.text = item.category?.categoryName ?: "No category"
             textView2.gravity = Gravity.CENTER
-            textView2.layoutParams = TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f)
+            textView2.layoutParams =
+                TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f)
             row.addView(textView2)
 
             val textView3 = TextView(requireActivity())
             textView3.text = item.amount
             textView3.gravity = Gravity.CENTER
-            textView3.layoutParams = TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f)
+            textView3.layoutParams =
+                TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f)
             row.addView(textView3)
 
 
