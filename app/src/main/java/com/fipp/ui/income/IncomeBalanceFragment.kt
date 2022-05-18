@@ -298,11 +298,9 @@ class IncomeBalanceFragment : Fragment() {
 
         loadTableChart()
 
+
         val entries = loadChartData()
 
-        for (entry in entries) {
-            Log.d("Entry", entry.toString())
-        }
 
         val red = ContextCompat.getColor(requireActivity(), R.color.verde_principal)
         // First line
@@ -336,11 +334,11 @@ class IncomeBalanceFragment : Fragment() {
         val entries = java.util.ArrayList<Entry>()
 
         for (item in income) {
-            Log.d("Income", item.toString())
+//            Log.d("Income", item.toString())
             val x: Float = item.createdAt.atZone(ZoneOffset.UTC).toEpochSecond().toFloat()
             val y: Float = item.amount.toFloat()
             val entry = Entry(x, y)
-            Log.d("Entry", entry.toString())
+//            Log.d("Entry", entry.toString())
             entries.add(entry)
         }
 //        Toast.makeText(activity, "Entries: $entries", Toast.LENGTH_LONG).show()
