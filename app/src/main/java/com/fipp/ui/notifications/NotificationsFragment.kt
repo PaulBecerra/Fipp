@@ -11,7 +11,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.fipp.LoginActivity
 import com.fipp.R
+import com.fipp.controller.IncomeController
+import com.fipp.controller.UserController
 import com.fipp.databinding.FragmentNotificationsBinding
+import com.fipp.model.Income
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -23,7 +26,7 @@ class NotificationsFragment : Fragment() {
     private val db = FirebaseFirestore.getInstance()
     private lateinit var auth: FirebaseAuth
     private var _binding: FragmentNotificationsBinding? = null
-
+    private lateinit var userController: UserController
 
     private val binding get() = _binding!!
 
@@ -39,10 +42,13 @@ class NotificationsFragment : Fragment() {
         return root
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val btnLogout = binding.btnLogout
+        val btnGuardar = binding.btnGuardar
         var nombre: EditText = binding.editTextNombre
         var correo: EditText= binding.editTextEmail
+        userController = UserController(requireActivity())
 
         if (auth.currentUser != null) {
 
@@ -57,9 +63,11 @@ class NotificationsFragment : Fragment() {
 
             }
         }
+        btnGuardar.setOnClickListener{
 
+            userController.updateUser(nombre.toString())
 
-
+        }
 
         btnLogout.setOnClickListener{
             signOut()

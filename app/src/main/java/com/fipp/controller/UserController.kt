@@ -82,12 +82,12 @@ class UserController {
         activity.startActivity(intent)
     }
 
-    fun updateUser(user: User) {
+    fun updateUser(name: String) {
         val user1 = auth.currentUser
         val userId = user1?.uid
 
         db.collection("users").document(userId!!).set(
-            hashMapOf("name" to user.name)
+            hashMapOf("name" to name)
         )
             .addOnSuccessListener {
                 Toast.makeText(activity, "¡Edición exitosa!", Toast.LENGTH_SHORT).show()
