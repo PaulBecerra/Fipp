@@ -1,5 +1,6 @@
 package com.fipp.ui.income
 
+import android.app.Activity
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +12,7 @@ import com.fipp.R
 import com.fipp.model.Category
 import com.fipp.model.Subcategory
 
-class SubcategoryIncomeAdapter(private var categoryList: List<Subcategory>) :
+class SubcategoryIncomeAdapter(private var categoryList: List<Subcategory>, var activity: Activity) :
     RecyclerView.Adapter<SubcategoryIncomeAdapter.ViewHolder>() {
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view){
@@ -35,10 +36,10 @@ class SubcategoryIncomeAdapter(private var categoryList: List<Subcategory>) :
         holder.image.setImageResource(category.image)
 
         holder.itemView.setOnClickListener{
-            val intent = Intent(holder.itemView.context, RegisterNewIncomeCategoryActivity::class.java)
-            intent.putExtra("subcategory", category.name)
-            intent.putExtra("image", category.image)
-            holder.itemView.context.startActivity(intent)
+            val intent = Intent()
+            intent.putExtra("subcategory", category)
+            activity?.setResult(Activity.RESULT_OK, intent)
+            activity?.finish()
         }
     }
 

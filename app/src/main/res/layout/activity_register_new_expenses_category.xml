@@ -46,11 +46,12 @@
                 android:textSize="22sp" />
 
             <EditText
+                android:id="@+id/editTextCategoryName"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="#F4F4F4"
                 android:layout_marginVertical="16dp"
-                android:inputType="textPersonName"
+                android:inputType="text"
                 android:hint="@string/expense_add_categories_placeholder"
                 android:textColor="#8C8C8C"
                 android:textSize="16dp"
@@ -59,6 +60,7 @@
         </LinearLayout>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewCategoryExpense"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -80,6 +82,7 @@
             android:orientation="horizontal"
             >
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewSubcategory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="20dp"

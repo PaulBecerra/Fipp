@@ -2,11 +2,11 @@ package com.fipp.ui.expenses
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.fipp.R
 import com.fipp.databinding.FragmentExpensesCategoriesBinding
 import com.fipp.model.Category
@@ -14,7 +14,7 @@ import com.fipp.model.Category
 class ExpensesCategoriesFragment : Fragment() {
     private var categoryList: ArrayList<Category> = ArrayList()
     private var _binding: FragmentExpensesCategoriesBinding? = null
-
+    private var currentPosition = -1
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -40,11 +40,13 @@ class ExpensesCategoriesFragment : Fragment() {
 
         val boton: View = binding.buttonRegistrar
 
+        val act = parentFragment?.parentFragment?.activity
+
         boton.setOnClickListener {
 //            val intent = Intent (parentFragment?.activity, RegisterNewIncomeCategoryActivity::class.java)
 //            parentFragment?.activity?.startActivity(intent)
 
-            val act = parentFragment?.parentFragment?.activity
+
             act?.startActivity(Intent(act, RegisterNewExpensesCategoryActivity::class.java))
         }
 
@@ -55,8 +57,39 @@ class ExpensesCategoriesFragment : Fragment() {
         val recyclerView = binding.recyclerViewExpensesCategory
 
         val grid = GridLayoutManager(activity, 2, GridLayoutManager.VERTICAL, false)
+        recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = grid
         recyclerView.adapter = adapter
+
+        val mGestureDetector = GestureDetector(act, object : GestureDetector.SimpleOnGestureListener() {
+            override fun onSingleTapUp(e: MotionEvent): Boolean {
+                return true
+            }
+        })
+
+        recyclerView.addOnItemTouchListener(object : RecyclerView.OnItemTouchListener {
+            override fun onRequestDisallowInterceptTouchEvent(b: Boolean) {}
+            override fun onInterceptTouchEvent(
+                recyclerView: RecyclerView,
+                motionEvent: MotionEvent
+            ): Boolean {
+                try {
+                    val child: View? = recyclerView.findChildViewUnder(motionEvent.x, motionEvent.y)
+                    if (child != null && mGestureDetector.onTouchEvent(motionEvent)) {
+                        val pos = recyclerView.getChildAdapterPosition(child)
+
+                        currentPosition = pos
+
+                        Toast.makeText(act, "the item selected is $currentPosition", Toast.LENGTH_SHORT).show()
+                    }
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+                return false
+            }
+
+            override fun onTouchEvent(recyclerView: RecyclerView, motionEvent: MotionEvent) {}
+        })
     }
 
     private fun getExpenseCategoriesByUser(){

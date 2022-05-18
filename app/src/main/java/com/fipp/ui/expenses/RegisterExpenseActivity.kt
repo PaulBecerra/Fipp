@@ -83,15 +83,9 @@ class RegisterExpenseActivity : AppCompatActivity() {
                     if (child != null && mGestureDetector.onTouchEvent(motionEvent)) {
                         val pos = recyclerView.getChildAdapterPosition(child)
 
-                        Toast.makeText(baseContext, "the item selected is $pos", Toast.LENGTH_SHORT).show()
-
-                        val lastChild = recyclerView.getChildAt(currentPosition)
-                        if (lastChild != child){
-                            lastChild.setBackgroundColor(Color.parseColor("#fff"));
-                            child.setBackgroundColor(Color.parseColor("#000000"));
-                        }
-
                         currentPosition = pos
+
+                        Toast.makeText(baseContext, "the item selected is $currentPosition", Toast.LENGTH_SHORT).show()
                     }
                 } catch (e: Exception) {
                     e.printStackTrace()
