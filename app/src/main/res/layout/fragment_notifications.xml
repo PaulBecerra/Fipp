@@ -68,8 +68,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:editable="false"
                 android:hint="@string/login_email"
-                android:inputType="textPersonName"
+                android:inputType="none"
                 android:textSize="12sp" />
 
             <Button
