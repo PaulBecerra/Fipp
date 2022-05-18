@@ -73,7 +73,7 @@ class ExpenseController(private var activity: Activity) {
             hashMapOf("amount" to expense.amount,
                 "createdAt" to expense.createdAt,
                 "user" to userId,
-                "category" to expense.category.uid
+                "category" to expense.category!!.uid
             )
         )
             .addOnSuccessListener {

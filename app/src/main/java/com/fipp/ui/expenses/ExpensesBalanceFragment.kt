@@ -197,7 +197,7 @@ class ExpensesBalanceFragment : Fragment() {
             row.addView(textView)
 
             val textView2 = TextView(requireActivity())
-            textView2.text = item.category.categoryName
+            textView2.text = item.category?.categoryName ?: "No category"
             textView2.gravity = Gravity.CENTER
             textView2.layoutParams = TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f)
             row.addView(textView2)
