@@ -79,7 +79,9 @@ class CategoryController(private var activity: Activity) {
         db.collection(collection)
             .document(category.uid.toString())
             .set(
-                hashMapOf("categoryName" to category.categoryName,
+                hashMapOf(
+                    "uuid" to category.uid.toString(),
+                    "categoryName" to category.categoryName,
                         "subCategory" to category.subCategory,
                         "categoryType" to category.categoryType.toString(),
                         "image" to imageName,

@@ -45,17 +45,22 @@ class RegisterExpenseActivity : AppCompatActivity() {
 
         btn.setOnClickListener{
             // Create an instance of income
-            val catogory = Category("4SPIEKMdIz3E59Kdud9N","PruebaCategoria", "LLfg1Ds8zC1jNj0FZlL9", "car.jpg",CategoryType.EXPENSES)
-            val amountEditView: EditText = findViewById(R.id.editTextAmount)
-            val amount = amountEditView.text.toString()
-            // Check if amount is null
-            if (amount.isEmpty()) {
-                amountEditView.error = "Ingrese un monto"
-                return@setOnClickListener
+            if (currentPosition == -1){
+                Toast.makeText(baseContext, "Debe seleccionar una categoria", Toast.LENGTH_SHORT).show()
+            }else {
+
+                val catogory = categoryList[currentPosition]
+                val amountEditView: EditText = findViewById(R.id.editTextAmount)
+                val amount = amountEditView.text.toString()
+                // Check if amount is null
+                if (amount.isEmpty()) {
+                    amountEditView.error = "Ingrese un monto"
+                    return@setOnClickListener
+                }
+                val expense = Expense(amount, LocalDateTime.now(), catogory)
+                expensesController.createExpense(expense)
+                finish()
             }
-            val expense = Expense(amount, LocalDateTime.now(), catogory)
-            expensesController.createExpense(expense)
-            finish()
         }
 
         btn_close.setOnClickListener{
