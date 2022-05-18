@@ -63,7 +63,6 @@ class ExpensesBalanceFragment : Fragment() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun getMonthExpenses(month: Int, year: Int, myCallback: MyCallback): ArrayList<Expense> {
-        val miau: ArrayList<String> = ArrayList()
         val user = auth.currentUser
         val userId = user?.uid
         // Create instance of localDateTime with the month and year

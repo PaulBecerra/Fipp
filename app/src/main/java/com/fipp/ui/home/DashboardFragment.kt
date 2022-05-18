@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -70,10 +71,8 @@ class DashboardFragment : Fragment() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun getMonthExpenses(month: Int, year: Int, myCallback : MyCallback): java.util.ArrayList<Expense> {
-        val miau: java.util.ArrayList<String> = java.util.ArrayList()
         val user = auth.currentUser
         val userId = user?.uid
-        // Create instance of localDateTime with the month and year
         val yearMonthObject = YearMonth.of(year, month)
         val daysInMonth = yearMonthObject.lengthOfMonth();
 
@@ -107,17 +106,14 @@ class DashboardFragment : Fragment() {
                         LocalDateTime.of(year.toInt(), month.toInt(), date.toInt(), 0, 0),
                         category,
                     )
-//                    Toast.makeText(activity, expense.amount, Toast.LENGTH_LONG).show()
-//                    Toast.makeText(activity, "Expenses: $expenses", Toast.LENGTH_LONG).show()
                     simon.add(expense)
 
                 }
                 myCallback.onCallback(simon)
-//                expenses = simon
             }
         }
-//        Toast.makeText(activity, "Expenses2: $expenses", Toast.LENGTH_LONG).show()
-        return expenses    }
+        return expenses
+    }
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun getMonthIncome(month: Int, year: Int, myCallback : MyCallbackIncome): java.util.ArrayList<Income> {
@@ -158,28 +154,18 @@ class DashboardFragment : Fragment() {
                         LocalDateTime.of(year.toInt(), month.toInt(), date.toInt(), 0, 0),
                         category,
                     )
-//                    Toast.makeText(activity, expense.amount, Toast.LENGTH_LONG).show()
-//                    Toast.makeText(activity, "Expenses: $expenses", Toast.LENGTH_LONG).show()
                     simon.add(income)
 
                 }
                 myCallback.onCallback(simon)
-//                expenses = simon
             }
         }
-//        Toast.makeText(activity, "Expenses2: $expenses", Toast.LENGTH_LONG).show()
         return income
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-    }
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
         categoryController = CategoryController(requireActivity())
 
 
@@ -200,76 +186,65 @@ class DashboardFragment : Fragment() {
             override fun onCallback(value: List<Income>) {
                 income = value as java.util.ArrayList<Income>
 
+                for(i in income){
+                    budget += i.amount.toFloat()
+                }
+                for(i in expenses){
+                    totalExpense += i.amount.toFloat()
+                }
 
-
+                setHalfPieChartIncome()
+                setHalfPieChartExpenses()
                 loadProgressBar()
+                val textViewIncome: TextView = binding.tvIncome
+                val textViewExpense: TextView = binding.tvExpense
+
+                textViewIncome.text = budget.toString()
+                textViewExpense.text = totalExpense.toString()
+
             }
         })
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    override fun onStart() {
-        super.onStart()
-        loadProgressBar()
-
-        setHalfPieChartIncome()
-        setHalfPieChartExpenses()
-
-        val textViewIncome: TextView = binding.tvIncome
-        val textViewExpense: TextView = binding.tvExpense
-
-        textViewIncome.text = budget.toString()
-        textViewExpense.text = totalExpense.toString()
-
-    }
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    override fun onResume() {
-        super.onResume()
-        loadProgressBar()
-
-        setHalfPieChartIncome()
-        setHalfPieChartExpenses()
-
-        val textViewIncome: TextView = binding.tvIncome
-        val textViewExpense: TextView = binding.tvExpense
-
-        textViewIncome.text = budget.toString()
-        textViewExpense.text = totalExpense.toString()
-    }
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        val category = Category("","Miau", "miau", "car.jpg",CategoryType.EXPENSES)
+//    @RequiresApi(Build.VERSION_CODES.O)
+//    override fun onAttach(context: Context) {
+//        super.onAttach(context)
 //
-//        val date = LocalDateTime.of(2022,5,5, 0, 0)
-//        val date2 = LocalDateTime.of(2022,5,15, 0, 0)
-//        val date3 = LocalDateTime.of(2022,5,20, 0, 0)
-//        val date4 = LocalDateTime.of(2022,5,22, 0, 0)
-//
-//        expenses.add(Expense("500.0", date, category))
-//        expenses.add(Expense("600.0", date2, category))
-//        expenses.add(Expense("400.0", date3, category))
-//        expenses.add(Expense("800.0", date4, category))
-//
-//
-//        income.add(Income("500.0", date, category))
-//        income.add(Income("1000.0", date2, category))
-//        income.add(Income("2500.0", date4, category))
-//
-//        for (money in income) {
-//            budget += money.amount.toFloat()
-//        }
-//
-//        for (expense in expenses){
-//            totalExpense += expense.amount.toFloat()
-//        }
+//    }
 
-
+//    @RequiresApi(Build.VERSION_CODES.O)
+//    override fun onStart() {
+//        super.onStart()
 //        loadProgressBar()
 //
 //        setHalfPieChartIncome()
 //        setHalfPieChartExpenses()
+//
+//        val textViewIncome: TextView = binding.tvIncome
+//        val textViewExpense: TextView = binding.tvExpense
+//
+//        textViewIncome.text = budget.toString()
+//        textViewExpense.text = totalExpense.toString()
+//
+//    }
+
+//    @RequiresApi(Build.VERSION_CODES.O)
+//    override fun onResume() {
+//        super.onResume()
+//        loadProgressBar()
+//
+//        setHalfPieChartIncome()
+//        setHalfPieChartExpenses()
+//
+//        val textViewIncome: TextView = binding.tvIncome
+//        val textViewExpense: TextView = binding.tvExpense
+//
+//        textViewIncome.text = budget.toString()
+//        textViewExpense.text = totalExpense.toString()
+//    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         val botonIncomes: View = binding.buttonIncomesHome
         val botonExpense: View = binding.buttonExpenseHome
@@ -283,6 +258,18 @@ class DashboardFragment : Fragment() {
             val act = parentFragment?.activity
             act?.startActivity(Intent(act, RegisterExpenseActivity::class.java))
         }
+
+
+        loadProgressBar()
+
+        setHalfPieChartIncome()
+        setHalfPieChartExpenses()
+
+        val textViewIncome: TextView = binding.tvIncome
+        val textViewExpense: TextView = binding.tvExpense
+
+        textViewIncome.text = budget.toString()
+        textViewExpense.text = totalExpense.toString()
 
 
     }
@@ -390,8 +377,6 @@ class DashboardFragment : Fragment() {
 
         data.setValueFormatter(PercentFormatter())
         pieChart.data = data
-        //pieChart.setDescription("This is Pie Chart");
-
         //pieChart.setDescription("This is Pie Chart");
         pieChart.setBackgroundColor(Color.TRANSPARENT)
         pieChart.setHoleColor(Color.TRANSPARENT)
