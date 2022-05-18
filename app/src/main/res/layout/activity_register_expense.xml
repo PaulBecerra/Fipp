@@ -46,24 +46,24 @@
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/editTextTextPersonName2"
+                android:id="@+id/editTextAmount"
                 android:layout_width="282dp"
                 android:layout_height="38dp"
                 android:width="1dp"
-                android:textSize="15dp"
+                android:textSize="15sp"
                 android:background="#F4F4F4"
                 android:textColor="#8C8C8C"
                 android:inputType="textPersonName"
-                android:text="Cantidad gastada..." />
+                android:hint="@string/cantidad_de_ingreso" />
 
             <Button
                 android:id="@+id/button4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:width="1dp"
-                android:textSize="12dp"
+                android:textSize="12sp"
                 android:backgroundTint="@color/morado"
-                android:text="MXN" />
+                android:text="@string/mxn" />
         </LinearLayout>
 
         <TextView

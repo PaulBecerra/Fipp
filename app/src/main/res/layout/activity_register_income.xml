@@ -47,7 +47,7 @@
             android:layout_marginTop="5dp">
 
             <EditText
-                android:id="@+id/editTextTextPersonName2"
+                android:id="@+id/editTextAmount"
                 android:layout_width="282dp"
                 android:layout_height="38dp"
                 android:width="1dp"

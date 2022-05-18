@@ -60,7 +60,7 @@ class IncomeController(private var activity: Activity) {
         val userId = user?.uid
         // Create a new document
 
-        db.collection(collection).document(userId!!).set(
+        db.collection(collection).add(
             hashMapOf("amount" to income.amount,
                 "createdAt" to income.createdAt,
                 "user" to userId,

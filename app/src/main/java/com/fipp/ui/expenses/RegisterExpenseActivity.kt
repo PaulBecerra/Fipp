@@ -1,18 +1,25 @@
 package com.fipp.ui.expenses
 
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageButton
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.fipp.R
-import com.fipp.databinding.FragmentExpensesCategoriesBinding
+import com.fipp.controller.ExpenseController
 import com.fipp.model.Category
+import com.fipp.model.Expense
+import java.time.LocalDateTime
 
 class RegisterExpenseActivity : AppCompatActivity() {
     private var categoryList: ArrayList<Category> = ArrayList()
+    private lateinit var expensesController: ExpenseController
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register_expense)
@@ -20,7 +27,21 @@ class RegisterExpenseActivity : AppCompatActivity() {
         val btn_close: ImageButton = findViewById(R.id.btn_new_expense_close)
         val btn: Button = findViewById(R.id.btn_new_expense)
 
+        expensesController = ExpenseController(this)
+
+
         btn.setOnClickListener{
+            // Create an instance of income
+            val catogory = Category("4SPIEKMdIz3E59Kdud9N","PruebaCategoria", "LLfg1Ds8zC1jNj0FZlL9")
+            val amountEditView: EditText = findViewById(R.id.editTextAmount)
+            val amount = amountEditView.text.toString()
+            // Check if amount is null
+            if (amount.isEmpty()) {
+                amountEditView.error = "Ingrese un monto"
+                return@setOnClickListener
+            }
+            val expense = Expense(amount, LocalDateTime.now(), catogory)
+            expensesController.createExpense(expense)
             finish()
         }
 

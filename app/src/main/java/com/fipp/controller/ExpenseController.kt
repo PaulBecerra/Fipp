@@ -5,6 +5,7 @@ import android.os.Build
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.fipp.model.Expense
+import com.fipp.model.Income
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -15,9 +16,9 @@ import java.time.YearMonth
 
 class ExpenseController(private var activity: Activity) {
     // key for login with google
-    private val GOOGLE_SIGN_IN = 100
-    private lateinit var auth: FirebaseAuth
+    private var auth: FirebaseAuth
     private val db = FirebaseFirestore.getInstance()
+    private val collection = "expenses"
 
     init {
         this.auth = Firebase.auth
@@ -52,6 +53,26 @@ class ExpenseController(private var activity: Activity) {
                 println("Error getting documents: " + exception)
             }
         return expenses
+    }
+
+    fun createExpense(expense: Expense) {
+        val user = auth.currentUser
+        val userId = user?.uid
+        // Create a new document
+
+        db.collection(collection).add(
+            hashMapOf("amount" to expense.amount,
+                "createdAt" to expense.createdAt,
+                "user" to userId,
+                "category" to expense.category.uid
+            )
+        )
+            .addOnSuccessListener {
+                Toast.makeText(activity, "¡Registro exitoso!", Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener { exception ->
+                Toast.makeText(activity, "Hubo un error registrando el gasto", Toast.LENGTH_SHORT).show()
+            }
     }
 
 }
