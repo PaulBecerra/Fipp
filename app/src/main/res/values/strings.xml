@@ -88,6 +88,9 @@
     <string name="client_id">85270695483-oq53cdau91hm1f5qd96b43fjfpvpko2p.apps.googleusercontent.com</string>
     <string name="title_activity_subcategory">SubcategoryActivity</string>
     <string name="income_add_categories_title_subcategory">SELECCIONA SUBCATEGORÍA</string>
+    <string name="cantidad_de_ingreso">Cantidad de ingreso...</string>
+    <string name="mxn">MXN</string>
+    <string name="registrar_ingreso">REGISTRAR INGRESO</string>
 
 
 </resources>

@@ -37,7 +37,7 @@ class ExpenseController(private var activity: Activity) {
         val endDate = LocalDateTime.of(year, month, daysInMonth, 0, 0)
         db.collection("expenses").whereEqualTo("user", userId)
             .whereGreaterThanOrEqualTo("createdAt", startDate)
-            .whereLessThanOrEqualTo("createAr", endDate)
+            .whereLessThanOrEqualTo("createdAt", endDate)
             .get()
             .addOnSuccessListener {
                 for (document in it) {
