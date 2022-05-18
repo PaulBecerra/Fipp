@@ -210,9 +210,10 @@ class IncomeBalanceFragment : Fragment() {
                     totalExpense += i.amount.toFloat()
                 }
 
+                setLineChart()
+
                 loadProgressBar()
 
-                setLineChart()
             }
         })
 
@@ -240,6 +241,8 @@ class IncomeBalanceFragment : Fragment() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        loadProgressBar()
+
         setLineChart()
 
     }
@@ -274,6 +277,7 @@ class IncomeBalanceFragment : Fragment() {
      */
     @RequiresApi(Build.VERSION_CODES.O)
     private fun setLineChart() {
+        Log.d("Expenses", "Entró a expenses")
         val lineChartBinding: ActivityChartBinding = binding.lineChart
         var lineChart: LineChart = lineChartBinding.lineChart
 
@@ -295,6 +299,10 @@ class IncomeBalanceFragment : Fragment() {
         loadTableChart()
 
         val entries = loadChartData()
+
+        for (entry in entries) {
+            Log.d("Entry", entry.toString())
+        }
 
         val red = ContextCompat.getColor(requireActivity(), R.color.verde_principal)
         // First line
@@ -331,9 +339,11 @@ class IncomeBalanceFragment : Fragment() {
             Log.d("Income", item.toString())
             val x: Float = item.createdAt.atZone(ZoneOffset.UTC).toEpochSecond().toFloat()
             val y: Float = item.amount.toFloat()
-            entries.add(Entry(x, y))
+            val entry = Entry(x, y)
+            Log.d("Entry", entry.toString())
+            entries.add(entry)
         }
-        Toast.makeText(activity, "Entries: $entries", Toast.LENGTH_LONG).show()
+//        Toast.makeText(activity, "Entries: $entries", Toast.LENGTH_LONG).show()
         return entries
     }
 
@@ -397,17 +407,17 @@ class IncomeBalanceFragment : Fragment() {
     override fun onPause() {
         super.onPause()
         // Empty table
-        val table = binding.tableLayout
-        table.removeAllViews()
+//        val table = binding.tableLayout
+//        table.removeAllViews()
 
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    override fun onResume() {
-        super.onResume()
-        Log.d("ExpensesBalanceFragment", "onResume")
-        setLineChart()
-    }
+//    @RequiresApi(Build.VERSION_CODES.O)
+//    override fun onResume() {
+//        super.onResume()
+//        Log.d("ExpensesBalanceFragment", "onResume")
+//        setLineChart()
+//    }
 }
 
 interface MyCallback {

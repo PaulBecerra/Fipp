@@ -216,12 +216,12 @@ class ExpensesBalanceFragment : Fragment() {
         setLineChart()
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    override fun onResume() {
-        super.onResume()
-        Log.d("ExpensesBalanceFragment", "onResume")
-        setLineChart()
-    }
+//    @RequiresApi(Build.VERSION_CODES.O)
+//    override fun onResume() {
+//        super.onResume()
+//        Log.d("ExpensesBalanceFragment", "onResume")
+//        setLineChart()
+//    }
 
     private fun loadProgressBar() {
         val progressBar = binding.progressBar
@@ -370,8 +370,8 @@ class ExpensesBalanceFragment : Fragment() {
     override fun onPause() {
         super.onPause()
         // Empty table
-        val table = binding.tableLayout
-        table.removeAllViews()
+//        val table = binding.tableLayout
+//        table.removeAllViews()
 
     }
 }
