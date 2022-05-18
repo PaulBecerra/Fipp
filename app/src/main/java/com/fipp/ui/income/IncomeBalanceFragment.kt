@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TableRow
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -62,14 +63,16 @@ class IncomeBalanceFragment : Fragment() {
     private lateinit var categoryController: CategoryController
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun getMonthExpenses(month: Int, year: Int, myCallback : MyCallback): java.util.ArrayList<Expense> {
-        val miau: java.util.ArrayList<String> = java.util.ArrayList()
+    fun getMonthExpenses(
+        month: Int,
+        year: Int,
+        myCallback: MyCallback
+    ): java.util.ArrayList<Expense> {
         val user = auth.currentUser
         val userId = user?.uid
         // Create instance of localDateTime with the month and year
         val yearMonthObject = YearMonth.of(year, month)
         val daysInMonth = yearMonthObject.lengthOfMonth();
-
 
 
         val startDate = LocalDateTime.of(year, month, 1, 0, 0)
@@ -81,20 +84,22 @@ class IncomeBalanceFragment : Fragment() {
 
         algo.addOnCompleteListener { task ->
             if (task.isSuccessful) {
-                val simon : java.util.ArrayList<Expense> = java.util.ArrayList<Expense>()
+                val simon: java.util.ArrayList<Expense> = java.util.ArrayList<Expense>()
                 for (document in task.result!!) {
                     val createdAt = document.data["createdAt"] as Map<*, *>
                     val date = createdAt["dayOfMonth"] as Long
                     val month = createdAt["monthValue"] as Long
                     val year = createdAt["year"] as Long
                     var category: Category? = null
-                    categoryController.getCategoryById(document.data["category"].toString(), object:
-                        MyCallbackCategory {
-                        override fun onCallback(value: Category) {
-                            category = value
+                    categoryController.getCategoryById(
+                        document.data["category"].toString(),
+                        object :
+                            MyCallbackCategory {
+                            override fun onCallback(value: Category) {
+                                category = value
 
-                        }
-                    })
+                            }
+                        })
                     val expense = Expense(
                         document.data["amount"].toString(),
                         LocalDateTime.of(year.toInt(), month.toInt(), date.toInt(), 0, 0),
@@ -110,17 +115,21 @@ class IncomeBalanceFragment : Fragment() {
             }
         }
 //        Toast.makeText(activity, "Expenses2: $expenses", Toast.LENGTH_LONG).show()
-        return expenses    }
+        return expenses
+    }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun getMonthIncome(month: Int, year: Int, myCallback : MyCallbackIncome): java.util.ArrayList<Income> {
+    fun getMonthIncome(
+        month: Int,
+        year: Int,
+        myCallback: MyCallbackIncome
+    ): java.util.ArrayList<Income> {
         val miau: java.util.ArrayList<String> = java.util.ArrayList()
         val user = auth.currentUser
         val userId = user?.uid
         // Create instance of localDateTime with the month and year
         val yearMonthObject = YearMonth.of(year, month)
         val daysInMonth = yearMonthObject.lengthOfMonth();
-
 
 
         val startDate = LocalDateTime.of(year, month, 1, 0, 0)
@@ -132,20 +141,22 @@ class IncomeBalanceFragment : Fragment() {
 
         algo.addOnCompleteListener { task ->
             if (task.isSuccessful) {
-                val simon : java.util.ArrayList<Income> = java.util.ArrayList<Income>()
+                val simon: java.util.ArrayList<Income> = java.util.ArrayList<Income>()
                 for (document in task.result!!) {
                     val createdAt = document.data["createdAt"] as Map<*, *>
                     val date = createdAt["dayOfMonth"] as Long
                     val month = createdAt["monthValue"] as Long
                     val year = createdAt["year"] as Long
                     var category: Category? = null
-                    categoryController.getCategoryById(document.data["category"].toString(), object:
-                        MyCallbackCategory {
-                        override fun onCallback(value: Category) {
-                            category = value
+                    categoryController.getCategoryById(
+                        document.data["category"].toString(),
+                        object :
+                            MyCallbackCategory {
+                            override fun onCallback(value: Category) {
+                                category = value
 
-                        }
-                    })
+                            }
+                        })
                     val income = Income(
                         document.data["amount"].toString(),
                         LocalDateTime.of(year.toInt(), month.toInt(), date.toInt(), 0, 0),
@@ -176,16 +187,15 @@ class IncomeBalanceFragment : Fragment() {
         // Create instance of LocalDateTime with the month and year
         val actualDate = LocalDateTime.now()
 
-        this.getMonthExpenses(actualDate.monthValue, actualDate.year, object: MyCallback {
+        this.getMonthExpenses(actualDate.monthValue, actualDate.year, object : MyCallback {
             override fun onCallback(value: List<Expense>) {
-//                Toast.makeText(activity, "Expenses3: $value", Toast.LENGTH_LONG).show()
                 expenses = value as java.util.ArrayList<Expense>
             }
         })
 
 
 
-        this.getMonthIncome(actualDate.monthValue, actualDate.year, object: MyCallbackIncome {
+        this.getMonthIncome(actualDate.monthValue, actualDate.year, object : MyCallbackIncome {
 
             override fun onCallback(value: List<Income>) {
                 income = value as java.util.ArrayList<Income>
@@ -193,23 +203,20 @@ class IncomeBalanceFragment : Fragment() {
                     budget += money.amount.toFloat()
                 }
 
-                setLineChart()
-
                 loadProgressBar()
+
+                setLineChart()
             }
         })
-
-
 
 
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    override fun onStart(){
+    override fun onStart() {
         super.onStart()
         loadProgressBar()
 
-        setLineChart()
     }
 
     override fun onCreateView(
@@ -225,9 +232,8 @@ class IncomeBalanceFragment : Fragment() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        loadProgressBar()
-
         setLineChart()
+
     }
 
     private fun loadProgressBar() {
@@ -240,22 +246,26 @@ class IncomeBalanceFragment : Fragment() {
             expenses += expense.amount.toFloat()
         }
         // set progress
-        var progress =  (expenses * 100 ) / budget
+        var progress = (expenses * 100) / budget
 
         progress = 100 - progress
         progressBar.progress = progress.toInt()
 
-        progressBar.progressTintList = ColorStateList.valueOf(ContextCompat.getColor(requireActivity(), R.color.verde_principal))
+        progressBar.progressTintList = ColorStateList.valueOf(
+            ContextCompat.getColor(
+                requireActivity(),
+                R.color.verde_principal
+            )
+        )
 
     }
-
 
 
     /**
      *
      */
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun setLineChart(){
+    private fun setLineChart() {
         val lineChartBinding: ActivityChartBinding = binding.lineChart
         var lineChart: LineChart = lineChartBinding.lineChart
 
@@ -278,29 +288,31 @@ class IncomeBalanceFragment : Fragment() {
 
         val entries = loadChartData()
 
-        val green = ContextCompat.getColor(requireActivity(), R.color.verde_principal)
+
+        val red = ContextCompat.getColor(requireActivity(), R.color.verde_principal)
         // First line
         val lineDataSet = LineDataSet(entries, "ACTUAL")
-        lineDataSet.color = green
+        lineDataSet.color = red
         lineDataSet.lineWidth = 5f
         lineDataSet.setDrawCircles(false);
         lineDataSet.setDrawValues(false);
 
 
-
         lineChart.xAxis.labelRotationAngle = 0f
+
         lineChart.xAxis.valueFormatter = LineChartXAxisValueFormatter()
 
-        val dataSet = ArrayList<ILineDataSet>()
+        val dataSet = java.util.ArrayList<ILineDataSet>()
         dataSet.add(lineDataSet)
 
-        var data = LineData(dataSet)
+        val data = LineData(dataSet)
 
         lineChart.data = data
 
         lineChart.axisRight.isEnabled = false
         lineChart.description.text = ""
         lineChart.setNoDataText("No forex yet!")
+
 
     }
 
@@ -313,11 +325,12 @@ class IncomeBalanceFragment : Fragment() {
             val y: Float = item.amount.toFloat()
             entries.add(Entry(x, y))
         }
+        Toast.makeText(activity, "Entries: $entries", Toast.LENGTH_LONG).show()
         return entries
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun loadTableChart(){
+    private fun loadTableChart() {
         val dateTimeFormat = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.getDefault())
         val table = binding.tableLayout
 
@@ -330,7 +343,8 @@ class IncomeBalanceFragment : Fragment() {
 
 
             val textView = TextView(requireActivity())
-            val emissionsMilliSince1970Time = item.createdAt.atZone(ZoneOffset.UTC).toEpochSecond() * 1000
+            val emissionsMilliSince1970Time =
+                item.createdAt.atZone(ZoneOffset.UTC).toEpochSecond() * 1000
             val timeMilliseconds = Date(emissionsMilliSince1970Time)
             val date = dateTimeFormat.format(timeMilliseconds)
             textView.text = date
@@ -341,13 +355,15 @@ class IncomeBalanceFragment : Fragment() {
             val textView2 = TextView(requireActivity())
             textView2.text = item.category?.categoryName ?: "-"
             textView2.gravity = Gravity.CENTER
-            textView2.layoutParams = TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f)
+            textView2.layoutParams =
+                TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f)
             row.addView(textView2)
 
             val textView3 = TextView(requireActivity())
             textView3.text = item.amount
             textView3.gravity = Gravity.CENTER
-            textView3.layoutParams = TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f)
+            textView3.layoutParams =
+                TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f)
             row.addView(textView3)
 
 

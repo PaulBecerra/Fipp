@@ -174,12 +174,6 @@ class DashboardFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-    }
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
         categoryController = CategoryController(requireActivity())
 
 
@@ -205,6 +199,13 @@ class DashboardFragment : Fragment() {
                 loadProgressBar()
             }
         })
+
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -240,36 +241,6 @@ class DashboardFragment : Fragment() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        val category = Category("","Miau", "miau", "car.jpg",CategoryType.EXPENSES)
-//
-//        val date = LocalDateTime.of(2022,5,5, 0, 0)
-//        val date2 = LocalDateTime.of(2022,5,15, 0, 0)
-//        val date3 = LocalDateTime.of(2022,5,20, 0, 0)
-//        val date4 = LocalDateTime.of(2022,5,22, 0, 0)
-//
-//        expenses.add(Expense("500.0", date, category))
-//        expenses.add(Expense("600.0", date2, category))
-//        expenses.add(Expense("400.0", date3, category))
-//        expenses.add(Expense("800.0", date4, category))
-//
-//
-//        income.add(Income("500.0", date, category))
-//        income.add(Income("1000.0", date2, category))
-//        income.add(Income("2500.0", date4, category))
-//
-//        for (money in income) {
-//            budget += money.amount.toFloat()
-//        }
-//
-//        for (expense in expenses){
-//            totalExpense += expense.amount.toFloat()
-//        }
-
-
-//        loadProgressBar()
-//
-//        setHalfPieChartIncome()
-//        setHalfPieChartExpenses()
 
         val botonIncomes: View = binding.buttonIncomesHome
         val botonExpense: View = binding.buttonExpenseHome
@@ -283,6 +254,17 @@ class DashboardFragment : Fragment() {
             val act = parentFragment?.activity
             act?.startActivity(Intent(act, RegisterExpenseActivity::class.java))
         }
+
+        loadProgressBar()
+
+        setHalfPieChartIncome()
+        setHalfPieChartExpenses()
+
+        val textViewIncome: TextView = binding.tvIncome
+        val textViewExpense: TextView = binding.tvExpense
+
+        textViewIncome.text = budget.toString()
+        textViewExpense.text = totalExpense.toString()
 
 
     }
