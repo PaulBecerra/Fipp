@@ -82,5 +82,20 @@ class UserController {
         activity.startActivity(intent)
     }
 
+    fun updateUser(user: User) {
+        val user1 = auth.currentUser
+        val userId = user1?.uid
+
+        db.collection("users").document(userId!!).set(
+            hashMapOf("name" to user.name)
+        )
+            .addOnSuccessListener {
+                Toast.makeText(activity, "¡Edición exitosa!", Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener { exception ->
+                Toast.makeText(activity, "Hubo un error editando el nombre de usuario", Toast.LENGTH_SHORT).show()
+            }
+    }
+
 
 }
