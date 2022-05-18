@@ -1,146 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/verde"
     tools:context=".ui.notifications.NotificationsFragment"
     android:orientation="vertical">
-
-    <Button
-        android:id="@+id/btn_logout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="log out"
-        android:layout_marginHorizontal="100dp"
-        android:backgroundTint="@color/purple_500"
-        />
-    <!--<LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/fipp_app_marcas_01"
-            android:layout_marginLeft="12dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="64sp"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Mes"
-            android:fontFamily="@font/roboto_bold"
-            android:textSize="10dp"
-            app:cornerRadius="20dp"
-            android:layout_gravity="center"
-            />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Semana"
-            android:fontFamily="@font/roboto_bold"
-            android:textSize="10dp"
-            app:cornerRadius="20dp"
-            android:textColor="@color/black"
-            android:layout_gravity="center"
-            android:backgroundTint="@color/white"
-            app:strokeWidth="0dp"
-            />
-    </LinearLayout>
-
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        app:strokeWidth="2dp"
-        app:strokeColor="@color/rojo"
-        app:cardCornerRadius="20dp">
-
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabLayoutGastos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:tabTextAppearance="@style/tab_text"
-            app:tabIndicatorColor="@color/rojo"
-            app:tabSelectedTextColor="@color/white"
-            app:tabTextColor="@color/black"
-            app:tabIndicatorGravity="stretch"
-            app:tabMode="scrollable">
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="BALANCE" />
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="CLASIFICACIÓN" />
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="FIJOS" />
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="CATEGORÍAS" />
-
-        </com.google.android.material.tabs.TabLayout>
-
-    </com.google.android.material.card.MaterialCardView>
-
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewPagerGastos"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        />-->
+        android:layout_margin="12dp"
+        app:cardCornerRadius="10dp">
 
-    <!--<com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        app:strokeWidth="2dp"
-        app:strokeColor="@color/rojo"
-        app:cardCornerRadius="20dp">
-
-        <com.google.android.material.tabs.TabLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:tabTextAppearance="@style/tab_text"
-            app:tabIndicatorColor="@color/rojo"
-            app:tabSelectedTextColor="@color/white"
-            app:tabTextColor="@color/black"
-            app:tabIndicatorGravity="stretch"
-            app:tabMode="scrollable">
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/white"
+            android:orientation="vertical">
 
-            <com.google.android.material.tabs.TabItem
+
+
+            <TextView
+                android:id="@+id/tvIncome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="BALANCE" />
+                android:fontFamily="@font/roboto_black"
+                android:text="Perfil"
+                android:layout_marginBottom="25dp"
+                android:textColor="@color/gris_oscuro"
+                android:textSize="26sp" />
 
-            <com.google.android.material.tabs.TabItem
+            <TextView
+                android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="CLASIFICACIÓN" />
+                android:fontFamily="@font/roboto_regular"
+                android:text="Nombre"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/gris_oscuro"
+                android:textSize="15sp"/>
 
-            <com.google.android.material.tabs.TabItem
+            <EditText
+                android:id="@+id/editTextNombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Nombre"
+                android:layout_marginBottom="15dp"
+                android:inputType="textPersonName"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/textView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="FIJOS" />
+                android:fontFamily="@font/roboto_regular"
+                android:text="Correo electrónico"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/gris_oscuro"
+                android:textSize="15sp"/>
 
-            <com.google.android.material.tabs.TabItem
-                android:id="@+id/tabItem"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/editTextEmail"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="CATEGORÍAS" />
+                android:ems="10"
+                android:hint="@string/login_email"
+                android:inputType="textPersonName"
+                android:textSize="12sp" />
 
-        </com.google.android.material.tabs.TabLayout>
-    </com.google.android.material.card.MaterialCardView>-->
+            <Button
+                android:id="@+id/btn_logout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="log out"
+                android:layout_marginVertical="50dp"
+                android:layout_marginHorizontal="50dp"
+                android:backgroundTint="@color/purple_500"
+                />
 
-</LinearLayout>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+
+</RelativeLayout>
