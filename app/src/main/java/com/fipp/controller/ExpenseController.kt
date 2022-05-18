@@ -2,7 +2,9 @@ package com.fipp.controller
 
 import android.app.Activity
 import android.os.Build
+import android.widget.Toast
 import androidx.annotation.RequiresApi
+import com.fipp.model.Expense
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -24,7 +26,8 @@ class ExpenseController {
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun getMonthExpenses(month: Int, year: Int){
+    fun getMonthExpenses(month: Int, year: Int): ArrayList<Expense> {
+        val expenses = ArrayList<Expense>()
         val user = auth.currentUser
         val userId = user?.uid
         // Create instnace of localDateTime with the month and year
@@ -40,12 +43,17 @@ class ExpenseController {
             .get()
             .addOnSuccessListener {
                 for (document in it) {
+                    val expense = document.toObject(Expense::class.java)
+                    expenses.add(expense)
                     println(document.id + " => " + document.data)
                 }
             }
             .addOnFailureListener { exception ->
+                // Create a Toast with a message
+                Toast.makeText(activity, "Hubo un error obteniendo los gastos ", Toast.LENGTH_LONG).show()
                 println("Error getting documents: " + exception)
             }
+        return expenses
     }
 
 }
