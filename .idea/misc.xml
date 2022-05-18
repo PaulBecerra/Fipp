@@ -10,7 +10,10 @@
         <entry key="..\:/Users/Mortis/Documents/GitHub/Fipp/app/src/main/res/drawable/circle_red_dark.xml" value="0.3675" />
         <entry key="..\:/Users/Mortis/Documents/GitHub/Fipp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3675" />
         <entry key="..\:/Users/Mortis/Documents/GitHub/Fipp/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.3675" />
+        <entry key="..\:/Users/Mortis/Documents/GitHub/Fipp/app/src/main/res/drawable/ic_settings.xml" value="0.196" />
+        <entry key="..\:/Users/Mortis/Documents/GitHub/Fipp/app/src/main/res/drawable/ic_settings_gear.xml" value="0.196" />
         <entry key="..\:/Users/Mortis/Documents/GitHub/Fipp/app/src/main/res/drawable/ic_subcategory_01.xml" value="0.3675" />
+        <entry key="..\:/Users/Mortis/Documents/GitHub/Fipp/app/src/main/res/drawable/seetings_icon.xml" value="0.196" />
         <entry key="..\:/Users/Mortis/Documents/GitHub/Fipp/app/src/main/res/drawable/tab_color_selector_period.xml" value="0.3675" />
         <entry key="..\:/Users/Mortis/Documents/GitHub/Fipp/app/src/main/res/layout/activity_categories2_view.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Mortis/Documents/GitHub/Fipp/app/src/main/res/layout/activity_categories_view.xml" value="0.33" />
@@ -20,6 +23,7 @@
         <entry key="..\:/Users/Mortis/Documents/GitHub/Fipp/app/src/main/res/layout/activity_income_categories.xml" value="0.33" />
         <entry key="..\:/Users/Mortis/Documents/GitHub/Fipp/app/src/main/res/layout/activity_login.xml" value="0.2717391304347826" />
         <entry key="..\:/Users/Mortis/Documents/GitHub/Fipp/app/src/main/res/layout/activity_main.xml" value="0.2717391304347826" />
+        <entry key="..\:/Users/Mortis/Documents/GitHub/Fipp/app/src/main/res/layout/activity_password.xml" value="0.18802083333333333" />
         <entry key="..\:/Users/Mortis/Documents/GitHub/Fipp/app/src/main/res/layout/activity_progress_indicator.xml" value="0.2717391304347826" />
         <entry key="..\:/Users/Mortis/Documents/GitHub/Fipp/app/src/main/res/layout/activity_register_category_income.xml" value="0.22" />
         <entry key="..\:/Users/Mortis/Documents/GitHub/Fipp/app/src/main/res/layout/activity_register_expense.xml" value="0.36666666666666664" />
@@ -40,7 +44,10 @@
         <entry key="..\:/Users/Mortis/Documents/GitHub/Fipp/app/src/main/res/layout/fragment_income_set.xml" value="0.2536231884057971" />
         <entry key="..\:/Users/Mortis/Documents/GitHub/Fipp/app/src/main/res/layout/layout_categories_income.xml" value="0.18802083333333333" />
         <entry key="..\:/Users/Mortis/Documents/GitHub/Fipp/app/src/main/res/layout/layout_subcategory.xml" value="0.18802083333333333" />
+        <entry key="..\:/Users/Mortis/Documents/GitHub/Fipp/app/src/main/res/layout/top_bar_period.xml" value="0.16032608695652173" />
+        <entry key="..\:/Users/Mortis/Documents/GitHub/Fipp/app/src/main/res/layout/top_tab_layout.xml" value="0.33" />
         <entry key="..\:/Users/Mortis/Documents/GitHub/Fipp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Mortis/Documents/GitHub/Fipp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.196" />
         <entry key="..\:/Users/mavel/OneDrive/Documentos/GitHub/Fipp/app/src/main/res/drawable/background_categories.xml" value="0.1035" />
         <entry key="..\:/Users/mavel/OneDrive/Documentos/GitHub/Fipp/app/src/main/res/drawable/ic_baseline_receipt_24.xml" value="0.159" />
         <entry key="..\:/Users/mavel/OneDrive/Documentos/GitHub/Fipp/app/src/main/res/layout/activity_categories_view.xml" value="0.22" />
