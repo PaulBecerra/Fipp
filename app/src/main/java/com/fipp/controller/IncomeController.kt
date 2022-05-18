@@ -35,7 +35,7 @@ class IncomeController(private var activity: Activity) {
 
         val startDate = LocalDateTime.of(year, month, 1, 0, 0)
         val endDate = LocalDateTime.of(year, month, daysInMonth, 0, 0)
-        db.collection("expenses").whereEqualTo("user", userId)
+        db.collection("income").whereEqualTo("user", userId)
             .whereGreaterThanOrEqualTo("createdAt", startDate)
             .whereLessThanOrEqualTo("createAr", endDate)
             .get()
