@@ -64,7 +64,7 @@ class IncomeController(private var activity: Activity) {
             hashMapOf("amount" to income.amount,
                 "createdAt" to income.createdAt,
                 "user" to userId,
-                "category" to income.category.uid
+                "category" to (income.category?.uid ?: "")
             )
         )
             .addOnSuccessListener {

@@ -18,6 +18,7 @@ import com.fipp.formatters.LineChartXAxisValueFormatter
 import com.fipp.R
 import com.fipp.controller.CategoryController
 import com.fipp.controller.ExpenseController
+import com.fipp.controller.IncomeController
 import com.fipp.controller.MyCallbackCategory
 import com.fipp.databinding.ActivityChartBinding
 import com.fipp.databinding.FragmentExpensesBalanceBinding
@@ -55,6 +56,7 @@ class ExpensesBalanceFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
     private lateinit var expensesController: ExpenseController
+    private lateinit var IncomeController: IncomeController
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun getMonthExpenses(month: Int, year: Int, myCallback : MyCallback): ArrayList<Expense> {
@@ -108,13 +110,76 @@ class ExpensesBalanceFragment : Fragment() {
         return expenses    }
 
     @RequiresApi(Build.VERSION_CODES.O)
+    fun getMonthIncome(month: Int, year: Int, myCallback : MyCallbackIncome): ArrayList<Income> {
+        val miau: ArrayList<String> = ArrayList()
+        val user = auth.currentUser
+        val userId = user?.uid
+        // Create instance of localDateTime with the month and year
+        val yearMonthObject = YearMonth.of(year, month)
+        val daysInMonth = yearMonthObject.lengthOfMonth();
+
+
+
+        val startDate = LocalDateTime.of(year, month, 1, 0, 0)
+        val endDate = LocalDateTime.of(year, month, daysInMonth, 0, 0)
+        val algo =
+            db.collection("income").whereEqualTo("user", userId)
+                .whereGreaterThanOrEqualTo("createdAt", startDate)
+                .whereLessThanOrEqualTo("createdAt", endDate).get()
+
+        algo.addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val simon :ArrayList<Income> = ArrayList<Income>()
+                for (document in task.result!!) {
+                    val createdAt = document.data["createdAt"] as Map<*, *>
+                    val date = createdAt["dayOfMonth"] as Long
+                    val month = createdAt["monthValue"] as Long
+                    val year = createdAt["year"] as Long
+                    var category: Category? = null
+                    categoryController.getCategoryById(document.data["category"].toString(), object:
+                        MyCallbackCategory {
+                        override fun onCallback(value: Category) {
+                            category = value
+
+                        }
+                    })
+                    val income = Income(
+                        document.data["amount"].toString(),
+                        LocalDateTime.of(year.toInt(), month.toInt(), date.toInt(), 0, 0),
+                        category,
+                    )
+//                    Toast.makeText(activity, expense.amount, Toast.LENGTH_LONG).show()
+//                    Toast.makeText(activity, "Expenses: $expenses", Toast.LENGTH_LONG).show()
+                    simon.add(income)
+
+                }
+                myCallback.onCallback(simon)
+//                expenses = simon
+            }
+        }
+//        Toast.makeText(activity, "Expenses2: $expenses", Toast.LENGTH_LONG).show()
+        return income
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         expensesController = ExpenseController(requireActivity())
         categoryController = CategoryController(requireActivity())
 
-        this.getMonthExpenses(5, 2022, object: MyCallback {
+
+        // Create instance of LocalDateTime with the month and year
+        val actualDate = LocalDateTime.now()
+
+        this.getMonthIncome(actualDate.monthValue, actualDate.year, object: MyCallbackIncome {
+
+            override fun onCallback(value: List<Income>) {
+                income = value as ArrayList<Income>
+            }
+        })
+
+        this.getMonthExpenses(actualDate.monthValue, actualDate.year, object: MyCallback {
             override fun onCallback(value: List<Expense>) {
 //                Toast.makeText(activity, "Expenses3: $value", Toast.LENGTH_LONG).show()
                 expenses = value as ArrayList<Expense>
@@ -126,6 +191,8 @@ class ExpensesBalanceFragment : Fragment() {
             }
         })
 
+
+
 //        expenses = expensesController.getMonthExpenses(5, 2022)
         val category = Category("", "Miau", "miau", 1)
 //
@@ -133,11 +200,6 @@ class ExpensesBalanceFragment : Fragment() {
         val date2 = LocalDateTime.of(2022,5,15, 0, 0)
         val date3 = LocalDateTime.of(2022,5,20, 0, 0)
         val date4 = LocalDateTime.of(2022,5,22, 0, 0)
-
-//        expenses.add(Expense("500.0", date, category))
-//        expenses.add(Expense("600.0", date2, category))
-//        expenses.add(Expense("400.0", date3, category))
-//        expenses.add(Expense("800.0", date4, category))
 
 
         income.add(Income("500.0", date, category))
@@ -306,5 +368,9 @@ class ExpensesBalanceFragment : Fragment() {
 
 interface MyCallback {
     fun onCallback(value: List<Expense>)
+}
+
+interface MyCallbackIncome {
+    fun onCallback(value: List<Income>)
 }
 
